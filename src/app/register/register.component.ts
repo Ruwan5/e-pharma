@@ -3,6 +3,7 @@ import { AuthService } from '../core/auth.service';
 import { UserService } from '../core/user.service';
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Userinterface} from '../core/user';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,9 @@ export class RegisterComponent implements OnInit{
   errorMessage: string = '';
   successMessage: string = '';
 
+  //new
+  uusers: Userinterface[];
+
   constructor(
     public authService: AuthService,
     private fb: FormBuilder,
@@ -23,7 +27,16 @@ export class RegisterComponent implements OnInit{
    
    ngOnInit() {
     this.userForm();
-    this.userService.getUserList();
+    // this.userService.getUserList();
+
+    // this.userService.getUser().subscribe(data => {
+    //   this.uusers = data.map(e => {
+    //     return {
+    //       id: e.payload.doc.id,
+    //       ...e.payload.doc.data()
+    //     } as Userinterface;
+    //   })
+    // });
     
    }
 
@@ -42,7 +55,12 @@ export class RegisterComponent implements OnInit{
     
      this.userService.insertUser(this.registerForm.value);
       
-   }   
+   } 
+   
+//   submitUserData(user: Userinterface){
+//     this.userService.insertUser(user);
+
+// }
 
    tryRegister(value){
      this.authService.doRegister(value)

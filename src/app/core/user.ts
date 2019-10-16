@@ -1,5 +1,5 @@
 
-export interface Userinterface {
+export class Userinterface {
     $key: string;
     FirstName: string;
     LastName: string;
