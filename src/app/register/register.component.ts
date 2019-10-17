@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit{
   successMessage: string = '';
 
   //new
-  uusers: Userinterface[];
+  // uusers: Userinterface[];
 
   constructor(
     public authService: AuthService,
