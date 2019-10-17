@@ -9,3 +9,13 @@ export class FirebaseUserModel {
     this.provider = "";
   }
 }
+
+export class Users {
+    FirstName: string;
+    LastName: string;
+    Address: string;
+    email: string;
+    password: string;
+    Telephone: Number;
+    UserType: string;
+}
