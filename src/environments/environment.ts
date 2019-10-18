@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDV4Q32FtpcEMNrpihHWQ5FzgzM-pZqi9Q",
-    authDomain: "e-pharma-944e2.firebaseapp.com",
-    databaseURL: "https://e-pharma-944e2.firebaseio.com",
-    projectId: "e-pharma-944e2",
-    storageBucket: "e-pharma-944e2.appspot.com",
-    messagingSenderId: "865436925619",
-    appId: "1:865436925619:web:9ea1bffe76988319407ac6"
+    apiKey: "AIzaSyDswJu1t7OAZthIt9uBgad2hpea5VSfWjE",
+    authDomain: "epharma-3593a.firebaseapp.com",
+    databaseURL: "https://epharma-3593a.firebaseio.com",
+    projectId: "epharma-3593a",
+    storageBucket: "epharma-3593a.appspot.com",
+    messagingSenderId: "410186365192",
+    appId: "1:410186365192:web:a88e9360ca0e26b30e94bd",
+    measurementId: "G-7014RC78B7"
   }
 };
 
