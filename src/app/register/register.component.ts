@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { UserService } from '../core/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Userinterface} from '../core/user';
 import {Users} from '../core/user.model'
 
 @Component({
@@ -40,6 +39,7 @@ export class RegisterComponent implements OnInit{
    userForm(){
     this.registerForm = this.fb.group({
       'FirstName': ['', Validators.required],
+      'LastName': ['',Validators.required ],
       'Address': ['', Validators.required],
       'email': ['', Validators.required ],
       'password': ['',Validators.required],

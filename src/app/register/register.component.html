@@ -47,12 +47,12 @@
             <input type="text" formControlName="Telephone" class="form-control" >
         </div>
 
-        <div  class="form-wrapper" formControlName="UserType" >
+        <div  class="form-wrapper" >
+            <label>Choose an user</label>
           <div >
-              <select class="custom-select custom-select-lg mb-3" >
-                  <option selected>Choose an user</option>
-                  <option value="1">Pharmacist</option>
-                  <option value="2">Dealer</option>
+              <select  formControlName="UserType" class="form-control" >
+                  <option value="Pharmacist">Pharmacist</option>
+                  <option value="Dealer">Dealer</option>
               </select>
           </div>
         </div>
