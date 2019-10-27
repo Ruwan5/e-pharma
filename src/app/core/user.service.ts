@@ -7,6 +7,8 @@ import {Users} from '../core/user.model'
 
 @Injectable()
 export class UserService{
+    
+  
 
   constructor(
    public afAuth: AngularFireAuth,
@@ -17,6 +19,34 @@ export class UserService{
   getUser() {
     return this.firestore.collection('users').snapshotChanges();
   }
+
+  getUserType() {
+    return new Promise<void>((resolve, reject) => {
+    var db = firebase.firestore();
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    db.collection("users").where("email", "==", userEmail)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc){
+        console.log(doc.id, " => ", doc.data());
+        var data = doc.data();
+        console.log(data.UserType);
+        if(data.UserType){
+          resolve(data.UserType);
+        } else {
+          reject("Error!!!");
+        }
+       
+      });
+    }).catch(function(error) {
+      console.log("Error getting documents: ", error);
+    });
+    })
+      
+  }
+
+  
 
   insertUser(user: Users){
     return this.firestore.collection('users').add(user);

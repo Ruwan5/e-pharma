@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
 
 import { AppComponent } from './app.component';
+import { DealerComponent } from './dealer/dealer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    DealerComponent
   ],
   imports: [
     BrowserModule,

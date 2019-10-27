@@ -2,6 +2,8 @@ import { Component, } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {UserService} from '../core/user.service'
+import { auth } from 'firebase';
 
 @Component({
   selector: 'page-login',
@@ -12,11 +14,14 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   errorMessage: string = '';
+  usertype: string = '';
+  
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public userService: UserService
   ) {
     this.createForm();
   }
@@ -27,13 +32,34 @@ export class LoginComponent {
       password: ['',Validators.required]
     });
   }
-
+   
   
 
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.router.navigate(['/user']);
+      this.userService.getUserType().then(res => {
+        console.log(res);
+        // if(this.usertype == 'Pharmacist'){
+        //   this.router.navigate(['/user']);
+        // }
+        // else{
+        //   this.router.navigate(['/dealer_dashboard']);
+        // }
+        switch(res) {
+            case <any>'Pharmacist':
+              this.router.navigate(['/user']);
+              break;
+            case <any>"Dealer":
+              this.router.navigate(['/dealer_dashboard']);
+              break;
+          } 
+
+      });
+      // <any>this.usertype == this.userService.getUserType();
+      
+      
+      // 
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
