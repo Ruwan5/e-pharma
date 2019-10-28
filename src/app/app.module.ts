@@ -19,6 +19,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database'
 
 import { AppComponent } from './app.component';
 import { DealerComponent } from './dealer/dealer.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DealerComponent } from './dealer/dealer.component';
     LoginComponent,
     UserComponent,
     RegisterComponent,
-    DealerComponent
+    DealerComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

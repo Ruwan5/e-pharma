@@ -39,27 +39,19 @@ export class LoginComponent {
     this.authService.doLogin(value)
     .then(res => {
       this.userService.getUserType().then(res => {
-        console.log(res);
-        // if(this.usertype == 'Pharmacist'){
-        //   this.router.navigate(['/user']);
-        // }
-        // else{
-        //   this.router.navigate(['/dealer_dashboard']);
-        // }
-        switch(res) {
+        switch(res) {                                           //redirect to relevant dash baord
             case <any>'Pharmacist':
               this.router.navigate(['/user']);
               break;
             case <any>"Dealer":
               this.router.navigate(['/dealer_dashboard']);
               break;
+            case <any>"Admin":
+              this.router.navigate(['/admin_dashboard']);
+              break;
           } 
 
       });
-      // <any>this.usertype == this.userService.getUserType();
-      
-      
-      // 
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
