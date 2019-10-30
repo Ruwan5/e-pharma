@@ -11,10 +11,9 @@
                                 </div>
             
                                 <div class="col col-md-2 actions-col">
-                                    <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
-                                            <!-- <ion-icon class="icon" name="arrow-round-forward"></ion-icon> -->
-            
-                                    </button>
+                                        <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+                                                <i class="icon ion-md-person"></i>
+                                        </button>
             
                                 </div>
             
@@ -22,24 +21,3 @@
             
                 </div>    
             </div>
-
-
-
-<!-- <div class="list-group users-list">
-	<div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
-		<div class="row">
-			<div class="col col-md-2 image-col">
-				<img class="image" [src]="">
-			</div>
-			<div class="col col-md-8 text-col">
-				<h5 class="mb-1">{{item.payload.doc.data().FirstName}} {{item.payload.doc.data().LastName}}</h5>
-				<small>Age: {{item.payload.doc.data().UserType}}</small>
-			</div>
-			<div class="col col-md-2 actions-col">
-				<button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
-					<ion-icon class="icon" name="arrow-round-forward"></ion-icon>
-				</button>
-			</div>
-		</div>
-	</div>
-</div> -->
