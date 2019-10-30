@@ -20,6 +20,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database'
 import { AppComponent } from './app.component';
 import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './users_list/home/home.component';
+import { ShowUserComponent } from './users_list/show-user/show-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AdminComponent } from './admin/admin.component';
     UserComponent,
     RegisterComponent,
     DealerComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent,
+    ShowUserComponent
   ],
   imports: [
     BrowserModule,
