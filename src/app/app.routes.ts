@@ -8,7 +8,8 @@ import { AdminComponent} from './admin/admin.component';
 import { UserResolver } from './user/user.resolver';
 import { DealerResolver } from './dealer/dealer.resolver';
 import { AuthGuard } from './core/auth.guard';
-import { HomeComponent} from './users_list/home/home.component'
+import { HomeComponent} from './users_list/home/home.component';
+import { OrderingComponent } from "./ordering/ordering.component";
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const rootRouterConfig: Routes = [
   { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},
   { path: 'dealer_dashboard', component: DealerComponent,  resolve: { data: UserResolver}},
   { path: 'admin_dashboard', component: AdminComponent,  resolve: { data: UserResolver}},
+  { path: 'ordering', component: OrderingComponent,  resolve: { data: UserResolver}},
   { path: 'user_list', component: HomeComponent },
 
 

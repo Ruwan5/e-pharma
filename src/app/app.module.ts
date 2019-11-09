@@ -22,6 +22,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import { OrderingComponent } from './ordering/ordering.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShowUserComponent } from './users_list/show-user/show-user.component';
     DealerComponent,
     AdminComponent,
     HomeComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    OrderingComponent
   ],
   imports: [
     BrowserModule,
