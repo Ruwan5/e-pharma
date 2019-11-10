@@ -22,6 +22,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+<<<<<<< HEAD
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -30,6 +31,9 @@ import {
   AppSidebarModule,
 } from '@coreui/angular';
 
+=======
+import { OrderingComponent } from './ordering/ordering.component';
+>>>>>>> 0c624df371fb856b3265025382657e1f3bd03c90
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import {
     AdminComponent,
     HomeComponent,
     ShowUserComponent,
+<<<<<<< HEAD
     
+=======
+    OrderingComponent
+>>>>>>> 0c624df371fb856b3265025382657e1f3bd03c90
   ],
   imports: [
     BrowserModule,
