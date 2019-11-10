@@ -22,6 +22,14 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +40,8 @@ import { ShowUserComponent } from './users_list/show-user/show-user.component';
     DealerComponent,
     AdminComponent,
     HomeComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    
   ],
   imports: [
     BrowserModule,

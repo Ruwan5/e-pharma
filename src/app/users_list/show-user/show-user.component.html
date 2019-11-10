@@ -1,1 +1,29 @@
-<p>show-user works!</p>
+<h1>show user page</h1>
+<div class="container-fluid" style="background-color:#CDCDCD;">
+        <div class="container" style="background-color:#CDCDCD;">
+                <div class="list-group users-list">
+                         <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="row">
+                                        <div class="col col-md-2 image-col">
+                                                <img class="image" [src]="item.payload.doc.data().avatar">
+                                                </div>
+                                                <div class="col col-md-8 text-col">
+                                                        <h3 class="mb-1">{{item.payload.doc.data().FirstName}} {{item.payload.doc.data().LastName}}</h3>
+                                                        
+                                                        <small>Email: {{item.payload.doc.data().email}}</small>
+                                                        <br>
+                                                        <small>Address: {{item.payload.doc.data().Address}}</small>
+                                                        <br>
+                                                        <small>Telephone: {{item.payload.doc.data().Telephone}}</small>
+                                                        <br>
+                                                        <small>User type: {{item.payload.doc.data().UserType}}</small>
+                                                </div>
+                                
+                                    
+                                        </div>
+                                    
+                        </div>    
+                </div>
+        </div>
+</div>
+

@@ -19,3 +19,7 @@ export class Users {
     Telephone: Number;
     UserType: string;
 }
+
+interface Showuser {
+  usr: String;
+}
