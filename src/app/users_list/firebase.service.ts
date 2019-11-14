@@ -17,32 +17,27 @@ export class FirebaseService {
   
   }
 
-  getPeople(){
-    return new Promise<any>((resolve, reject) => {
-      this.afs.collection('/users').snapshotChanges().subscribe(snapshots => {
-        resolve(snapshots)
-      })
-    })
+  getPeople(userKey){
+    return this.afs.collection('users').doc(userKey).snapshotChanges();
   }
 
-  getInfo(usr: Users) {
-    return new Promise<{}>((resolve, reject) => {   // Promise<{}> should be added to pass an object as a parameter of resolve function 
-    var db = firebase.firestore();
-    db.collection("users").where("email", "==", usr.email)
-    .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc){
-        console.log(doc.id, " => ", doc.data());
-        var data = doc.data();
-        return resolve(data);
-       
-      });
-    }).catch(function(error) {
-      console.log("Error getting documents: ", error);
-    });
-    })
-      
+  getUsers(){
+    return this.afs.collection('users').snapshotChanges();
   }
 
+  searchUsersByAge(value){
+    return this.afs.collection('users',ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+  }
+
+  searchUsers(searchValue){
+    return this.afs.collection('users',ref => ref.where('nameToSerach', '>=', searchValue)
+    .where('nameToSearch', '<=', searchValue + '\uf8ff'))
+    .snapshotChanges()
+  }
+
+
+  deleteUser(userKey){
+    return this.afs.collection('users').doc(userKey).delete();
+  }
 
 }

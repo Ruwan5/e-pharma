@@ -47,6 +47,8 @@
             <input type="text" formControlName="Telephone" class="form-control" >
         </div>
 
+        
+
         <div  class="form-wrapper" >
             <label>Choose an user</label>
           <div >
@@ -55,6 +57,12 @@
                   <option value="Dealer">Dealer</option>
               </select>
           </div>
+        </div>
+
+        <div class="form-wrapper">
+            <label>Profile picture</label>
+            <input type="file" name="file" class="inputimg form-control" id="nameImg" accept="image/*" formControlName="Photo">
+            <!-- <input type="image" formControlName="Photo" class="form-control" > -->
         </div>
 
         <label class="error">{{errorMessage}}</label>

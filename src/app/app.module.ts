@@ -14,7 +14,7 @@ import { UserResolver } from './user/user.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,6 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
-<<<<<<< HEAD
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -31,9 +30,9 @@ import {
   AppSidebarModule,
 } from '@coreui/angular';
 
-=======
 import { OrderingComponent } from './ordering/ordering.component';
->>>>>>> 0c624df371fb856b3265025382657e1f3bd03c90
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 
 @NgModule({
   declarations: [
@@ -45,11 +44,8 @@ import { OrderingComponent } from './ordering/ordering.component';
     AdminComponent,
     HomeComponent,
     ShowUserComponent,
-<<<<<<< HEAD
     
-=======
     OrderingComponent
->>>>>>> 0c624df371fb856b3265025382657e1f3bd03c90
   ],
   imports: [
     BrowserModule,
@@ -59,9 +55,11 @@ import { OrderingComponent } from './ordering/ordering.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
