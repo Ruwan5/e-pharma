@@ -29,10 +29,16 @@ import {
   AppFooterModule,
   AppSidebarModule,
 } from '@coreui/angular';
+import { AddInventoryComponent } from './inventory/add-inventory/add-inventory.component';
+import { EditInventoryComponent } from './inventory/edit-inventory/edit-inventory.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 
 import { OrderingComponent } from './ordering/ordering.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
+import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,6 +50,10 @@ import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
     AdminComponent,
     HomeComponent,
     ShowUserComponent,
+    AddInventoryComponent,
+    EditInventoryComponent,
+    InventoryListComponent,
+    
     
     OrderingComponent
   ],
@@ -55,9 +65,11 @@ import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
+    ToastrModule.forRoot(), // ToastrModule added
     AngularFireDatabaseModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule  // Include it in imports array
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver],
   bootstrap: [AppComponent]
