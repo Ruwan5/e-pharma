@@ -27,6 +27,10 @@ export class CrudService {
     return this.inventoryRef;
   }
 
+  getInventory(){
+    return this.firestore.collection('drugs').snapshotChanges();
+  }
+
   // Fetch Inventory List
   GetInventoryList() {
      return this.firestore.collection('drugs').snapshotChanges();

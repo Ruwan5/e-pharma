@@ -14,7 +14,8 @@ export class InventoryListComponent implements OnInit {
   Inventory:Inventory[];                 // Save inventory data in Inventory's array.
   hideWhenNoInventory: boolean = false; // Hide inventory data table when no data.
   noData: boolean = false;            // Showing No Inventory Message, when no inventory data in database.
-  preLoader: boolean = true;          // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
+  preLoader: boolean = true;  
+  items: Array<any>;        // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
 
   constructor(
     public crudApi: CrudService, // Inject inventory CRUD services in constructor.
@@ -22,15 +23,14 @@ export class InventoryListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataState(); // Initialize inventory's list, when component is ready
-    let s = this.crudApi.GetInventoryList(); 
-    s.subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
-      this.Inventory = [];
-      data.forEach(item => {
-        let a = item.payload; 
-        a['$key'] = item;
-        // this.Inventory.push(a as Inventory);
-      })
+    this.getDrugs();
+  }
+
+  getDrugs(){
+    this.crudApi.getInventory()
+    .subscribe(result => {
+      this.items = result;
+      console.log(result);
     })
   }
 
