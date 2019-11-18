@@ -35,19 +35,6 @@ export class HomeComponent implements OnInit {
     this.getData();
   }
 
-
-  // viewDetails(item: Users) {
-  //    return new Promise<{}>((resolve) => {
-  //       this.firebaseService.getInfo(item).then(data => { 
-  //           console.log(data);
-  //           resolve(data);
-  //           this.router.navigate(['/show_user']);
-            
-  //       }
-  //     )
-  //  })
-  // }
-
   viewDetails(item){
     this.router.navigate(['/show_user/'+ item.payload.doc.id]);
   }

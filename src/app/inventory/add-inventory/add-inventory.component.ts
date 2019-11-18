@@ -112,7 +112,7 @@ ResetForm() {
   this.inventoryForm.reset();
 }  
 
-submitStudentData() {
+submitInventoryData() {
   this.crudApi.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
   this.toastr.success(this.inventoryForm.controls['brandName'].value + ' successfully added!'); // Show success message when data is successfully submited
   this.ResetForm();  // Reset form when clicked on reset button
