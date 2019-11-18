@@ -1,84 +1,82 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Inventory List</h1>
-        <!-- It won't show if there is no inventoyr data -->
-        <a routerLink="/add-inventory" class="btn btn-success" *ngIf="hideWhenNoInventory">
-          <i class="fas fa-plus custom-fa-plus"></i>
-          Add Inventory
-        </a>
-      </div>
-      
-      <div class="pricing-header mx-auto">
-      
-        <!-- Preloader shows before the data loads-->
-        <div class="no-data text-center" *ngIf="preLoader">
-          <img src="assets/preloader.gif" class="preloader-icon" alt="No student">
-        </div>
+    <h1 class="h2">Inventory List</h1>
+    <!-- It won't show if there is no inventoyr data -->
+    <a routerLink="/add-inventory" class="btn btn-success" *ngIf="hideWhenNoInventory">
+        <i class="fas fa-plus custom-fa-plus"></i> Add Inventory
+    </a>
+</div>
 
-        <!-- No data shows when their is no inventory data available -->
-  <div class="no-data text-center" *ngIf="noData">
+<div class="pricing-header mx-auto">
+
+    <!-- Preloader shows before the data loads-->
+    <div class="no-data text-center" *ngIf="preLoader">
+        <img src="assets/preloader.gif" class="preloader-icon" alt="No student">
+    </div>
+
+    <!-- No data shows when their is no inventory data available -->
+    <div class="no-data text-center" *ngIf="noData">
         <img src="assets/no-student.svg" class="nodata-msg" alt="No Inventory">
         <p class="nodata-msg">No Inventory Data Added Yet!</p>
         <a routerLink="/add-inventory" class="btn btn-success">
-          <i class="fas fa-plus custom-fa-plus"></i>
-          Add Inventory
+            <i class="fas fa-plus custom-fa-plus"></i> Add Inventory
         </a>
-      </div>
+    </div>
 
-      <!-- Showing Inventory data -->
-  <div class="table-responsive" *ngIf="hideWhenNoInventory">
+    <!-- Showing Inventory data -->
+    <div class="table-responsive" *ngIf="hideWhenNoInventory">
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
-          <thead>
-            <tr>
-              <th scope="col">Drug Id</th>
-              <th scope="col">Brand Name</th>
-              <th scope="col">Active Ingredient Name</th>
-              <th scope="col">Excipient Name</th>
-              <th scope="col">Other Name Of Active Ingredient</th>
-              <th scope="col">Abbreviated name of active ingredient</th>
-              <th scope="col">Number</th>
-              <th scope="col">Unit</th>
-              <th scope="col">Chemical Formula</th>
-              <th scope="col">Peculiar Part Of Drug</th>
-              <th scope="col">Color</th>
-              <th scope="col">Dosage Form</th>
-              <th scope="col">Smell</th>
-              <th scope="col">Taste</th>
-              <th scope="col">Usage Of Excipient</th>
+            <thead>
+                <tr>
+                    <th scope="col">Drug Id</th>
+                    <th scope="col">Brand Name</th>
+                    <th scope="col">Active Ingredient Name</th>
+                    <th scope="col">Excipient Name</th>
+                    <th scope="col">Other Name Of Active Ingredient</th>
+                    <th scope="col">Abbreviated name of active ingredient</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Chemical Formula</th>
+                    <th scope="col">Peculiar Part Of Drug</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Dosage Form</th>
+                    <th scope="col">Smell</th>
+                    <th scope="col">Taste</th>
+                    <th scope="col">Usage Of Excipient</th>
 
 
 
-              <th class="text-center" scope="col">Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-              <!-- *ngFor loop iterates over Inventory array and fetch the inventorys's data -->
-        <!-- paginate pipe will add pagination in inventory's list, it won't show if items are less then 7 -->
-        <tr *ngFor="let student of Student | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
-                <th scope="row">{{inventory.$key}}</th>
-                <td>{{inventory.brandName}} </td>
-                <td>{{inventory.actIngreName}} </td>
-                <td>{{inventory.excipientName}} </td>
-                <td>{{inventory.actIngreOtherName}} </td>
-                <td>{{inventory.actIngreShortName}} </td>
-                <td>{{inventory.number}} </td>
-                <td>{{inventory.unit}} </td>
-                <td>{{inventory.drugPart}} </td>
-                <td>{{inventory.color}} </td>
-                <td>{{inventory.form}} </td>
-                <td>{{inventory.smell}} </td>
-                <td>{{inventory.taste}} </td>
-                <td>{{inventory.usage}} </td>
-                <td>{{inventory.firstName}} </td>
+                    <th class="text-center" scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- *ngFor loop iterates over Inventory array and fetch the inventorys's data -->
+                <!-- paginate pipe will add pagination in inventory's list, it won't show if items are less then 7 -->
+                <tr *ngFor="let inventory of Inventory | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+                    <th scope="row">{{inventory.$key}}</th>
+                    <td>{{inventory.brandName}} </td>
+                    <td>{{inventory.actIngreName}} </td>
+                    <td>{{inventory.excipientName}} </td>
+                    <td>{{inventory.actIngreOtherName}} </td>
+                    <td>{{inventory.actIngreShortName}} </td>
+                    <td>{{inventory.number}} </td>
+                    <td>{{inventory.unit}} </td>
+                    <td>{{inventory.drugPart}} </td>
+                    <td>{{inventory.color}} </td>
+                    <td>{{inventory.form}} </td>
+                    <td>{{inventory.smell}} </td>
+                    <td>{{inventory.taste}} </td>
+                    <td>{{inventory.usage}} </td>
+                    <td>{{inventory.firstName}} </td>
 
 
-                <td class="text-center action-block">
-                  <!-- routerLink="/edit-inventory/{{inventory.$key}}" is refered to { path: 'edit-inventory/:id', component: EditInventoryComponent } in app-routing.moudles.ts -->
-                  <i class="far fa-edit" routerLink="/edit-inventory/{{inventory.$key}}"></i>
-                  <i class="far fa-trash-alt" (click)="deleteInventory(inventory)"></i></td>
-              </tr>
+                    <td class="text-center action-block">
+                        <!-- routerLink="/edit-inventory/{{inventory.$key}}" is refered to { path: 'edit-inventory/:id', component: EditInventoryComponent } in app-routing.moudles.ts -->
+                        <i class="far fa-edit" routerLink="/edit-inventory/{{inventory.$key}}"></i>
+                        <i class="far fa-trash-alt" (click)="deleteInventory(inventory)"></i></td>
+                </tr>
             </tbody>
-          </table>
-        </div>
-        <!-- Pagination -->
-        <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
-      </div>
+        </table>
+    </div>
+    <!-- Pagination -->
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>

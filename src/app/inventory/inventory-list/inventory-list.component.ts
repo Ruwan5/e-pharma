@@ -24,19 +24,19 @@ export class InventoryListComponent implements OnInit {
   ngOnInit() {
     this.dataState(); // Initialize inventory's list, when component is ready
     let s = this.crudApi.GetInventoryList(); 
-    s.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
+    s.subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
       this.Inventory = [];
       data.forEach(item => {
-        let a = item.payload.toJSON(); 
-        a['$key'] = item.key;
-        this.Inventory.push(a as Inventory);
+        let a = item.payload; 
+        a['$key'] = item;
+        // this.Inventory.push(a as Inventory);
       })
     })
   }
 
   // Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in student data list in real-time.
   dataState() {     
-    this.crudApi.GetInventoryList().valueChanges().subscribe(data => {
+    this.crudApi.GetInventoryList().subscribe(data => {
       this.preLoader = false;
       if(data.length <= 0){
         this.hideWhenNoInventory = false;

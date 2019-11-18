@@ -29,8 +29,8 @@ export class CrudService {
 
   // Fetch Inventory List
   GetInventoryList() {
-    this.inventorysRef = this.db.list('inventory-list');
-    return this.inventorysRef;
+     return this.firestore.collection('drugs').snapshotChanges();
+  
   }  
 
   // Update Inventory Object
