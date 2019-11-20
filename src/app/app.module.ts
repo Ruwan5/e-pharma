@@ -11,15 +11,35 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { UserResolver } from './user/user.resolver';
+import { EditUserResolver } from './edit-user/edit-user.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
 
 import { AppComponent } from './app.component';
 import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './users_list/home/home.component';
+import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+import { AddInventoryComponent } from './inventory/add-inventory/add-inventory.component';
+import { EditInventoryComponent } from './inventory/edit-inventory/edit-inventory.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
+import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
+
+import { ToastrModule } from 'ngx-toastr';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +48,13 @@ import { AdminComponent } from './admin/admin.component';
     UserComponent,
     RegisterComponent,
     DealerComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent,
+    ShowUserComponent,
+    AddInventoryComponent,
+    EditInventoryComponent,
+    InventoryListComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +64,13 @@ import { AdminComponent } from './admin/admin.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
-    AngularFireDatabaseModule
+    ToastrModule.forRoot(), // ToastrModule added
+    AngularFireDatabaseModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule  // Include it in imports array
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, EditUserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
+import { Router, Params } from '@angular/router';
+
 
 @Component({
   selector: 'page-user',
@@ -21,7 +23,8 @@ export class UserComponent implements OnInit{
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
 
   }
@@ -33,6 +36,7 @@ export class UserComponent implements OnInit{
       let data = routeData['data'];
       if (data) {
         this.user = data;
+        console.log(this.user);
         this.createForm(this.user.name);
       }
     })
@@ -58,5 +62,9 @@ export class UserComponent implements OnInit{
     }, (error) => {
       console.log("Logout error", error);
     });
+  }
+
+  viewUserDetails(item){
+    this.router.navigate(['/edit-user/'+ item.payload.doc.id]);
   }
 }

@@ -1,78 +1,83 @@
-
-
-
 <div class="wrapper" style="background-image: url('assets/a.jpg');">
-  <div class="inner  border border-danger rounded" style="background-image: url('assets/3.jpg');" >
-    
-      <form   [formGroup]="registerForm" (ngSubmit)="submitUserData()">
-        <h3>Registration Form</h3>
-        <input type="hidden" formControlName="$key">
-          <div class="form-group">
-            <div class="form-wrapper">
-                <label>First Name</label>
-                <input type="text" formControlName="FirstName" class="form-control" >
-                
+    <div class="inner  border border-danger rounded" style="background-image: url('assets/3.jpg');">
+
+        <form [formGroup]="registerForm" (ngSubmit)="submitUserData()">
+            <h3>Registration Form</h3>
+            <input type="hidden" formControlName="$key">
+            <div class="form-group">
+                <div class="form-wrapper">
+                    <label>First Name</label>
+                    <input type="text" formControlName="FirstName" class="form-control">
+
+                </div>
+
+                <div class="form-wrapper">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="LastName" class="form-control">
+
+                </div>
+
             </div>
-        
+
             <div class="form-wrapper">
-                <label>Last Name</label>
-                <input type="text" formControlName="LastName" class="form-control" >
-                
+                <label>Address</label>
+                <input type="text" formControlName="Address" class="form-control">
             </div>
-              
-          </div>
-        
-          <div class="form-wrapper">
-              <label>Address</label>
-              <input type="text" formControlName="Address" class="form-control" >
-          </div>
 
-          <div class="form-wrapper">
-           <label>Email address</label>
-            <input type="email" formControlName="email" class="form-control" >
-          </div>
+            <div class="form-wrapper">
+                <label>Email address</label>
+                <input type="email" formControlName="email" class="form-control">
+            </div>
 
-          <div class="form-wrapper">
-            <label>Password</label>
-            <input type="password" class="form-control" formControlName="password" >
-          </div>
+            <div class="form-wrapper">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+            </div>
 
-          <div class="form-wrapper">
-              <label for="">Confirm Password</label>
-              <input type="password" class="form-control" formControlName="ConfrmPassword">
-          </div>
+            <div class="form-wrapper">
+                <label for="">Confirm Password</label>
+                <input type="password" class="form-control" formControlName="ConfrmPassword">
+            </div>
 
-        <div class="form-wrapper">
-            <label>Telephone</label>
-            <input type="text" formControlName="Telephone" class="form-control" >
-        </div>
+            <div class="form-wrapper">
+                <label>Telephone</label>
+                <input type="text" formControlName="Telephone" class="form-control">
+            </div>
 
-        <div  class="form-wrapper" >
-            <label>Choose an user</label>
-          <div >
-              <select  formControlName="UserType" class="form-control" >
+
+
+            <div class="form-wrapper">
+                <label>Choose an user</label>
+                <div>
+                    <select formControlName="UserType" class="form-control">
                   <option value="Pharmacist">Pharmacist</option>
                   <option value="Dealer">Dealer</option>
               </select>
-          </div>
-        </div>
+                </div>
+            </div>
 
-        <label class="error">{{errorMessage}}</label>
-        <label class="success">{{successMessage}}</label>
-        
-        <div class="alert alert-info" *ngIf="showSuccessMessage">Submitted successfully</div>
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+            <!-- <div class="form-wrapper">
+            <label>Profile picture</label>
+            <input type="file" name="file" class="inputimg form-control" id="nameImg" accept="image/*" formControlName="Photo">
+            <input type="image" formControlName="Photo" class="form-control" >
+        </div> -->
 
-        <div class="form-wrapper text-center">
-            
-          <p>Already have an account? <a href="/login">Sign In</a></p>
-            
-        </div>
+            <label class="error">{{errorMessage}}</label>
+            <label class="success">{{successMessage}}</label>
 
-      </form>
-      
-    
-  </div>
-  
-  
+            <div class="alert alert-info" *ngIf="showSuccessMessage">Submitted successfully</div>
+            <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+
+            <div class="form-wrapper text-center">
+
+                <p>Already have an account? <a href="/login">Sign In</a></p>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+
 </div>

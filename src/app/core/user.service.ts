@@ -31,7 +31,6 @@ export class UserService{
       querySnapshot.forEach(function(doc){
         console.log(doc.id, " => ", doc.data());
         var data = doc.data();
-        console.log(data.UserType);
         if(data.UserType){
           resolve(data.UserType);
         } else {
