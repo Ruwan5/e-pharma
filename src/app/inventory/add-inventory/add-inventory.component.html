@@ -25,18 +25,8 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
-                    <div class="dropdown-header text-center"><strong>Account</strong></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span class="badge badge-warning">42</span></a>
-                    <div class="dropdown-header text-center"><strong>Settings</strong></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-dark">42</span></a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
-                    <div class="divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock account</a>
+                    <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div>
+                    <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
                     <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
@@ -58,19 +48,13 @@
                 <ul class="sidebar-navigation">
                     <li class="header">Navigation</li>
                     <li>
-                        <a href="/user">
+                        <a href="/dealer_dashboard">
                             <i class="fa fa-home" aria-hidden="true"></i> Homepage
                         </a>
                     </li>
                     <li>
                         <a href="/add-inventory">
-                            <i class="fa fa-medkit" aria-hidden="true"></i> Add new drugs
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/view-inventory">
-                            <i class="fa fa-medkit" aria-hidden="true"></i>Drugs list
+                            <i class="fa fa-medkit" aria-hidden="true"></i> Post drugs
                         </a>
                     </li>
 
@@ -141,8 +125,8 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="">Number</label>
-                        <input type="Number" class="form-control" formControlName="number">
+                        <label for="">Size</label>
+                        <input type="text" class="form-control" formControlName="number">
                     </div>
 
                     <div class="col-md-12 mb-3">
@@ -188,6 +172,11 @@
                         <input type="text" formControlName="usage" class="form-control">
                     </div>
 
+                    <div class="col-md-12 mb-3">
+                        <label>Unit Price </label>
+                        <input type="text" formControlName="usage" class="form-control">
+                    </div>
+
 
 
 
@@ -195,7 +184,7 @@
 
                     <div class="form-group text-right">
                         <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-                        <button type="submit" class="btn btn-success" (click)="submitInventoryData()">Add</button>
+                        <button type="submit" class="btn btn-success" (click)="submitInventoryData()">Post</button>
                     </div>
 
                 </div>
