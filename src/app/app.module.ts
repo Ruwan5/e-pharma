@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { UserResolver } from './user/user.resolver';
+import { EditUserResolver } from './edit-user/edit-user.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
@@ -33,12 +34,12 @@ import { AddInventoryComponent } from './inventory/add-inventory/add-inventory.c
 import { EditInventoryComponent } from './inventory/edit-inventory/edit-inventory.component';
 import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 
-import { OrderingComponent } from './ordering/ordering.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
 
 import { ToastrModule } from 'ngx-toastr';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +54,7 @@ import { ToastrModule } from 'ngx-toastr';
     AddInventoryComponent,
     EditInventoryComponent,
     InventoryListComponent,
-    
-    
-    OrderingComponent
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +70,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     NgxPaginationModule  // Include it in imports array
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, EditUserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,9 @@ import { resolve } from 'url';
 import { ThrowStmt } from '@angular/compiler';
 import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
+import { FirebaseUserModel } from '../../core/user.model';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 
@@ -23,16 +26,28 @@ export class HomeComponent implements OnInit {
    age_filtered_items: Array<any>;
    name_filtered_items: Array<any>
   
+   user: FirebaseUserModel = new FirebaseUserModel();
 
   constructor(
     public firebaseService: FirebaseService,
     private router: Router,
     public authService: AuthService,
-    private location : Location
+    private location : Location,
+    private route: ActivatedRoute,
+
   ) { }
 
   ngOnInit() {
     this.getData();
+
+    this.route.data.subscribe(routeData => {
+      let data = routeData['data'];
+      if (data) {
+        this.user = data;
+        console.log(this.user)
+        
+      }
+    })
   }
 
   viewDetails(item){

@@ -39,7 +39,8 @@ export class LoginComponent {
     this.authService.doLogin(value)
     .then(res => {
       this.userService.getUserType().then(res => {
-        switch(res) {                                           //redirect to relevant dash baord
+        
+        switch(res) {                                          //redirect to relevant dash baord
             case <any>'Pharmacist':
               this.router.navigate(['/user']);
               break;

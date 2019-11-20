@@ -25,8 +25,8 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
-
-                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div>
+                    <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
                     <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
