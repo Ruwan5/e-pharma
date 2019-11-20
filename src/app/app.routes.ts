@@ -16,6 +16,7 @@ import { AddInventoryComponent} from './inventory/add-inventory/add-inventory.co
 import { EditInventoryComponent} from './inventory/edit-inventory/edit-inventory.component'
 import { EditUserComponent} from './edit-user/edit-user.component'
 import { EditUserResolver} from './edit-user/edit-user.resolver'
+import { ShowDrugsComponent} from './show-drugs/show-drugs.component'
 import { from } from 'rxjs';
 
 
@@ -32,6 +33,7 @@ export const rootRouterConfig: Routes = [
   { path: 'add-inventory', component: AddInventoryComponent },
   { path: 'view-inventory', component: InventoryListComponent },
   { path: 'edit-inventory/:id', component: EditInventoryComponent },
-  { path: 'edit-user', component: EditUserComponent, resolve:{data : EditUserResolver } }
+  { path: 'edit-user', component: EditUserComponent, resolve:{data : EditUserResolver } },
+  { path: 'show-drugs', component: ShowDrugsComponent },
 
 ];

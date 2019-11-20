@@ -40,6 +40,10 @@ import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
 
 import { ToastrModule } from 'ngx-toastr';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AdminSidebarComponent } from './sidebar/admin-sidebar/admin-sidebar.component';
+import { ShowDrugsComponent } from './show-drugs/show-drugs.component';
+import { PharmacistSidebarComponent } from './sidebar/pharmacist-sidebar/pharmacist-sidebar.component';
+import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AddInventoryComponent,
     EditInventoryComponent,
     InventoryListComponent,
-    EditUserComponent
+    EditUserComponent,
+    AdminSidebarComponent,
+    ShowDrugsComponent,
+    PharmacistSidebarComponent,
+    DealerSidebarComponent
   ],
   imports: [
     BrowserModule,
