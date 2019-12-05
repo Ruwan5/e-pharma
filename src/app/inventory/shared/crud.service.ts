@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Inventory } from '../shared/inventory';  // inventory data type interface class
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
 import { AngularFirestore } from '@angular/fire/firestore';
+import {UserService } from '../../core/user.service'
+import { from } from 'rxjs';
+import * as firebase from 'firebase/app';
+// import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +16,10 @@ export class CrudService {
   inventoryRef: AngularFireObject<any>;   // Reference to inventory object, its an Observable too
   // Inject AngularFireDatabase Dependency in Constructor
   constructor(private db: AngularFireDatabase,
-              private firestore: AngularFirestore) { }
+              private firestore: AngularFirestore,
+              public userService: UserService) { }
 
-
+    
    // Create Inventory
    AddInventory(inventory: Inventory) {
 
@@ -53,7 +58,9 @@ export class CrudService {
       form: inventory.form,
       smell: inventory.smell,
       taste: inventory.taste,
-      usage: inventory.usage
+      usage: inventory.usage,
+      price: inventory.price,
+      userid: inventory.userid
     })
   }  
 
@@ -62,4 +69,6 @@ export class CrudService {
     this.inventoryRef = this.db.object('inventory-list/'+id);
     this.inventoryRef.remove();
   }
+
+  
 }

@@ -1,52 +1,55 @@
+<div class="container-login100" style="background-image: url('assets/4.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 
-<div class="container-login100" style="background-image: url('assets/4.jpg');" >
-	<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30"> 
+        <div class="row">
+            <div>
+                <form [formGroup]="loginForm ">
+                    <div class="container">
 
-  		<div class="row">
-    		<div >
-      			<form [formGroup]="loginForm ">
-					  <div class="container">
-							
-					  </div>
-					
-					<span class="login100-form-title p-b-37">
+                    </div>
+
+                    <span class="login100-form-title p-b-37">
 						<img img src="assets/logo1.png" class="center" class="img-rounded" width="150" height="150">
 						<br>
 						Sign In
 						
 					</span>
-					
-					
-					<div class=" form-group wrap-input100 validate-input m-b-20">
-							<input class="input100 form-control " type="email" formControlName="email"  placeholder="Enter your Email" >
-							<span class="focus-input100"></span>
-					</div>
-					
 
-					<div class=" form-group wrap-input100 validate-input m-b-20">
-							<input class="input100 form-control" type="password" formControlName="password"  placeholder="Enter your Password" >
-							<span class="focus-input100"></span>
-					</div>
-       			 	
-       				<div class="form-group">
-          				<label class="error text-danger">{{errorMessage}}</label>
-					</div>
 
-					<div class="container-login100-form-btn">
-							<button class="login100-form-btn" type="submit" (click)="tryLogin(loginForm.value)">
+                    <div class=" form-group wrap-input100 validate-input m-b-20">
+                        <input class="input100 form-control " type="email" formControlName="email" placeholder="Enter your Email">
+                        <span class="focus-input100"></span>
+                    </div>
+
+
+                    <div class=" form-group wrap-input100 validate-input m-b-20">
+                        <input class="input100 form-control" type="password" formControlName="password" placeholder="Enter your Password">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="error text-danger">{{errorMessage}}</label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" (click)="tryLogin(loginForm.value)">
 								Sign In
 							</button>
-					</div>
-					
-    
-      			</form>
-    			</div>
- 		 		</div>
- 		 		
-  			<div class="text-center row mt-3">
-   				 <div class=" container ">
-     			 <p>No account yet? <a href="/register" class="text-primary">Create an account</a></p>
-   			</div>
- 	 	</div>
-	</div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center row mt-3">
+            <div class=" container ">
+                <p>No account yet? <a routerLink="/register" class="text-primary">Create an account</a></p>
+
+                <p><a routerLink="/forget-password" class="text-primary">Forgot Password?</a></p>
+            </div>
+
+
+        </div>
+    </div>
 </div>

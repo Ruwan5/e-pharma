@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../shared/crud.service';    // CRUD services API
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // Reactive form services
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+import {UserService} from '../../core/user.service';
+import {drugInfo} from '../shared/inventory'
 
 
 @Component({
@@ -12,22 +14,62 @@ import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 
 
 export class AddInventoryComponent implements OnInit {
-  public inventoryForm: FormGroup;  // Define FormGroup to inventory's form
+  // public inventoryForm: FormGroup; 
+
+  drugData = new drugInfo();
+
+  // inventory: Inventory
+  inventoryForm = new FormGroup({
+    brandName: new FormControl(),
+    actIngreName: new FormControl(),
+    excipientName: new FormControl(),
+    actIngreOtherName: new FormControl(),
+    actIngreShortName: new FormControl(),
+    number: new FormControl(),
+    unit: new FormControl(),
+    formula: new FormControl(),
+    drugPart: new FormControl(),
+    color: new FormControl(),
+    form: new FormControl(),
+    smell: new FormControl(),
+    taste: new FormControl(),
+    usage: new FormControl(),
+    price: new FormControl(),
+    userid: new FormControl(),
+  });
+   // Define FormGroup to inventory's form
+   item: any
+  
  
   constructor(
     public crudApi: CrudService,  // CRUD API services  
     public fb: FormBuilder,       // Form Builder service for Reactive forms
-    public toastr: ToastrService  // Toastr service for alert message
-  ) { }
+    public toastr: ToastrService,  // Toastr service for alert message
+    public userService: UserService,
+    
+  ) { 
+    
+  }
 
   ngOnInit() {
+    
     this.crudApi.GetInventoryList();  // Call GetInventoryList() before main form is being called
-    this.inventorForm();              // Call drug form when component is ready
+    this.userService.getCurrentUserId().then( res => {
+      
+      this.item = res;
+      this.inventorForm();
+      console.log(this.item)
+    });
+     // Call drug form when component is ready 
+     
   }
+
+
+
  //  Reactive inventory form
  inventorForm() {
+   console.log(this.item)
   this.inventoryForm = this.fb.group({
-
     brandName:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     actIngreName:[''],
     excipientName: [''],
@@ -41,7 +83,9 @@ export class AddInventoryComponent implements OnInit {
     form: [''],
     smell: [''],
     taste: [''],
-    usage: ['']
+    usage: [''],
+    price: [''],
+    userid: [this.item, Validators.required]
    
   })  
 }
@@ -71,7 +115,7 @@ get actIngreShortName() {
 
 get number() {
   return this.inventoryForm.get('number');
-}
+} 
 
 get unit() {
   return this.inventoryForm.get('unit');
@@ -105,6 +149,10 @@ get usage() {
   return this.inventoryForm.get('usage');
 }
 
+get userId() {
+  return this.inventoryForm.get('userid');
+}
+
 
 
 // Reset inventory form's values
@@ -116,6 +164,9 @@ submitInventoryData() {
   this.crudApi.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
   this.toastr.success(this.inventoryForm.controls['brandName'].value + ' successfully added!'); // Show success message when data is successfully submited
   this.ResetForm();  // Reset form when clicked on reset button
+
+  
+  
  };
 
 }

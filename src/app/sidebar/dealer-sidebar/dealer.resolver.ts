@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from "@angular/router";
-import { UserService } from '../core/user.service';
-import { FirebaseUserModel } from '../core/user.model';
+import { UserService } from '../../core/user.service';
+import { FirebaseUserModel } from '../../core/user.model';
+
 
 @Injectable()
-export class UserResolver implements Resolve<FirebaseUserModel> {
+export class DealerResolver implements Resolve<FirebaseUserModel> {
 
   constructor(public userService: UserService, private router: Router) { }
 
@@ -15,15 +16,10 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
     return new Promise((resolve, reject) => {
       this.userService.getCurrentUser()
       .then(res => {
-        console.log(res);
         if(res.providerData[0].providerId == 'password'){
-          console.log(res)
           user.image = 'https://via.placeholder.com/400x300';
           user.name = res.displayName;
           user.provider = res.providerData[0].providerId;
-          // console.log(user.provider)
-          user.email = res.email;
-          // console.log(user.email);
           return resolve(user);
         }
         else{

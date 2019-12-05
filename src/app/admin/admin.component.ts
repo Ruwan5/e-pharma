@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { navItems } from '../_nav';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +19,7 @@ export class AdminComponent implements OnInit {
 
   public sidebarMinimized = false;
   public navItems = navItems;
+  
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
@@ -34,7 +36,8 @@ export class AdminComponent implements OnInit {
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public router: Router
   ) {
 
   }
@@ -50,6 +53,12 @@ export class AdminComponent implements OnInit {
       }
     })
   }
+
+  
+  editUser() {
+      this.router.navigate(['/edit-user']);
+  }
+
 
 
   save(value){

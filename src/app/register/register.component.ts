@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit{
     this.userService.getUser().subscribe(data => {
       this.uusers = data.map(e => {
         return {
+      
           id: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Users;

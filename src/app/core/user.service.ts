@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import {Users} from '../core/user.model'
+import { resolve } from 'url';
+import { reject } from 'q';
 
 @Injectable()
 export class UserService{
@@ -45,6 +47,40 @@ export class UserService{
       
   }
 
+  getUserDetails() {
+    return new Promise<any>((resolve,reject) => {
+      var db = firebase.firestore();
+      var user = firebase.auth().currentUser;
+      var userEmail = user.email;
+      db.collection('users').where("email", "==", userEmail)
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc){
+          var data = doc.data();
+          resolve(data);
+        })
+      })
+    })
+  }
+
+  getCurrentUserId() {
+    return new Promise<any>((resolve,reject) => {
+      var db = firebase.firestore();
+      var user = firebase.auth().currentUser;
+      var userEmail = user.email;
+      db.collection('users').where("email", "==", userEmail)
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc){
+          var data = doc.data();
+          resolve(doc.id);
+        })
+      })
+    })
+  }
+
+  
+
   
 
   insertUser(user: Users){
@@ -63,12 +99,19 @@ export class UserService{
     })
   }
 
+  updateUser(userKey, value){
+    return this.firestore.collection('users').doc(userKey).set(value);
+   
+  }
+
   updateCurrentUser(value){
+    console.log(value);
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().currentUser;
       user.updateProfile({
-        displayName: value.name,
-        photoURL: user.photoURL
+        
+        
+        
       }).then(res => {
         resolve(res);
       }, err => reject(err))

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-dealer',
@@ -21,7 +22,8 @@ export class DealerComponent implements OnInit {
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public router: Router
   ) {
 
   }
@@ -37,6 +39,10 @@ export class DealerComponent implements OnInit {
       }
     })
   }
+
+  editUser() {
+    this.router.navigate(['/edit-user-dealer']);
+}
 
   createForm(name) {
     this.profileForm = this.fb.group({

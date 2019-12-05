@@ -15,8 +15,10 @@ import { InventoryListComponent} from './inventory/inventory-list/inventory-list
 import { AddInventoryComponent} from './inventory/add-inventory/add-inventory.component'
 import { EditInventoryComponent} from './inventory/edit-inventory/edit-inventory.component'
 import { EditUserComponent} from './edit-user/edit-user.component'
-import { EditUserResolver} from './edit-user/edit-user.resolver'
+import { EditUserDealerComponent} from './edit-user-dealer/edit-user-dealer.component'
+import { EditUserPharmacistComponent} from './edit-user-pharmacist/edit-user-pharmacist.component'
 import { ShowDrugsComponent} from './show-drugs/show-drugs.component'
+import { ForgetPasswordComponent} from './login/forget-password/forget-password.component'
 import { from } from 'rxjs';
 
 
@@ -33,7 +35,11 @@ export const rootRouterConfig: Routes = [
   { path: 'add-inventory', component: AddInventoryComponent },
   { path: 'view-inventory', component: InventoryListComponent },
   { path: 'edit-inventory/:id', component: EditInventoryComponent },
-  { path: 'edit-user', component: EditUserComponent, resolve:{data : EditUserResolver } },
+  { path: 'edit-user', component: EditUserComponent},
+  { path: 'edit-user-dealer', component: EditUserDealerComponent},
+  { path: 'edit-user-pharmacist', component: EditUserPharmacistComponent},
   { path: 'show-drugs', component: ShowDrugsComponent },
+  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'list-inventory', component: InventoryListComponent },
 
 ];

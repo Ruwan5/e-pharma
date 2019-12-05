@@ -4,6 +4,7 @@ import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UserService} from '../core/user.service'
 import { auth } from 'firebase';
+import { AngularFireAuth } from "@angular/fire/auth"
 
 @Component({
   selector: 'page-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
     public authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    public userService: UserService
+    public userService: UserService,
+    public afAuth: AngularFireAuth
   ) {
     this.createForm();
   }
@@ -32,8 +34,8 @@ export class LoginComponent {
       password: ['',Validators.required]
     });
   }
-   
-  
+
+
 
   tryLogin(value){
     this.authService.doLogin(value)

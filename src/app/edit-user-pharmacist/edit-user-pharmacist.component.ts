@@ -9,11 +9,12 @@ import {UserService} from '../core/user.service';
 import { from } from 'rxjs';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  selector: 'app-edit-user-pharmacist',
+  templateUrl: './edit-user-pharmacist.component.html',
+  styleUrls: ['./edit-user-pharmacist.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserPharmacistComponent implements OnInit {
+
   editForm = new FormGroup({
     FirstName: new FormControl(),
     LastName: new FormControl(),
@@ -61,15 +62,9 @@ export class EditUserComponent implements OnInit {
     this.userService.getCurrentUserId().then( data => {
       console.log(data);
       this.userService.updateUser(data, value);
-      this.router.navigate(['/admin_dashboard']);
+      this.router.navigate(['/user']);
     })
-    
-
   }
-
-  editUser() {
-    this.router.navigate(['/edit-user-dealer']);
-}
 
   createForm() {
     this.editForm = this.fb.group({
@@ -82,6 +77,10 @@ export class EditUserComponent implements OnInit {
       UserType: [this.item.UserType, Validators.required]
     })
   }
+
+  editUser() {
+    this.router.navigate(['/edit-user-pharmacist']);
+}
 
   ResetForm() {
     this.editForm.reset();
@@ -97,4 +96,5 @@ export class EditUserComponent implements OnInit {
       console.log("Logout error", error);
     });
   }
+
 }

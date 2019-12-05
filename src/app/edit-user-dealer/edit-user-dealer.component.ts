@@ -9,11 +9,12 @@ import {UserService} from '../core/user.service';
 import { from } from 'rxjs';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  selector: 'app-edit-user-dealer',
+  templateUrl: './edit-user-dealer.component.html',
+  styleUrls: ['./edit-user-dealer.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserDealerComponent implements OnInit {
+
   editForm = new FormGroup({
     FirstName: new FormControl(),
     LastName: new FormControl(),
@@ -47,29 +48,28 @@ export class EditUserComponent implements OnInit {
 
 
   ngOnInit() {
+    
+    
     this.userService.getUserDetails().then(res => {
       this.item = res; 
       this.item.FirstName;
       this.item.LastName;
       this.createForm();
     });
-    
-    
+        
   }
 
   onSubmit(value) {
+    
     this.userService.getCurrentUserId().then( data => {
       console.log(data);
       this.userService.updateUser(data, value);
-      this.router.navigate(['/admin_dashboard']);
+      this.userService.updateCurrentUser(value);
+      this.router.navigate(['/dealer_dashboard']);
     })
     
 
   }
-
-  editUser() {
-    this.router.navigate(['/edit-user-dealer']);
-}
 
   createForm() {
     this.editForm = this.fb.group({
@@ -81,6 +81,13 @@ export class EditUserComponent implements OnInit {
       Telephone: [this.item.Telephone, Validators.required],
       UserType: [this.item.UserType, Validators.required]
     })
+  }
+
+  save(value){
+    this.userService.updateCurrentUser(value)
+    .then(res => {
+      console.log(res);
+    }, err => console.log(err))
   }
 
   ResetForm() {
@@ -97,4 +104,5 @@ export class EditUserComponent implements OnInit {
       console.log("Logout error", error);
     });
   }
+
 }

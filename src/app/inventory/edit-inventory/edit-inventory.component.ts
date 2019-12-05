@@ -105,8 +105,8 @@ export class EditInventoryComponent implements OnInit {
     form: [''],
     smell: [''],
     taste: [''],
-    usage: ['']
-   
+    usage: [''],
+    userid: ['']
     })
   }
 

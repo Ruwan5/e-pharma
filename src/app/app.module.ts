@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { UserResolver } from './user/user.resolver';
-import { EditUserResolver } from './edit-user/edit-user.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
@@ -36,7 +35,7 @@ import { InventoryListComponent } from './inventory/inventory-list/inventory-lis
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
-import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ToastrModule } from 'ngx-toastr';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -44,6 +43,10 @@ import { AdminSidebarComponent } from './sidebar/admin-sidebar/admin-sidebar.com
 import { ShowDrugsComponent } from './show-drugs/show-drugs.component';
 import { PharmacistSidebarComponent } from './sidebar/pharmacist-sidebar/pharmacist-sidebar.component';
 import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.component';
+import { EditUserPharmacistComponent } from './edit-user-pharmacist/edit-user-pharmacist.component';
+import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.component';
+import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +65,11 @@ import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.
     AdminSidebarComponent,
     ShowDrugsComponent,
     PharmacistSidebarComponent,
-    DealerSidebarComponent
+    DealerSidebarComponent,
+    EditUserPharmacistComponent,
+    EditUserDealerComponent,
+    ForgetPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,7 @@ import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.
     BrowserAnimationsModule,
     NgxPaginationModule  // Include it in imports array
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, EditUserResolver],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
