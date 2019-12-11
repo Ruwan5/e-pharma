@@ -37,6 +37,7 @@ import { InventoryListComponent } from './inventory/inventory-list/inventory-lis
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 import { NgxPaginationModule } from 'ngx-pagination';// NGX Pagination
+import { MatDialogModule } from "@angular/material";
 
 import { ToastrModule } from 'ngx-toastr';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -44,6 +45,10 @@ import { AdminSidebarComponent } from './sidebar/admin-sidebar/admin-sidebar.com
 import { ShowDrugsComponent } from './show-drugs/show-drugs.component';
 import { PharmacistSidebarComponent } from './sidebar/pharmacist-sidebar/pharmacist-sidebar.component';
 import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.component';
+import { OrderComponent } from './user/order/order.component';
+import { ViewComponent } from './user/order/view/view.component';
+import { CartComponent } from './user/order/cart/cart.component';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +67,10 @@ import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.
     AdminSidebarComponent,
     ShowDrugsComponent,
     PharmacistSidebarComponent,
-    DealerSidebarComponent
+    DealerSidebarComponent,
+    OrderComponent,
+    ViewComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -76,9 +84,11 @@ import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxPaginationModule  // Include it in imports array
+    NgxPaginationModule,  // Include it in imports array
+    MatDialogModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, EditUserResolver],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ViewComponent]
 })
 export class AppModule { }

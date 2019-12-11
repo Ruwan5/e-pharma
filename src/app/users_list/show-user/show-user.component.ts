@@ -34,7 +34,7 @@ export class ShowUserComponent  {
 
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router,  
+    private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public authService: AuthService,

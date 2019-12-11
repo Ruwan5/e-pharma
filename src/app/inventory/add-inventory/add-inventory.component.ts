@@ -63,8 +63,6 @@ get actIngreOtherName() {
   return this.inventoryForm.get('actIngreOtherName');
 }
 
-
-
 get actIngreShortName() {
   return this.inventoryForm.get('actIngreShortName');
 }
