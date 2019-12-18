@@ -46,6 +46,7 @@ import { DealerSidebarComponent } from './sidebar/dealer-sidebar/dealer-sidebar.
 import { EditUserPharmacistComponent } from './edit-user-pharmacist/edit-user-pharmacist.component';
 import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.component';
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
+import { VerifyComponent } from './register/verify/verify.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ForgetPasswordComponent } from './login/forget-password/forget-password
     EditUserPharmacistComponent,
     EditUserDealerComponent,
     ForgetPasswordComponent,
+    VerifyComponent,
     
   ],
   imports: [

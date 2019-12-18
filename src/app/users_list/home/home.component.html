@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
     <img src="assets/logo.png" width="50" height="50" alt="">
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -13,7 +13,7 @@
             <li class="nav-item d-md-down-none">
                 <div class="float-right">
                     <div class="input-group">
-                        <input type="text" class="form-control " [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name" (keyup)="searchByName()">
+                        <input type="text" [(ngModel)]="searchValue" placeholder="Search by name..." (keyup)="search">
                         <div class="input-group-append">
                             <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fa fa-search text-grey"
                                 aria-hidden="true"></i></span>
@@ -41,30 +41,13 @@
         </ul>
     </div>
 
-    <!-- <div class="col-md-6 filter-by-age">
-        <div class="row">
-          <div class="col-md-auto title">
-            <span>Filter by age (older than):</span>
-          </div>
-          <div class="col">
-            <span>0 </span>
-            <mat-slider
-              class="age-slider"
-              max="100"
-              min="0"
-              step="1"
-              thumbLabel="true"
-              (ngModel)="ageValue"
-              (change)="rangeChange($event)">
-            </mat-slider>
-            <span> 100</span>
-          </div>
-        </div>
-      </div> -->
 
 
 
 </nav>
+<br>
+<br>
+<br>
 
 <app-admin-sidebar></app-admin-sidebar>
 

@@ -10,8 +10,7 @@ import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
 import { FirebaseUserModel } from '../../core/user.model';
 import { ActivatedRoute } from '@angular/router';
-
-
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -23,9 +22,7 @@ export class HomeComponent implements OnInit {
 
    items: Array<any>;
    searchValue: string = "";
-   age_filtered_items: Array<any>;
-   name_filtered_items: Array<any>
-  
+   results: any;
    user: FirebaseUserModel = new FirebaseUserModel();
 
   constructor(
@@ -34,6 +31,7 @@ export class HomeComponent implements OnInit {
     public authService: AuthService,
     private location : Location,
     private route: ActivatedRoute,
+    private afs: AngularFirestore
 
   ) { }
 
@@ -59,39 +57,29 @@ export class HomeComponent implements OnInit {
     .subscribe(result => {
       this.items = result;
       console.log(result);
-      this.age_filtered_items = result;
-      this.name_filtered_items = result;
+      
     })
   }
 
-  rangeChange(event){
-    this.firebaseService.searchUsersByAge(event.value)
-    .subscribe(result =>{
-      this.age_filtered_items = result;
-      this.items = this.combineLists(result, this.name_filtered_items);
-    })
-  }
+  
 
-  searchByName(){
-    let value = this.searchValue.toLowerCase();
-    this.firebaseService.searchUsers(value)
-    .subscribe(result => {
-      this.name_filtered_items = result;
-      this.items = this.combineLists(result, this.age_filtered_items);
-    })
-  }
+  // searchByName(){
+  //   let value = this.searchValue.toLowerCase();
+  //   this.firebaseService.searchUsers(value)
+  //   .subscribe(result => {
+  //     this.name_filtered_items = result;
+  //   })
+  // }
 
-  combineLists(a, b){
-    let result = [];
-
-    a.filter(x => {
-      return b.filter(x2 =>{
-        if(x2.payload.doc.id == x.payload.doc.id){
-          result.push(x2);
-        }
-      });
-    });
-    return result;
+  search(){    //search users 
+    let self = this;
+    self.results = self.afs.collection('users', ref => ref
+    .orderBy("FirstName")
+    .startAt(self.searchValue.toLowerCase())
+    .endAt(self.searchValue.toLowerCase()+"\uf8ff")
+    .limit(10))
+    .valueChanges();
+    console.log(self.results)
   }
 
 

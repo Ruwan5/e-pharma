@@ -2,19 +2,23 @@ import { Injectable } from "@angular/core";
 import {} from 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
   constructor(
    public afAuth: AngularFireAuth,
+   public router: Router
  ){}
 
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
-        resolve(res);        
+        
+        resolve(res);  
+        this.SendVerificationMail();
       }, err => reject(err))
     });
   }
@@ -35,6 +39,14 @@ export class AuthService {
       window.alert('Password reset email sent, check your inbox.');
     }).catch((error) => {
       window.alert(error)
+    })
+  }
+
+// send verificarion mail to veryfy the new user
+  SendVerificationMail() {
+    return this.afAuth.auth.currentUser.sendEmailVerification()
+    .then(() => {
+      this.router.navigate(['verify']);
     })
   }
 

@@ -3,15 +3,21 @@ import { Inventory } from '../shared/inventory';  // inventory data type interfa
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
 import { AngularFirestore } from '@angular/fire/firestore';
 import {UserService } from '../../core/user.service'
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { promise } from 'protractor';
+import { resolve } from 'url';
+import { reject } from 'q';
 // import { userInfo } from 'os';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
-
+  
+  res:any
+  result:any
   inventorysRef: AngularFireList<any>;    // Reference to inventory data list, its an Observable
   inventoryRef: AngularFireObject<any>;   // Reference to inventory object, its an Observable too
   // Inject AngularFireDatabase Dependency in Constructor
@@ -33,11 +39,66 @@ export class CrudService {
   }
 
   getInventory(){
-    return this.firestore.collection('drugs').snapshotChanges();
+         return this.firestore.collection('drugs').snapshotChanges();
+
   }
+
+  getCurrentUserId() {
+    return new Promise<any>((resolve,reject) => {
+      var db = firebase.firestore();
+      var user = firebase.auth().currentUser;
+      var userEmail = user.email;
+      db.collection('users').where("email", "==", userEmail)
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc){
+          var data = doc.data();
+          resolve(doc.id);
+        })
+      })
+    })
+  }
+
+  getReleventDrugs(id){   
+
+
+  //  var afs = firebase.firestore();     
+  //  return afs.collection("drugs").where("userid", "==", id).get()
+  //   .then(function(querySnapshot){
+  //     querySnapshot.forEach(function(doc){
+  //       console.log(doc.id, "=>", doc.data())
+
+  //       var array = [];
+
+  //        return array.push(doc.data());
+           
+  //     })
+  //   })
+
+    return new Promise<any>((resolve, reject) => {   // get the drugs that each user has been posted separatly
+      var afs = firebase.firestore();
+      afs.collection('drugs').where("userid", "==", id).get().then(function(querySnapshot){
+        querySnapshot.forEach(function(doc){
+          var data = doc.data();
+          // console.log(data)
+          var array:any = [];
+          console.log(data)
+          array.push(data)
+          console.log(array)
+        
+          resolve(array);
+        })
+      })
+    })
+    
+   
+   
+  }
+  
 
   // Fetch Inventory List
   GetInventoryList() {
+    
      return this.firestore.collection('drugs').snapshotChanges();
   
   }  

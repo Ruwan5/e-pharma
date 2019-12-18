@@ -13,7 +13,10 @@ import * as firebase from 'firebase/app';
 })
 export class FirebaseService {
 
-  constructor( private afs: AngularFirestore) { 
+  // searchValue: string = "";
+  // results: any;
+
+  constructor( public afs: AngularFirestore) { 
   
   }
 
@@ -25,15 +28,15 @@ export class FirebaseService {
     return this.afs.collection('users').snapshotChanges();
   }
 
-  searchUsersByAge(value){
-    return this.afs.collection('users',ref => ref.orderBy('age').startAt(value)).snapshotChanges();
-  }
-
-  searchUsers(searchValue){
-    return this.afs.collection('users',ref => ref.where('nameToSerach', '>=', searchValue)
-    .where('nameToSearch', '<=', searchValue + '\uf8ff'))
-    .snapshotChanges()
-  }
+  // searchUsers(){
+  //   let self = this;
+  //   self.results = self.afs.collection('users', ref => ref
+  //   .orderBy("firstName")
+  //   .startAt(self.searchValue.toLowerCase())
+  //   .endAt(self.searchValue.toLowerCase()+"\uf8ff")
+  //   .limit(10))
+  //   .valueChanges();
+  // }
 
 
   deleteUser(userKey){

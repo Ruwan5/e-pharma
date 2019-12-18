@@ -11,11 +11,12 @@ import { ToastrService } from 'ngx-toastr';      // Alert message using NGX toas
 })
 export class InventoryListComponent implements OnInit {
   p: number = 1;                      // Settup up pagination variable
-  Inventory:Inventory[];                 // Save inventory data in Inventory's array.
+  inventory:Inventory[];                 // Save inventory data in Inventory's array.
   hideWhenNoInventory: boolean = false; // Hide inventory data table when no data.
   noData: boolean = false;            // Showing No Inventory Message, when no inventory data in database.
   preLoader: boolean = true;  
-  items: Array<any>;        // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
+  items: any  // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
+  
 
   constructor(
     public crudApi: CrudService, // Inject inventory CRUD services in constructor.
@@ -27,14 +28,18 @@ export class InventoryListComponent implements OnInit {
   }
 
   getDrugs(){
-    this.crudApi.getInventory()
-    .subscribe(result => {
-      this.items = result;
-      console.log(result);
+    
+    this.crudApi.getCurrentUserId().then(userid => {
+      console.log(userid)
+      this.crudApi.getReleventDrugs(userid).then(res => {
+        console.log(res)
+        this.items = res;
+      
+      })
     })
   }
 
-  // Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in student data list in real-time.
+  //Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in student data list in real-time.
   dataState() {     
     this.crudApi.GetInventoryList().subscribe(data => {
       this.preLoader = false;

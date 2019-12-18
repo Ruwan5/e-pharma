@@ -44,28 +44,29 @@
 <div class="container-fluid" style="background-color:#CDCDCD;">
     <div class="container" style="background-color:#CDCDCD;">
         <br>
-        <div class="list-group users-list">
-            <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="row">
-                    <div class="col col-md-2 image-col">
+        <!-- <div class="list-group "> -->
+        <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="row">
+                <div class="col col-md-2 image-col">
 
-                    </div>
-                    <div class="col col-md-8 text-col">
-                        <h5 class="mb-1">{{item.payload.doc.data().brandName}}</h5>
+                </div>
+                <div class="col col-md-8 text-col">
+                    <h5 class="mb-1">{{item.brandName}}</h5>
 
 
-                    </div>
 
-                    <div class="col col-md-2 actions-col">
-                        <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+                </div>
+
+                <div class="col col-md-2 actions-col">
+                    <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
                                                           <i class="icon ion-md-person"></i>
                                                   </button>
-
-                    </div>
 
                 </div>
 
             </div>
+
         </div>
+        <!-- </div> -->
     </div>
 </div>
