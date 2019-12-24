@@ -30,7 +30,7 @@ export class DealerComponent implements OnInit {
 
   ngOnInit(): void {
     
-
+    this.userService.checkVerifyEmail();
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {

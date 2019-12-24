@@ -40,21 +40,28 @@ export class LoginComponent {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.userService.getUserType().then(res => {
+      // var emailChecked = this.userService.checkVerifyEmail();
+      // if (emailChecked == true) {
+        this.userService.getUserType().then(res => {
         
-        switch(res) {                                          //redirect to relevant dash baord
-            case <any>'Pharmacist':
-              this.router.navigate(['/user']);
-              break;
-            case <any>"Dealer":
-              this.router.navigate(['/dealer_dashboard']);
-              break;
-            case <any>"Admin":
-              this.router.navigate(['/admin_dashboard']);
-              break;
-          } 
-
-      });
+          switch(res) {                                          //redirect to relevant dash baord
+              case <any>'Pharmacist':
+                this.router.navigate(['/user']);
+                break;
+              case <any>"Dealer":
+                this.router.navigate(['/dealer_dashboard']);
+                break;
+              case <any>"Admin":
+                this.router.navigate(['/admin_dashboard']);
+                break;
+            } 
+  
+        });
+      // }
+      // else {
+      //   window.alert("You should verify your email address before sign in!")
+      // } 
+      
     }, err => {
       console.log(err);
       this.errorMessage = err.message;

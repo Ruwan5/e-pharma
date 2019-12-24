@@ -111,11 +111,20 @@ export class UserService{
       var user = firebase.auth().currentUser;
       user.updateEmail(value.email).then(function(){});
       user.updatePassword(value.password).then(function(){});
+
       user.updateProfile({
       
       }).then(res => {
+        
         resolve(res);
       }, err => reject(err))
     })
+  }
+
+
+  checkVerifyEmail(){
+    var user = firebase.auth().currentUser;
+    console.log(user.emailVerified)
+    return user.emailVerified
   }
 }

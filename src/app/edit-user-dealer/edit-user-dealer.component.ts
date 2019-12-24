@@ -3,10 +3,13 @@ import { AuthService } from '../core/auth.service';
 import { Location } from '@angular/common';
 import { Router, Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
 import {FirebaseService } from '../users_list/firebase.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
 import {UserService} from '../core/user.service';
 import { from } from 'rxjs';
+import * as firebase from 'firebase/app';
+import {HttpClient} from '@angular/common/http'
 
 @Component({
   selector: 'app-edit-user-dealer',
@@ -43,7 +46,8 @@ export class EditUserDealerComponent implements OnInit {
     private fb: FormBuilder,
     public authService: AuthService,
     private location : Location,
-    public userService: UserService
+    public userService: UserService,
+    private http: HttpClient
   ) { }
 
 
@@ -82,6 +86,25 @@ export class EditUserDealerComponent implements OnInit {
       UserType: [this.item.UserType, Validators.required]
     })
   }
+  selectedFile: File = null;
+
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0]; 
+  }
+
+  onUpload() {
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+    this.http.post('https://us-central1-epharma-3593a.cloudfunctions.net/helloWorld',fd, {
+      reportProgress: true,
+      observe: 'events'
+    } )
+    .subscribe( event => {
+      console.log(event); 
+    })
+  }
+
+
 
   save(value){
     this.userService.updateCurrentUser(value)

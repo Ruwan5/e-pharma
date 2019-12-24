@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light abc">
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg navbar-light bg-light ">
     <img src="assets/logo.png" width="50" height="50" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,14 +34,26 @@
         </ul>
     </div>
 </nav>
-
+<br>
+<br>
+<br>
 <app-dealer-sidebar></app-dealer-sidebar>
 
 
 <div class="container ">
     <br>
-    <label for=""><h3>{{this.item.FirstName}} {{this.item.LastName}}</h3></label>
+    <label><h2>{{this.item.FirstName}} {{this.item.LastName}}</h2></label>
 
+    <div class="col-md-6 mb-4">
+
+        <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" data-holder-rendered="true">
+
+    </div>
+
+    <div class="a" class="col-md-6 mb-4">
+        <input type="file" (change)="onFileSelected($event)">
+        <button type="button" (click)="onUpload()">Upload</button>
+    </div>
 
     <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
         <br>

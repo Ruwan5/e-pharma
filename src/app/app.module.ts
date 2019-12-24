@@ -16,6 +16,7 @@ import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { DealerComponent } from './dealer/dealer.component';
@@ -85,7 +86,8 @@ import { VerifyComponent } from './register/verify/verify.component';
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxPaginationModule  // Include it in imports array
+    NgxPaginationModule,  // Include it in imports array
+    HttpClientModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver],
   bootstrap: [AppComponent]
