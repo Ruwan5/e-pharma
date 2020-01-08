@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { Router, Params } from '@angular/router';
+import * as firebase from 'firebase/app';
+
 
 
 @Component({
@@ -38,6 +40,7 @@ export class UserComponent implements OnInit{
         this.user = data;
         console.log(this.user);
         this.createForm(this.user.name);
+        this.userService.isLoggedIn();
       }
     })
   }
@@ -57,6 +60,13 @@ export class UserComponent implements OnInit{
 
   editUser() {
     this.router.navigate(['/edit-user-pharmacist']);
+  }
+
+  loggedOut(){
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    console.log(userEmail)
+    this.userService.isLoggedOut(userEmail); 
   }
 
   logout(){

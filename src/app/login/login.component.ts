@@ -1,17 +1,19 @@
-import { Component, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UserService} from '../core/user.service'
 import { auth } from 'firebase';
 import { AngularFireAuth } from "@angular/fire/auth"
+import * as firebase from 'firebase/app';
+
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.scss']
 })
-export class LoginComponent {
+export class LoginComponent{
 
   loginForm: FormGroup;
   errorMessage: string = '';
@@ -36,12 +38,13 @@ export class LoginComponent {
   }
 
 
-
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
       // var emailChecked = this.userService.checkVerifyEmail();
       // if (emailChecked == true) {
+        
+
         this.userService.getUserType().then(res => {
         
           switch(res) {                                          //redirect to relevant dash baord
@@ -59,7 +62,7 @@ export class LoginComponent {
         });
       // }
       // else {
-      //   window.alert("You should verify your email address before sign in!")
+      //   // window.alert("You should verify your email address before sign in!")
       // } 
       
     }, err => {

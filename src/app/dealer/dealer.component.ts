@@ -6,6 +6,10 @@ import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { Router, Params } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+
+
 
 @Component({
   selector: 'app-dealer',
@@ -23,9 +27,11 @@ export class DealerComponent implements OnInit {
     private route: ActivatedRoute,
     private location : Location,
     private fb: FormBuilder,
-    public router: Router
-  ) {
+    public router: Router,
+    public firestore: AngularFirestore
 
+  ) {
+  
   }
 
   ngOnInit(): void {
@@ -36,6 +42,8 @@ export class DealerComponent implements OnInit {
       if (data) {
         this.user = data;
         this.createForm(this.user.name);
+        
+        this.userService.isLoggedIn();
       }
     })
   }
@@ -57,9 +65,17 @@ export class DealerComponent implements OnInit {
     }, err => console.log(err))
   }
 
+  loggedOut(){
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    console.log(userEmail)
+    this.userService.isLoggedOut(userEmail);                                                                                                                                                                                                                                                                                             
+      
+}
   logout(){
+
     this.authService.doLogout()
-    .then((res) => {
+    .then((res) => {  
       this.location.back();
     }, (error) => {
       console.log("Logout error", error);

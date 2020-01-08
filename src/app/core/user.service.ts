@@ -9,7 +9,7 @@ import { reject } from 'q';
 
 @Injectable()
 export class UserService{
-    
+  uid: any
   
 
   constructor(
@@ -79,7 +79,27 @@ export class UserService{
     })
   }
 
+isLoggedIn() {   // if user logged in... loggedIn = true
+  
+    this.getCurrentUserId().then(id => {
+      console.log(id)
+      this.firestore.collection('users').doc(id).update({loggedIn: "True"});
+    })
+}
 
+
+isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
+    var db = firebase.firestore();
+    db.collection('users').where("email", "==", userEmail).get().then(function(querySnapshot){
+      querySnapshot.forEach(function(doc){
+        console.log(doc.id)
+        db.collection('users').doc(doc.id).update({loggedIn: "False"});
+      })
+    })
+    
+    
+
+}
   
 
   

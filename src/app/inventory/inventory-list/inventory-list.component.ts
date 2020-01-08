@@ -34,7 +34,6 @@ export class InventoryListComponent implements OnInit {
       this.crudApi.getReleventDrugs(userid).then(res => {
         console.log(res)
         this.items = res;
-      
       })
     })
   }

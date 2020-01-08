@@ -1,15 +1,23 @@
-import { Injectable } from "@angular/core";
+import { Injectable, NgZone } from "@angular/core";
 import {} from 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import {auth} from 'firebase/app'
 import { Router } from "@angular/router";
+import {UserService} from '../core/user.service'
+import { AngularFirestore } from '@angular/fire/firestore';
+
+
+
 
 @Injectable()
 export class AuthService {
 
   constructor(
    public afAuth: AngularFireAuth,
-   public router: Router
+   public router: Router,
+   public userService: UserService,
+   public firestore: AngularFirestore
  ){}
 
   doRegister(value){
@@ -51,8 +59,10 @@ export class AuthService {
   }
 
   doLogout(){
+    
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
+        
         this.afAuth.auth.signOut();
         resolve();
       }
