@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Post drugs<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Drugs List<span class="sr-only">(current)</span></a>
             </li>
 
         </ul>
@@ -25,7 +25,6 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
-                    <!-- <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div> -->
                     <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
                     <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
@@ -44,7 +43,6 @@
 <div class="container-fluid" style="background-color:#CDCDCD;">
     <div class="container" style="background-color:#CDCDCD;">
         <br>
-        <!-- <div class="list-group "> -->
         <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="row">
                 <div class="col col-md-2 image-col">
@@ -67,6 +65,5 @@
             </div>
 
         </div>
-        <!-- </div> -->
     </div>
 </div>

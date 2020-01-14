@@ -44,7 +44,7 @@ export class AddInventoryComponent implements OnInit {
   constructor(
     public crudApi: CrudService,  // CRUD API services  
     public fb: FormBuilder,       // Form Builder service for Reactive forms
-    public toastr: ToastrService,  // Toastr service for alert message
+    private toastr: ToastrService,  // Toastr service for alert message
     public userService: UserService,
     
   ) { 
@@ -162,7 +162,12 @@ ResetForm() {
 
 submitInventoryData() {
   this.crudApi.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
-  this.toastr.success(this.inventoryForm.controls['brandName'].value + ' successfully added!'); // Show success message when data is successfully submited
+  this.toastr.success('The drug has been successfully added!',null,{
+    timeOut:3000,
+      positionClass: 'toast-top-right',
+  });
+  this.toastr.success(this.inventoryForm.controls['brandName'].value + ' successfully Posted!'); // Show success message when data is successfully submited
+
   this.ResetForm();  // Reset form when clicked on reset button
 
   

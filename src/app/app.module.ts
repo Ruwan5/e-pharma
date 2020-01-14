@@ -50,6 +50,8 @@ import { ForgetPasswordComponent } from './login/forget-password/forget-password
 import { VerifyComponent } from './register/verify/verify.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,11 @@ import { VerifyComponent } from './register/verify/verify.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }), // ToastrModule added
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
