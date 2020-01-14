@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
 
   public sidebarMinimized = false;
   public navItems = navItems;
+   onlineUser: Array<any>;
   
 
   toggleMinimize(e) {
@@ -42,9 +43,14 @@ export class AdminComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
+   
+    this.userService.getOnlineUsers().then(data => {  //retrive online users
+      this.onlineUser = data;
+      console.log(this.onlineUser)
+    })
+  
     
-
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
@@ -58,6 +64,8 @@ export class AdminComponent implements OnInit {
   editUser() {
       this.router.navigate(['/edit-user']);
   }
+
+  
 
 
 

@@ -10,6 +10,7 @@ import { reject } from 'q';
 @Injectable()
 export class UserService{
   uid: any
+
   
 
   constructor(
@@ -101,14 +102,26 @@ isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
 
 }
   
-
+getOnlineUsers(){
+  
+  return new Promise<any>((resolve,reject)=>{
+    const db = firebase.firestore();
+    db.collection('users').where('loggedIn', '==', 'True').get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        console.log(doc.id, doc.data())
+        resolve(doc.data())
+      })
+    })
+    
+})
+}
   
 
-  insertUser(user: Users){
+insertUser(user: Users){
     return this.firestore.collection('users').add(user);
   }
 
-  getCurrentUser(){
+getCurrentUser(){
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().onAuthStateChanged(function(user){
         if (user) {
@@ -118,14 +131,14 @@ isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
         }
       })
     })
-  }
+}
 
-  updateUser(userKey, value){
-    return this.firestore.collection('users').doc(userKey).set(value);
+updateUser(userKey, value){
+  return this.firestore.collection('users').doc(userKey).set(value);
    
-  }
+ }
 
-  updateCurrentUser(value){
+updateCurrentUser(value){
     console.log(value.password);
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().currentUser;
@@ -141,8 +154,7 @@ isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
     })
   }
 
-
-  checkVerifyEmail(){
+checkVerifyEmail(){
     var user = firebase.auth().currentUser;
     console.log(user.emailVerified)
     return user.emailVerified

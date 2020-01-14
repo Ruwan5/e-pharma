@@ -243,31 +243,59 @@
 
         </div>
 
+
     </div>
     <br>
     <br>
+
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
-                <thead class="thead-light">
+
+            <table class="table">
+                <thead class="thead-dark">
                     <tr>
-                        <th class="text-center"><i class="icon-people"></i></th>
-                        <th>Online Users</th>
-                        <th class="text-center">Type</th>
+
+                        <th scope="col">Online Users</th>
+                        <th scope="col">Type</th>
 
                     </tr>
                 </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let user of onlineUser">
+                        <td> {{this.onlineUser.FirstName}} {{user.LastName}}</td>
+                        <td>{{user.UserType}}</td>
+                    </tr> -->
+                    <tr>
+
+                        <td>Mark</td>
+                        <td>Otto</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mark</td>
+                        <td>Otto</td>
+
+                    </tr>
+
+                </tbody>
             </table>
-            <tbody>
+            <!-- <table>
+
                 <tr>
-                    <td>
-                        <div>Ruwan nawarathna</div>
-                    </td>
-                    <td>
-                        <div>Dealer</div>
-                    </td>
+                    <th class="text-center"><i></i></th>
+                    <th>Online Users</th>
+                    <th class="text-center">Type</th>
+
                 </tr>
-            </tbody>
+
+                <tr *ngFor="let user of onlineUser">
+                        <td></td>
+                    </tr>
+
+            </table> -->
+
         </div>
         <div class="col-md-6">
 
