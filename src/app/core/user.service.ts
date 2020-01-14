@@ -7,9 +7,11 @@ import {Users} from '../core/user.model'
 import { resolve } from 'url';
 import { reject } from 'q';
 
+
 @Injectable()
 export class UserService{
   uid: any
+  userdata: Array<any>;
 
   
 
@@ -102,18 +104,10 @@ isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
 
 }
   
+
 getOnlineUsers(){
-  
-  return new Promise<any>((resolve,reject)=>{
-    const db = firebase.firestore();
-    db.collection('users').where('loggedIn', '==', 'True').get().then(snapshot => {
-      snapshot.docs.forEach(doc => {
-        console.log(doc.id, doc.data())
-        resolve(doc.data())
-      })
-    })
-    
-})
+  return  this.firestore.collection('users', ref=> ref.where('loggedIn', '==', 'True')).snapshotChanges() 
+   
 }
   
 

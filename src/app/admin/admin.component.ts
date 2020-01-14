@@ -44,9 +44,9 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(){
-   
-    this.userService.getOnlineUsers().then(data => {  //retrive online users
-      this.onlineUser = data;
+
+    this.userService.getOnlineUsers().subscribe(data => {  //retrive online users
+      this.onlineUser = data
       console.log(this.onlineUser)
     })
   
