@@ -15,7 +15,7 @@ export class InventoryListComponent implements OnInit {
   hideWhenNoInventory: boolean = false; // Hide inventory data table when no data.
   noData: boolean = false;            // Showing No Inventory Message, when no inventory data in database.
   preLoader: boolean = true;  
-  items: any  // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
+  items: Array<any>  // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
   
 
   constructor(
@@ -31,7 +31,7 @@ export class InventoryListComponent implements OnInit {
     
     this.crudApi.getCurrentUserId().then(userid => {
       console.log(userid)
-      this.crudApi.getReleventDrugs(userid).then(res => {
+      this.crudApi.getReleventDrugs(userid).subscribe(res => {
         console.log(res)
         this.items = res;
       })

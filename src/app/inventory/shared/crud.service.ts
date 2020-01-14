@@ -59,39 +59,28 @@ export class CrudService {
     })
   }
 
-  getReleventDrugs(id){   
+  // getReleventDrugs(id){   
 
-
-  //  var afs = firebase.firestore();     
-  //  return afs.collection("drugs").where("userid", "==", id).get()
-  //   .then(function(querySnapshot){
-  //     querySnapshot.forEach(function(doc){
-  //       console.log(doc.id, "=>", doc.data())
-
-  //       var array = [];
-
-  //        return array.push(doc.data());
-           
+  //   return new Promise<any>((resolve, reject) => {   // get the drugs that each user has been posted separatly
+  //     var afs = firebase.firestore();
+  //     afs.collection('drugs').where("userid", "==", id).get().then(function(querySnapshot){
+  //       querySnapshot.forEach(function(doc){
+  //         var data = doc.data();
+  //         // console.log(data)
+  //         var array:any = [];
+  //         console.log(data)
+  //         array.push(data)
+  //         console.log(array)
+        
+  //         resolve(array);
+  //       })
   //     })
   //   })
-
-    return new Promise<any>((resolve, reject) => {   // get the drugs that each user has been posted separatly
-      var afs = firebase.firestore();
-      afs.collection('drugs').where("userid", "==", id).get().then(function(querySnapshot){
-        querySnapshot.forEach(function(doc){
-          var data = doc.data();
-          // console.log(data)
-          var array:any = [];
-          console.log(data)
-          array.push(data)
-          console.log(array)
-        
-          resolve(array);
-        })
-      })
-    })
-    
    
+  // }
+
+  getReleventDrugs(id){   
+      return this.firestore.collection('drugs', ref=> ref.where("userid", "==", id)).snapshotChanges();
    
   }
   
