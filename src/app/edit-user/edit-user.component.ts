@@ -66,7 +66,7 @@ export class EditUserComponent implements OnInit {
       console.log(data);
       this.userService.updateUser(data, value);
 
-      this.toastr.success('The user profile successfully update!', '',{
+      this.toastr.success('The admin profile has been successfully updated!', '',{
         timeOut:3000,
           positionClass: 'toast-top-center',
       });
