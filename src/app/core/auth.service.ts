@@ -6,6 +6,8 @@ import {auth} from 'firebase/app'
 import { Router } from "@angular/router";
 import {UserService} from '../core/user.service'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 
 
@@ -17,7 +19,8 @@ export class AuthService {
    public afAuth: AngularFireAuth,
    public router: Router,
    public userService: UserService,
-   public firestore: AngularFirestore
+   public firestore: AngularFirestore,
+   private toastr: ToastrService
  ){}
 
   doRegister(value){
@@ -44,9 +47,17 @@ export class AuthService {
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
       
-      window.alert('Password reset email sent, check your inbox.');
+      this.toastr.success('Password reset email sent, check your inbox', '',{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
+      });
+
     }).catch((error) => {
-      window.alert(error)
+
+      this.toastr.error(error, '',{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
+      });
     })
   }
 
