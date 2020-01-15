@@ -73,7 +73,7 @@ export class EditUserDealerComponent implements OnInit {
       this.userService.updateUser(data, value);
       this.userService.updateCurrentUser(value);
 
-      this.toastr.success('The user profile successfully update!', '',{
+      this.toastr.success('The user profile has been successfully updated!', '',{
         timeOut:3000,
           positionClass: 'toast-top-center',
       });
