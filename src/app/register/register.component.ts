@@ -66,14 +66,14 @@ export class RegisterComponent implements OnInit{
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
        this.toastr.success(this.successMessage, '',{
-        timeOut:5000,
+        timeOut:3000,
           positionClass: 'toast-top-center',
       });
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
        this.toastr.error(this.errorMessage, '',{
-        timeOut:5000,
+        timeOut:3000,
           positionClass: 'toast-bottom-center',
       });
      });
