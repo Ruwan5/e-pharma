@@ -10,6 +10,8 @@ import {UserService} from '../core/user.service';
 import { from } from 'rxjs';
 import * as firebase from 'firebase/app';
 import {HttpClient} from '@angular/common/http'
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 @Component({
   selector: 'app-edit-user-dealer',
@@ -47,7 +49,8 @@ export class EditUserDealerComponent implements OnInit {
     public authService: AuthService,
     private location : Location,
     public userService: UserService,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService
   ) { }
 
 
@@ -69,6 +72,12 @@ export class EditUserDealerComponent implements OnInit {
       console.log(data);
       this.userService.updateUser(data, value);
       this.userService.updateCurrentUser(value);
+
+      this.toastr.success('The user profile successfully update!', '',{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
+      });
+
       this.router.navigate(['/dealer_dashboard']);
     })
     

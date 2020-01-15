@@ -3,6 +3,8 @@ import { AuthService } from '../core/auth.service';
 import { UserService } from '../core/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Users} from '../core/user.model'
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 @Component({
   selector: 'app-register',
@@ -20,7 +22,8 @@ export class RegisterComponent implements OnInit{
   constructor(
     public authService: AuthService,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService
   ) {}
    
    ngOnInit() {
@@ -62,10 +65,17 @@ export class RegisterComponent implements OnInit{
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
+       this.toastr.success(this.successMessage, '',{
+        timeOut:5000,
+          positionClass: 'toast-top-center',
+      });
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
-       this.successMessage = "";
+       this.toastr.error(this.errorMessage, '',{
+        timeOut:5000,
+          positionClass: 'toast-bottom-center',
+      });
      });
    }
 

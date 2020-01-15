@@ -162,11 +162,10 @@ ResetForm() {
 
 submitInventoryData() {
   this.crudApi.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
-  this.toastr.success('The drug has been successfully added!',null,{
+  this.toastr.success('The drug has been successfully posted!',null,{
     timeOut:3000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-top-center',
   });
-  this.toastr.success(this.inventoryForm.controls['brandName'].value + ' successfully Posted!'); // Show success message when data is successfully submited
 
   this.ResetForm();  // Reset form when clicked on reset button
 

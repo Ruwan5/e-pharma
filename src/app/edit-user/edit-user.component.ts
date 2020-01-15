@@ -7,6 +7,8 @@ import {FirebaseService } from '../users_list/firebase.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
 import {UserService} from '../core/user.service';
 import { from } from 'rxjs';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 @Component({
   selector: 'app-edit-user',
@@ -42,7 +44,9 @@ export class EditUserComponent implements OnInit {
     private fb: FormBuilder,
     public authService: AuthService,
     private location : Location,
-    public userService: UserService
+    public userService: UserService,
+    private toastr: ToastrService
+
   ) { }
 
 
@@ -61,6 +65,12 @@ export class EditUserComponent implements OnInit {
     this.userService.getCurrentUserId().then( data => {
       console.log(data);
       this.userService.updateUser(data, value);
+
+      this.toastr.success('The user profile successfully update!', '',{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
+      });
+
       this.router.navigate(['/admin_dashboard']);
     })
     

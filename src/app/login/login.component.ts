@@ -6,6 +6,8 @@ import {UserService} from '../core/user.service'
 import { auth } from 'firebase';
 import { AngularFireAuth } from "@angular/fire/auth"
 import * as firebase from 'firebase/app';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 
 @Component({
@@ -25,7 +27,8 @@ export class LoginComponent{
     private router: Router,
     private fb: FormBuilder,
     public userService: UserService,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private toastr: ToastrService
   ) {
     this.createForm();
   }
@@ -66,8 +69,13 @@ export class LoginComponent{
       // } 
       
     }, err => {
-      console.log(err);
       this.errorMessage = err.message;
+      console.log(err);
+      this.toastr.error(this.errorMessage, '',{
+        timeOut:5000,
+          positionClass: 'toast-bottom-center',
+      });
+      
     })
   }
 }
