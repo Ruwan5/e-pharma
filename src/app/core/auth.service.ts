@@ -15,6 +15,8 @@ import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 @Injectable()
 export class AuthService {
 
+  userEmail: string ='';
+
   constructor(
    public afAuth: AngularFireAuth,
    public router: Router,
@@ -23,8 +25,11 @@ export class AuthService {
    private toastr: ToastrService
  ){}
 
+
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
+  // pass the current user email to getEmail()
+      this.userEmail = value.email
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
         

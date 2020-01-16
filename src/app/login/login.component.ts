@@ -65,7 +65,6 @@ export class LoginComponent{
         });
       }
       else {
-        window.alert("You should verify your email address before sign in!")
         this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
           timeOut:3000,
             positionClass: 'toast-bottom-center',

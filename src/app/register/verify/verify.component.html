@@ -10,7 +10,7 @@
                 <h3>Thank You for Registering</h3>
 
                 <div class="formGroup">
-                    <p>We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+                    <p>We have sent a confirmation email to <strong>{{this.userEmailAddres}}</strong>.</p>
                     <p>Please check your email and click on the link to verfiy your email address.</p>
                 </div>
                 <br>
@@ -26,6 +26,9 @@
             <br>
             <div class="redirectToLogin">
                 <span>Go back to?<a  class="text-primary" routerLink="/login"> Sign in</a></span>
+            </div>
+            <div>
+                <a routerLink="/register"> Back</a>
             </div>
 
         </div>
