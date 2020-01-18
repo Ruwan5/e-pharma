@@ -268,24 +268,27 @@
 
                 </tbody>
             </table>
-            <!-- <table>
-
-                <tr>
-                    <th class="text-center"><i></i></th>
-                    <th>Online Users</th>
-                    <th class="text-center">Type</th>
-
-                </tr>
-
-                <tr *ngFor="let user of onlineUser">
-                        <td></td>
-                    </tr>
-
-            </table> -->
-
         </div>
         <div class="col-md-6">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
 
+                        <th scope="col">Unregistered Users</th>
+                        <th scope="col">Type</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of unregisteredUsers">
+                        <td> {{user.payload.doc.data().FirstName }} {{user.payload.doc.data().LastName}}</td>
+                        <td>{{user.payload.doc.data().UserType}}</td>
+                        <td><button class="btn btn-success ">Verify</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
 
     </div>

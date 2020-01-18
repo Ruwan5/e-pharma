@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   public sidebarMinimized = false;
   public navItems = navItems;
    onlineUser: Array<any>;
+   unregisteredUsers: Array<any>;
   
 
   toggleMinimize(e) {
@@ -48,6 +49,11 @@ export class AdminComponent implements OnInit {
     this.userService.getOnlineUsers().subscribe(data => {  //retrive online users
       this.onlineUser = data
       console.log(this.onlineUser)
+    })
+
+    this.userService.getUnregisteredUsers().subscribe(res=>{
+      this.unregisteredUsers = res
+      console.log(this.unregisteredUsers)
     })
   
     

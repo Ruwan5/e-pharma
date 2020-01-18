@@ -106,7 +106,7 @@ isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
   
 
 getOnlineUsers(){
-  return  this.firestore.collection('users', ref=> ref.where('loggedIn', '==', 'True')).snapshotChanges() 
+  return  this.firestore.collection('users', ref=> ref.where('loggedIn', '==', 'True')).snapshotChanges();
    
 }
 
@@ -120,6 +120,10 @@ isRegistered(email){
       })
     })
   })
+}
+
+getUnregisteredUsers(){
+  return this.firestore.collection('users', ref=>ref.where('registered', '==', 'false')).snapshotChanges();
 }
   
 
