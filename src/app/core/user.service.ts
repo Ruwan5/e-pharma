@@ -128,7 +128,8 @@ getCurrentUser(){
 }
 
 updateUser(userKey, value){
-  return this.firestore.collection('users').doc(userKey).set(value);
+   this.firestore.collection('users').doc(userKey).set(value);
+   this.updateCurrentUser(value);
    
  }
 
