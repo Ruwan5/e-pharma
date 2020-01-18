@@ -276,6 +276,7 @@
 
                         <th scope="col">Unregistered Users</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Email</th>
                         <th scope="col"></th>
 
                     </tr>
@@ -284,6 +285,7 @@
                     <tr *ngFor="let user of unregisteredUsers">
                         <td> {{user.payload.doc.data().FirstName }} {{user.payload.doc.data().LastName}}</td>
                         <td>{{user.payload.doc.data().UserType}}</td>
+                        <td>{{user.payload.doc.data().email}}</td>
                         <td><button class="btn btn-success ">Verify</button></td>
                     </tr>
 
