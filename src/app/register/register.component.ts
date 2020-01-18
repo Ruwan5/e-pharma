@@ -50,7 +50,8 @@ export class RegisterComponent implements OnInit{
       'password': ['',Validators.required],
       'Telephone': ['', Validators.required],
       'UserType': ['', Validators.required],
-      'Photo': ['', Validators.required]
+      'registered': ['false']
+      
     })
    }
 
@@ -65,18 +66,22 @@ export class RegisterComponent implements OnInit{
      .then(res => {
        console.log(res);
        this.errorMessage = "";
+
        this.successMessage = "Your account has been created";
        this.toastr.success(this.successMessage, '',{
         timeOut:3000,
           positionClass: 'toast-top-center',
       });
+
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
+
        this.toastr.error(this.errorMessage, '',{
         timeOut:3000,
           positionClass: 'toast-bottom-center',
       });
+
      });
    }
 

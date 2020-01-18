@@ -109,6 +109,18 @@ getOnlineUsers(){
   return  this.firestore.collection('users', ref=> ref.where('loggedIn', '==', 'True')).snapshotChanges() 
    
 }
+
+isRegistered(email){
+  return new Promise<any>((resolve, reject) => {
+    var db = firebase.firestore()
+    db.collection('users').where('email', '==', email).get().then(function(querySnapshot){
+      querySnapshot.forEach(function(doc){
+        console.log(doc.data().registered)
+        resolve(doc.data().registered)
+      })
+    })
+  })
+}
   
 
 insertUser(user: Users){

@@ -79,7 +79,8 @@ export class AdminComponent implements OnInit {
   logout(){
     this.authService.doLogout()
     .then((res) => {
-      // this.location.back();
+      // this.router.navigate(['/login']);
+      this.location.back();
     }, (error) => {
       console.log("Logout error", error);
     });

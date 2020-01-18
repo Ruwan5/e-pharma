@@ -42,27 +42,41 @@ export class LoginComponent{
 
 
   tryLogin(value){
+    console.log(value.email)
     this.authService.doLogin(value)
     .then(res => {
       // var emailChecked = this.userService.checkVerifyEmail();
       // if (emailChecked == true) {
+          //  this.userService.isRegistered(value.email).then(registered =>{
+          //   console.log(registered)
+          //   if (registered == true) {
+              this.userService.getUserType().then(res => {
         
-
-        this.userService.getUserType().then(res => {
+                switch(res) {                                          //redirect to relevant dash baord
+                    case <any>'Pharmacist':
+                      this.router.navigate(['/user']);
+                      break;
+                    case <any>"Dealer":
+                      this.router.navigate(['/dealer_dashboard']);
+                      break;
+                    case <any>"Admin":
+                      this.router.navigate(['/admin_dashboard']);
+                      break;
+                  } 
         
-          switch(res) {                                          //redirect to relevant dash baord
-              case <any>'Pharmacist':
-                this.router.navigate(['/user']);
-                break;
-              case <any>"Dealer":
-                this.router.navigate(['/dealer_dashboard']);
-                break;
-              case <any>"Admin":
-                this.router.navigate(['/admin_dashboard']);
-                break;
-            } 
-  
-        });
+              });
+              
+            // }
+          //   // else{
+          //   //   this.toastr.warning('Your account is not verified yet. Account will be verified by the admin soon', 'Account verification failed!',{
+          //   //         timeOut:5000,
+          //   //           positionClass: 'toast-bottom-center',
+          //   //       });
+          //   // }
+          //  })
+            
+            
+        
       // }
       // else {
       //   this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
