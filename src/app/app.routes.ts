@@ -26,8 +26,8 @@ import { VerifyComponent} from './register/verify/verify.component'
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},
   { path: 'dealer_dashboard', component: DealerComponent,  resolve: { data: UserResolver}},
   { path: 'admin_dashboard', component: AdminComponent,  resolve: { data: UserResolver}},
