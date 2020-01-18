@@ -44,8 +44,8 @@ export class LoginComponent{
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      var emailChecked = this.userService.checkVerifyEmail();
-      if (emailChecked == true) {
+      // var emailChecked = this.userService.checkVerifyEmail();
+      // if (emailChecked == true) {
         
 
         this.userService.getUserType().then(res => {
@@ -63,13 +63,13 @@ export class LoginComponent{
             } 
   
         });
-      }
-      else {
-        this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
-          timeOut:3000,
-            positionClass: 'toast-bottom-center',
-        });
-      } 
+      // }
+      // else {
+      //   this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
+      //     timeOut:3000,
+      //       positionClass: 'toast-bottom-center',
+      //   });
+      // } 
       
     }, err => {
       this.errorMessage = err.message;
