@@ -40,6 +40,7 @@ export class FirebaseService {
 
 
   deleteUser(userKey){
+    
     return this.afs.collection('users').doc(userKey).delete();
   }
 
