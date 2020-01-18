@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { navItems } from '../_nav';
 import { Router, Params } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 @Component({
   selector: 'app-admin',
@@ -39,7 +41,8 @@ export class AdminComponent implements OnInit {
     private route: ActivatedRoute,
     private location : Location,
     private fb: FormBuilder,
-    public router: Router
+    public router: Router,
+    private toastr: ToastrService
   ) {
 
   }
@@ -60,6 +63,7 @@ export class AdminComponent implements OnInit {
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
+        console.log(data)
         this.user = data;
         
       }
@@ -69,6 +73,16 @@ export class AdminComponent implements OnInit {
   
   editUser() {
       this.router.navigate(['/edit-user']);
+  }
+
+
+  verifyAccount(id){
+    console.log(id)
+    this.userService.setIsRegistered(id);
+    this.toastr.success('User verified successfully!', '',{
+      timeOut:3000,
+        positionClass: 'toast-top-center',
+    });
   }
 
   

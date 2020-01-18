@@ -57,7 +57,6 @@ export class HomeComponent implements OnInit {
     .subscribe(result => {
       this.items = result;
       console.log(result);
-      
     })
   }
 

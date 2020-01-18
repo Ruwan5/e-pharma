@@ -125,6 +125,10 @@ isRegistered(email){
 getUnregisteredUsers(){
   return this.firestore.collection('users', ref=>ref.where('registered', '==', 'false')).snapshotChanges();
 }
+
+setIsRegistered(id){
+  this.firestore.collection('users').doc(id).update({registered: "True"});
+}
   
 
 insertUser(user: Users){

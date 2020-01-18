@@ -286,7 +286,7 @@
                         <td> {{user.payload.doc.data().FirstName }} {{user.payload.doc.data().LastName}}</td>
                         <td>{{user.payload.doc.data().UserType}}</td>
                         <td>{{user.payload.doc.data().email}}</td>
-                        <td><button class="btn btn-success ">Verify</button></td>
+                        <td><button class="btn btn-success " (click)="verifyAccount(user.payload.doc.id)">Verify</button></td>
                     </tr>
 
                 </tbody>
