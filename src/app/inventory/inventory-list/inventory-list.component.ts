@@ -41,7 +41,8 @@ export class InventoryListComponent implements OnInit {
   }
 
   viewDrugDetails(item) {
-    this.router.navigate(['/show-drugs-details/'+ item.payload.doc.id]);
+    this.router.navigate(['/drugs-details/'+ item.payload.doc.id]);
+    // this.router.navigate(['/drugs-details'])
     
   }
 

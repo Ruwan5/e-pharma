@@ -21,7 +21,7 @@ import { ShowDrugsComponent} from './show-drugs/show-drugs.component'
 import { ForgetPasswordComponent} from './login/forget-password/forget-password.component'
 import { from } from 'rxjs';
 import { VerifyComponent} from './register/verify/verify.component'
-
+import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 
 
 
@@ -44,6 +44,7 @@ export const rootRouterConfig: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
+  { path: 'drugs-details', component:DrugDetailsComponent}
 
 
 ];
