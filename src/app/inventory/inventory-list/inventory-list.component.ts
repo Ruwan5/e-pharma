@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../shared/crud.service';  // CRUD API service class
 import { Inventory } from './../shared/inventory';   // Inventory interface class for Data types.
 import { ToastrService } from 'ngx-toastr';      // Alert message using NGX toastr
+import { Router, Params } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class InventoryListComponent implements OnInit {
 
   constructor(
     public crudApi: CrudService, // Inject inventory CRUD services in constructor.
-    public toastr: ToastrService // Toastr service for alert message
+    public toastr: ToastrService, // Toastr service for alert message
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,11 @@ export class InventoryListComponent implements OnInit {
         this.items = res;
       })
     })
+  }
+
+  viewDrugDetails(item) {
+    this.router.navigate(['/show-drugs-details/'+ item.payload.doc.id]);
+    
   }
 
   //Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in student data list in real-time.

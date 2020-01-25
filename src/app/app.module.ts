@@ -17,7 +17,6 @@ import { UserService } from './core/user.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
 import {HttpClientModule} from '@angular/common/http'
-
 import { AppComponent } from './app.component';
 import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
@@ -48,6 +47,7 @@ import { EditUserPharmacistComponent } from './edit-user-pharmacist/edit-user-ph
 import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.component';
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
+import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
 
 
 
@@ -74,6 +74,7 @@ import { VerifyComponent } from './register/verify/verify.component';
     EditUserDealerComponent,
     ForgetPasswordComponent,
     VerifyComponent,
+    DrugDetailsComponent,
     
   ],
   imports: [

@@ -24,6 +24,7 @@ import { VerifyComponent} from './register/verify/verify.component'
 
 
 
+
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
