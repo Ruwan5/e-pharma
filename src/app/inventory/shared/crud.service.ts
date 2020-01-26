@@ -84,6 +84,10 @@ export class CrudService {
    
   }
   
+  getDrugDetails(drugKey){  // get relavant drug details
+    return this.firestore.collection('drugs').doc(drugKey).snapshotChanges();
+  }
+
 
   // Fetch Inventory List
   GetInventoryList() {
@@ -91,6 +95,11 @@ export class CrudService {
      return this.firestore.collection('drugs').snapshotChanges();
   
   }  
+
+
+ 
+
+
 
   // Update Inventory Object
   UpdateInventory(inventory: Inventory) {
