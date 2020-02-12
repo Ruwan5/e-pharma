@@ -11,6 +11,8 @@ import { Users } from 'src/app/core/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
 
 
 
@@ -38,7 +40,9 @@ export class ShowUserComponent  {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public authService: AuthService,
-    private location : Location
+    private location : Location,
+    private toastr: ToastrService,  // Toastr service for alert message
+
     
     ) { }
 
@@ -65,6 +69,11 @@ export class ShowUserComponent  {
     .then(
       res => {
         this.router.navigate(['/user_list']);
+
+        this.toastr.success('The user has been successfully deleted!',null,{
+          timeOut:4000,
+            positionClass: 'toast-top-center',
+        });
       }
     )
   }

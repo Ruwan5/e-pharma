@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import {CrudService } from '../../shared/crud.service';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
+
 
 @Component({
   selector: 'app-drug-details',
@@ -24,9 +28,16 @@ export class DrugDetailsComponent implements OnInit {
     taste: any
     usage: any
     price: any
+    id:any
     
 
-  constructor(public route: ActivatedRoute) { }
+  constructor(public route: ActivatedRoute,
+              public afs: CrudService,
+              private router: Router,  
+              private toastr: ToastrService,  // Toastr service for alert message
+
+
+    ) { }
 
   ngOnInit() {
     this.route.data.subscribe(routeData => {
@@ -48,6 +59,7 @@ export class DrugDetailsComponent implements OnInit {
         this.taste = data.payload.data().taste;
         this.usage = data.payload.data().usage;
         this.price = data.payload.data().price;
+        this.id = data.payload.id;
         
         
       
@@ -55,6 +67,20 @@ export class DrugDetailsComponent implements OnInit {
 
   }
 
+  delete(){
+    this.afs.deleteDrug(this.id)
+    .then(
+      res => {
+        this.router.navigate(['/list-inventory']);
+        
+        this.toastr.success('The drug has been successfully deleted!',null,{
+          timeOut:4000,
+            positionClass: 'toast-top-center',
+        });
+      }
+    )
   }
+
+}
 
 

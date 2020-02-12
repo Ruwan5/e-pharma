@@ -129,5 +129,10 @@ export class CrudService {
     this.inventoryRef.remove();
   }
 
+  deleteDrug(drugKey){
+    
+    return this.firestore.collection('drugs').doc(drugKey).delete();
+  }
+
   
 }
