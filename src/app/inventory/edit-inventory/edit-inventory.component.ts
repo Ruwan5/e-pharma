@@ -30,6 +30,7 @@ export class EditInventoryComponent implements OnInit {
     smell:  new FormControl(),
     taste:  new FormControl(),
     usage:  new FormControl(),
+    expire: new FormControl(),
     price:  new FormControl(),
     drugid: new FormControl()
     
@@ -85,6 +86,7 @@ export class EditInventoryComponent implements OnInit {
       smell: [this.item.payload.data().smell, [Validators.required]],
       taste: [this.item.payload.data().taste, [Validators.required]],
       usage: [this.item.payload.data().usage, [Validators.required]],
+      expire: [this.item.payload.data().expire, [Validators.required]],
       price: [this.item.payload.data().price, [Validators.required]],
       drugid: [this.item.id, [Validators.required]]
     })
