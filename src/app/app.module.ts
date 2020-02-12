@@ -35,7 +35,10 @@ import { InventoryListComponent } from './inventory/inventory-list/inventory-lis
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
-import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver' 
+import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
+import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
+
+ 
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -97,7 +100,7 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,6 +23,7 @@ import { from } from 'rxjs';
 import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
+import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 
 
 
@@ -37,7 +38,7 @@ export const rootRouterConfig: Routes = [
   { path: 'show_user/:id', component: ShowUserComponent, resolve:{data : ShowUserResolver}},
   { path: 'add-inventory', component: AddInventoryComponent },
   { path: 'view-inventory', component: InventoryListComponent },
-  { path: 'edit-inventory/:id', component: EditInventoryComponent },
+  { path: 'edit-inventory/:id', component: EditInventoryComponent , resolve:{data : EditDrugResolver}},
   { path: 'edit-user', component: EditUserComponent},
   { path: 'edit-user-dealer', component: EditUserDealerComponent},
   { path: 'edit-user-pharmacist', component: EditUserPharmacistComponent},

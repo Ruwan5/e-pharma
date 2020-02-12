@@ -67,6 +67,10 @@ export class DrugDetailsComponent implements OnInit {
 
   }
 
+  editDrug() {
+    this.router.navigate(['/edit-inventory/'+ this.id]);
+  }
+
   delete(){
     this.afs.deleteDrug(this.id)
     .then(

@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Post drugs<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Edit drugs<span class="sr-only">(current)</span></a>
             </li>
 
         </ul>
@@ -46,7 +46,7 @@
 
     <br>
     <div class="container ">
-        <form [formGroup]="inventoryForm" (ngSubmit)="submitInventoryData()" novalidate>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
 
             <div class="col-lg-5 col-md-12 col-sm-12">
                 <div class="row">
@@ -132,7 +132,7 @@
 
                     <div class="col-md-12 mb-3">
                         <!-- <label>User Id </label> -->
-                        <input type="text" formControlName="userid" class="form-control" hidden>
+                        <input type="text" formControlName="drugid" class="form-control" hidden>
                     </div>
 
 
@@ -140,7 +140,7 @@
 
                     <div class="form-group text-right">
                         <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-                        <button type="submit" class="btn btn-success" (click)="submitInventoryData()">Post</button>
+                        <button type="submit" class="btn btn-success" type="submit">Save</button>
                     </div>
 
                 </div>
