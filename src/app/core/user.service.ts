@@ -157,7 +157,6 @@ updateCurrentUser(value){
     console.log(value.password);
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().currentUser;
-      user.updateEmail(value.email).then(function(){});
       user.updatePassword(value.password).then(function(){});
 
       user.updateProfile({
