@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../firebase.service'
 import { Router, Params } from '@angular/router';
-import { from } from 'rxjs';
+import { from, Subject, Observable ,combineLatest } from 'rxjs';
 import { Users } from '../../core/user.model';
 import {ShowUserComponent} from '../show-user/show-user.component'
 import { resolve } from 'url';
@@ -11,6 +11,9 @@ import { Location } from '@angular/common';
 import { FirebaseUserModel } from '../../core/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {} from 'rxjs/observable/combineLatest'
+
+
 
 
 @Component({
@@ -21,9 +24,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class HomeComponent implements OnInit {
 
    items: Array<any>;
-   searchValue: string = "";
+   searchitem: Array<any>;
+   searchterm: string;
    results: any;
    user: FirebaseUserModel = new FirebaseUserModel();
+
+   startAt = new Subject();
+   endAt = new Subject();
+
+   startobs = this.startAt.asObservable();
+   endobs = this.endAt.asObservable();
 
   constructor(
     public firebaseService: FirebaseService,
@@ -46,6 +56,7 @@ export class HomeComponent implements OnInit {
         
       }
     })
+    
   }
 
   viewDetails(item){
@@ -58,8 +69,28 @@ export class HomeComponent implements OnInit {
       this.items = result;
       console.log(result);
     })
+    combineLatest(this.startobs, this.endobs).subscribe((value) =>{
+      this.firequery(value[0], value[1]).subscribe((result) =>{
+        this.searchitem = result;
+      })
+    })
+    
   }
 
+  search($event){
+    let q = $event.target.value;
+    if(q != ''){
+      this.startAt.next(q);
+      this.endAt.next(q + "\uf8ff");
+    }
+    else {
+      this.searchitem = this.items;
+    }
+  }
+
+  firequery(start, end) {
+    return this.afs.collection('users', ref => ref.limit(4).startAt(start).endAt(end)).valueChanges();
+  }
   
 
   // searchByName(){
@@ -70,16 +101,16 @@ export class HomeComponent implements OnInit {
   //   })
   // }
 
-  search(){    //search users 
-    let self = this;
-    self.results = self.afs.collection('users', ref => ref
-    .orderBy("FirstName")
-    .startAt(self.searchValue.toLowerCase())
-    .endAt(self.searchValue.toLowerCase()+"\uf8ff")
-    .limit(10))
-    .valueChanges();
-    console.log(self.results)
-  }
+  // search(){    //search users 
+  //   let self = this;
+  //   self.results = self.afs.collection('users', ref => ref
+  //   .orderBy("FirstName")
+  //   .startAt(self.searchValue.toLowerCase())
+  //   .endAt(self.searchValue.toLowerCase()+"\uf8ff")
+  //   .limit(10))
+  //   .valueChanges();
+  //   console.log(self.results)
+  // }
 
 
   logout(){
