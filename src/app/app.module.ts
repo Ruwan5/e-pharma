@@ -49,6 +49,7 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
+import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
 
 
 
@@ -76,6 +77,7 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
+    PharmacyReportComponent,
     
   ],
   imports: [
