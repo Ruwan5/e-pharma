@@ -24,6 +24,7 @@ import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
+import {ChatroomComponent} from './chatroom/chatroom.component';
 
 
 
@@ -46,7 +47,9 @@ export const rootRouterConfig: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
-  { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver}}
+  { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
+  { path: 'chatroom', component: ChatroomComponent },
+
 
 
 ];

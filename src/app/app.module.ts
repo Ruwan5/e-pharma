@@ -52,7 +52,12 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
+import { ChatFormComponent } from './chat-form/chat-form.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { FeedComponent } from './feed/feed.component';
+import { MassageComponent } from './massage/massage.component';
 
+import { ChatService } from './core/chat.service';
 
 
 
@@ -79,6 +84,10 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
+    ChatFormComponent,
+    ChatroomComponent,
+    FeedComponent,
+    MassageComponent,
     
   ],
   imports: [
@@ -100,7 +109,7 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
