@@ -10,6 +10,8 @@ import { Router, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
+import {FirebaseService} from '../users_list/firebase.service'
+import {CrudService} from '../inventory/shared/crud.service'
 
 
 
@@ -26,6 +28,10 @@ export class AdminComponent implements OnInit {
   public navItems = navItems;
    onlineUser: Array<any>;
    unregisteredUsers: Array<any>;
+   TotOnlineUsers;
+   TotUnregisteredUsers;
+   totalUsers;
+   totalDrugs;
   
 
   toggleMinimize(e) {
@@ -46,7 +52,9 @@ export class AdminComponent implements OnInit {
     private location : Location,
     private fb: FormBuilder,
     public router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public fireService: FirebaseService,
+    public crudApi: CrudService
   ) {
 
   }
@@ -232,14 +240,32 @@ export class AdminComponent implements OnInit {
 
     this.userService.getOnlineUsers().subscribe(data => {  //retrive online users
       this.onlineUser = data
-      console.log(this.onlineUser)
+      this.TotOnlineUsers = data.length; // get number of online users
+      console.log(this.TotOnlineUsers)
     })
 
     this.userService.getUnregisteredUsers().subscribe(res=>{
-      this.unregisteredUsers = res
-      console.log(this.unregisteredUsers)
+      this.unregisteredUsers = res;
+      this.TotUnregisteredUsers = res.length; // get number of unregistered users
+
+      if (this.TotUnregisteredUsers > 0 ) {       // unregistered users notification
+        this.toastr.warning(  'Please verify the unregistered users.', this.TotUnregisteredUsers + ' Unregistered Users Available!',{   
+          disableTimeOut:true	, 
+          closeButton: true,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+
     })
-  
+    
+    this.fireService.getUsers().subscribe(data => {   // get total users
+      this.totalUsers = data.length;
+    })
+
+
+    this.crudApi.GetInventoryList().subscribe(data => {
+      this.totalDrugs = data.length;
+    })
     
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
@@ -251,6 +277,7 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  
   
   editUser() {
       this.router.navigate(['/edit-user']);
