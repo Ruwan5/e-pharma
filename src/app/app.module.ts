@@ -86,7 +86,7 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
     ToastrModule.forRoot({

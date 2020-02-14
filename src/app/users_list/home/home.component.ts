@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../firebase.service'
 import { Router, Params } from '@angular/router';
-import { from, Subject, Observable ,combineLatest } from 'rxjs';
 import { Users } from '../../core/user.model';
 import {ShowUserComponent} from '../show-user/show-user.component'
 import { resolve } from 'url';
@@ -11,7 +10,9 @@ import { Location } from '@angular/common';
 import { FirebaseUserModel } from '../../core/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {} from 'rxjs/observable/combineLatest'
+import { Observable, Subject, combineLatest  } from 'rxjs';
+
+
 
 
 
@@ -24,7 +25,7 @@ import {} from 'rxjs/observable/combineLatest'
 export class HomeComponent implements OnInit {
 
    items: Array<any>;
-   searchitem: Array<any>;
+   searchitem;
    searchterm: string;
    results: any;
    user: FirebaseUserModel = new FirebaseUserModel();
@@ -43,12 +44,11 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private afs: AngularFirestore
 
-  ) { }
+  ) {  }
 
   ngOnInit() {
     this.getData();
-
-    this.route.data.subscribe(routeData => {
+        this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
         this.user = data;
@@ -69,9 +69,11 @@ export class HomeComponent implements OnInit {
       this.items = result;
       console.log(result);
     })
-    combineLatest(this.startobs, this.endobs).subscribe((value) =>{
-      this.firequery(value[0], value[1]).subscribe((result) =>{
-        this.searchitem = result;
+    
+      combineLatest(this.startobs, this.endobs).subscribe((value) =>{
+      this.firequery(value[0], value[1]).subscribe((results) =>{
+        this.searchitem = results;
+        console.log(this.searchitem)
       })
     })
     
@@ -79,6 +81,7 @@ export class HomeComponent implements OnInit {
 
   search($event){
     let q = $event.target.value;
+    console.log(q)
     if(q != ''){
       this.startAt.next(q);
       this.endAt.next(q + "\uf8ff");
@@ -89,28 +92,9 @@ export class HomeComponent implements OnInit {
   }
 
   firequery(start, end) {
-    return this.afs.collection('users', ref => ref.limit(4).startAt(start).endAt(end)).valueChanges();
+    return this.afs.collection('users', ref => ref.limit(4).orderBy('FirstName').startAt(start).endAt(end)).valueChanges();
   }
   
-
-  // searchByName(){
-  //   let value = this.searchValue.toLowerCase();
-  //   this.firebaseService.searchUsers(value)
-  //   .subscribe(result => {
-  //     this.name_filtered_items = result;
-  //   })
-  // }
-
-  // search(){    //search users 
-  //   let self = this;
-  //   self.results = self.afs.collection('users', ref => ref
-  //   .orderBy("FirstName")
-  //   .startAt(self.searchValue.toLowerCase())
-  //   .endAt(self.searchValue.toLowerCase()+"\uf8ff")
-  //   .limit(10))
-  //   .valueChanges();
-  //   console.log(self.results)
-  // }
 
 
   logout(){
