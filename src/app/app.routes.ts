@@ -29,7 +29,7 @@ import {ChatroomComponent} from './chatroom/chatroom.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import{MassageComponent} from './massage/massage.component';
 import{FeedComponent} from './feed/feed.component';
-
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 
 
 
@@ -57,8 +57,8 @@ export const rootRouterConfig: Routes = [
   { path: 'chatroom', component: ChatroomComponent },
   { path: 'chat-form', component: ChatFormComponent },
   {path:'message',component:MassageComponent},
-  {path:'feed', component:FeedComponent}
-
+  {path:'feed', component:FeedComponent},
+  {path: 'expired-drugs', component:ExpiredDrugsComponent}
 
 
 

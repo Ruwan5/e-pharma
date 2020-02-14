@@ -62,6 +62,7 @@ import { FeedComponent } from './feed/feed.component';
 import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 
 
 
@@ -95,6 +96,7 @@ import { ChatService } from './core/chat.service';
     ChatroomComponent,
     FeedComponent,
     MassageComponent,
+    ExpiredDrugsComponent,
     
     
   ],

@@ -6,13 +6,13 @@ export class Resume {
     email: string;
     socialProfile: string;
     //experiences: Experience[] = [];
-    educations: Education[] = [];
-    otherDetails: string;
+    //educations: Education[] = [];
+    //otherDetails: string;
     //skills: Skill[] = [];
 
     constructor() {
         //this.experiences.push(new Experience());
-        this.educations.push(new Education());
+       // this.educations.push(new Education());
         //this.skills.push(new Skill());
     }
 }
@@ -25,12 +25,12 @@ export class Resume {
 //     experience: number;
 // }
 
-export class Education {
-    degree: string;
-    college: string;
-    passingYear: string;
-    percentage: number;
-}
+// export class Education {
+//     degree: string;
+//     college: string;
+//     passingYear: string;
+//     percentage: number;
+// }
 
 // export class Skill {
 //     value: string;

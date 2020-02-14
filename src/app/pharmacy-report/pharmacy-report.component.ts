@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Resume, Education } from './resume'; //skills,experience removed
+import { Resume} from './resume'; //skills,experience,education removed
 import { ScriptService } from './script.service';
 import { AngularFirestore } from "@angular/fire/firestore";
 
@@ -25,7 +25,7 @@ export class PharmacyReportComponent {
 
   resume = new Resume();
 
-  degrees = ['B.E.', 'M.E.', 'B.Com', 'M.Com'];
+  //degrees = ['B.E.', 'M.E.', 'B.Com', 'M.Com'];
   stock: number;
   list: PharmacyReportModel[];
   userEmail: string;
@@ -42,10 +42,10 @@ export class PharmacyReportComponent {
     //   this.resume.experiences = [];
     //   this.resume.experiences.push(new Experience());
     // }
-    if (!this.resume.educations || this.resume.educations.length === 0) {
-      this.resume.educations = [];
-      this.resume.educations.push(new Education());
-    }
+    // if (!this.resume.educations || this.resume.educations.length === 0) {
+    //   this.resume.educations = [];
+    //   this.resume.educations.push(new Education());
+    // }
     // if (!this.resume.skills || this.resume.skills.length === 0) {
     //   this.resume.skills = [];
     //   this.resume.skills.push(new Skill());
@@ -73,9 +73,9 @@ export class PharmacyReportComponent {
   //   this.resume.experiences.push(new Experience());
   // }
 
-  addEducation() {
-    this.resume.educations.push(new Education());
-  }
+  // addEducation() {
+  //   this.resume.educations.push(new Education());
+  // }
 
   generatePdf(action = 'open') {
     console.log(pdfMake);
@@ -162,15 +162,15 @@ export class PharmacyReportComponent {
         // },
         // this.getExperienceObject(this.resume.experiences),
 
-        {
-          text: 'Education',
-          style: 'header'
-        },
-         this.getEducationObject(this.resume.educations),
-         {
-           text: 'Other Details',
-           style: 'header'
-         },
+        // {
+        //   text: 'Education',
+        //   style: 'header'
+        // },
+        //  this.getEducationObject(this.resume.educations),
+        //  {
+        //    text: 'Other Details',
+        //    style: 'header'
+        //  },
         //  {
         //    text: this.resume.otherDetails
         //  },
@@ -259,35 +259,35 @@ export class PharmacyReportComponent {
   //   };
   // }
 
-  getEducationObject(educations: Education[]) {
-    return {
-      table: {
-        widths: ['*', '*', '*', '*'],
-        body: [
-          [{
-            text: 'Degree',
-            style: 'tableHeader'
-          },
-          {
-            text: 'College',
-            style: 'tableHeader'
-          },
-          {
-            text: 'Passing Year',
-            style: 'tableHeader'
-          },
-          {
-            text: 'Result',
-            style: 'tableHeader'
-          },
-          ],
-          ...educations.map(ed => {
-            return [ed.degree, ed.college, ed.passingYear, ed.percentage];
-          })
-        ]
-      }
-    };
-  }
+  // getEducationObject(educations: Education[]) {
+  //   return {
+  //     table: {
+  //       widths: ['*', '*', '*', '*'],
+  //       body: [
+  //         [{
+  //           text: 'Degree',
+  //           style: 'tableHeader'
+  //         },
+  //         {
+  //           text: 'College',
+  //           style: 'tableHeader'
+  //         },
+  //         {
+  //           text: 'Passing Year',
+  //           style: 'tableHeader'
+  //         },
+  //         {
+  //           text: 'Result',
+  //           style: 'tableHeader'
+  //         },
+  //         ],
+  //         ...educations.map(ed => {
+  //           return [ed.degree, ed.college, ed.passingYear, ed.percentage];
+  //         })
+  //       ]
+  //     }
+  //   };
+  // }
 
   getProfilePicObject() {
     if (this.resume.profilePic) {
