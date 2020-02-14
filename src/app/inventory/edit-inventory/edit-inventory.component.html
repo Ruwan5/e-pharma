@@ -1,110 +1,157 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Edit Inventory Details</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-           <div class="btn-group">
-              <!-- goBack() methos to back to previous component -->
-              <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
-           </div>
-        </div>
-     </div>
-     
-     
-     <div class="row">
-        <div class="col-lg-12">
-           <div class="pricing-header form-block mx-auto">
-     
-              <!-- Inventorys's Edit Form -->
-              <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
-                 <div class="row">
-                    <div class="col-lg-5 col-md-12 col-sm-12">
-                       <div class="row">
-                          
-                            
-                            <div class="col-md-12 mb-3">
-                                    <label>Brand Name</label>
-                                    <input type="text" formControlName="brandName" class="form-control" required>
-                                    
-                                  </div>
-                        
-                                  <div class="col-md-12 mb-3">
-                                    <label>Active Ingredient Name</label>
-                                    <input type="text" formControlName="actIngreName" class="form-control" >
-                                  </div>
-                          
-                                <div class="col-md-12 mb-3">
-                                    <label>Excipient Name</label>
-                                    <input type="text" formControlName="excipientName" class="form-control" >
-                                </div>
-                          
-                                <div class="col-md-12 mb-3">
-                                    <label>Other Name Of Active Ingredient</label>
-                                    <input type="text" formControlName="actIngreOtherName" class="form-control" >
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Abbreviated name of active ingredient</label>
-                                        <input type="text" class="form-control" formControlName="actIngreShortName" >
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label for="">Number</label>
-                                        <input type="Number" class="form-control" formControlName="number">
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Unit</label>
-                                        <input type="text" formControlName="unit" class="form-control" >
-                                 </div>
-                                
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Chemical Formula</label>
-                                        <input type="text" formControlName="formula" class="form-control" >
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Peculiar Part Of Drug</label>
-                                        <input type="text" formControlName="drugPart" class="form-control" >
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Color</label>
-                                        <input type="text" formControlName="color" class="form-control" >
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Dosage Form</label>
-                                        <input type="text" formControlName="form" class="form-control">
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                    <label>Smell</label>
-                                    <input type="text" formControlName="smell" class="form-control" >
-                                </div>
-                        
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Taste</label>
-                                        <input type="text" formControlName="Ttste" class="form-control" >
-                                    
-                                </div>
-                        
-                                <div class="col-md-12 mb-3">
-                                        <label>Usage Of Excipient</label>
-                                        <input type="text" formControlName="usage" class="form-control" >
-                                </div>
-                        
-                          <div class="form-group text-right">
-                                <button type="submit" class="btn btn-success btn-block" [disabled]="!editForm.valid">
-                                    Update Inventory
-                                </button>
-                             </div>
-                          </div>
-                       </div>
-                       </div>
-                    </form>
-                    <!-- Inventory's Edit Form ends-->
+<nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
+    <img src="assets/logo.png" width="50" height="50" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Edit drugs<span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+
+
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+            </li>
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link" href="#"><i class="icon ion-md-notifications"></i></a>
+            </li>
+            <li class="nav-item dropdown" dropdown placement="bottom right">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+                    <img src="../../assets/b.jpg" class="avatar" />
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
+                    <!-- <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div> -->
+                    <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
+                    <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<br>
+<br>
+<br>
+
+<app-dealer-sidebar></app-dealer-sidebar>
+
+<div class="container-fluid" style="background-color:#CDCDCD;">
+
+    <br>
+    <div class="container ">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
+
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="row">
+
+                    <div class="col-md-12 mb-3">
+                        <label>Brand Name</label>
+                        <input type="text" formControlName="brandName" class="form-control" required>
+
                     </div>
-        
-              </div>
-           </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Active Ingredient Name</label>
+                        <input type="text" formControlName="actIngreName" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Excipient Name</label>
+                        <input type="text" formControlName="excipientName" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Other Name Of Active Ingredient</label>
+                        <input type="text" formControlName="actIngreOtherName" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Abbreviated name of active ingredient</label>
+                        <input type="text" class="form-control" formControlName="actIngreShortName">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label for="">Size</label>
+                        <input type="text" class="form-control" formControlName="number">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Unit</label>
+                        <input type="text" formControlName="unit" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+                        <label>Chemical Formula</label>
+                        <input type="text" formControlName="formula" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Peculiar Part Of Drug</label>
+                        <input type="text" formControlName="drugPart" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Color</label>
+                        <input type="text" formControlName="color" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Dosage Form</label>
+                        <input type="text" formControlName="form" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Smell</label>
+                        <input type="text" formControlName="smell" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+                        <label>Taste</label>
+                        <input type="text" formControlName="taste" class="form-control">
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Usage Of Excipient</label>
+                        <input type="text" formControlName="usage" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Unit Price(Rs)</label>
+                        <input type="text" formControlName="price" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <!-- <label>User Id </label> -->
+                        <input type="text" formControlName="drugid" class="form-control" hidden>
+                    </div>
+
+
+
+
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
+                        <button type="submit" class="btn btn-success" type="submit">Save</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+
+
+
+<!-- inventory form ends-->

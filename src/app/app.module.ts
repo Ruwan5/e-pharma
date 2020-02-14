@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase} from '@angular/fire/database'
+import { AngularFireDatabase} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -36,7 +36,10 @@ import { InventoryListComponent } from './inventory/inventory-list/inventory-lis
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
-import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver' 
+import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
+import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
+
+ 
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -50,9 +53,18 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
+<<<<<<< HEAD
 import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
+=======
+import { ChatFormComponent } from './chat-form/chat-form.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { FeedComponent } from './feed/feed.component';
+import { MassageComponent } from './massage/massage.component';
+
+import { ChatService } from './core/chat.service';
+>>>>>>> 2df5148233573eeef323817033808240699ae39a
 
 
 
@@ -80,8 +92,16 @@ import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popu
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
+<<<<<<< HEAD
     PharmacyReportComponent,
     SelectPopupComponent,
+=======
+    ChatFormComponent,
+    ChatroomComponent,
+    FeedComponent,
+    MassageComponent,
+    
+>>>>>>> 2df5148233573eeef323817033808240699ae39a
     
   ],
   imports: [
@@ -104,8 +124,13 @@ import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popu
     HttpClientModule,
     MatDialogModule
   ],
+<<<<<<< HEAD
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver],
   bootstrap: [AppComponent],
   entryComponents: [SelectPopupComponent]
+=======
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
+  bootstrap: [AppComponent]
+>>>>>>> 2df5148233573eeef323817033808240699ae39a
 })
 export class AppModule { }
