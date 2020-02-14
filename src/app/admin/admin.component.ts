@@ -32,6 +32,9 @@ export class AdminComponent implements OnInit {
    TotUnregisteredUsers;
    totalUsers;
    totalDrugs;
+   persentageOnline;
+   persentageUnregi;
+
   
 
   toggleMinimize(e) {
@@ -54,7 +57,7 @@ export class AdminComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     public fireService: FirebaseService,
-    public crudApi: CrudService
+    public crudApi: CrudService,
   ) {
 
   }
@@ -238,15 +241,30 @@ export class AdminComponent implements OnInit {
       this.mainChartData3.push(65);
     }
 
+    this.fireService.getUsers().subscribe(data => {   // get total number of users
+      this.totalUsers = data.length;
+    })
+
+
+    this.crudApi.GetInventoryList().subscribe(data => { // get total number of drugs
+      this.totalDrugs = data.length;
+    })
+
     this.userService.getOnlineUsers().subscribe(data => {  //retrive online users
       this.onlineUser = data
       this.TotOnlineUsers = data.length; // get number of online users
-      console.log(this.TotOnlineUsers)
+
+      this.persentageOnline = Math.floor((this.TotOnlineUsers/this.totalUsers)*100);  // persentage of online users
+      
+      console.log(this.persentageOnline)
+      
     })
 
     this.userService.getUnregisteredUsers().subscribe(res=>{
       this.unregisteredUsers = res;
       this.TotUnregisteredUsers = res.length; // get number of unregistered users
+
+      this.persentageUnregi = Math.floor((this.TotUnregisteredUsers/this.totalUsers)*100); // get number of unregistered users
 
       if (this.TotUnregisteredUsers > 0 ) {       // unregistered users notification
         this.toastr.warning(  'Please verify the unregistered users.', this.TotUnregisteredUsers + ' Unregistered Users Available!',{   
@@ -258,14 +276,7 @@ export class AdminComponent implements OnInit {
 
     })
     
-    this.fireService.getUsers().subscribe(data => {   // get total users
-      this.totalUsers = data.length;
-    })
-
-
-    this.crudApi.GetInventoryList().subscribe(data => {
-      this.totalDrugs = data.length;
-    })
+    
     
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
