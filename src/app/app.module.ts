@@ -52,6 +52,7 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -80,6 +81,7 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     VerifyComponent,
     DrugDetailsComponent,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,8 @@ import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver ],
   bootstrap: [AppComponent]
