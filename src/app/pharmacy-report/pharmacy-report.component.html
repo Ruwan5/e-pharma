@@ -1,3 +1,11 @@
+<!-- <script src='build/pdfmake.min.js'></script>
+<script src='build/vfs_fonts.js'></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+
+
 <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
     <img src="assets/logo.png" width="50" height="50" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,10 +18,6 @@
             </li>
 
         </ul>
-
-
-        <script src='build/pdfmake.min.js'></script>
-        <script src='build/vfs_fonts.js'></script>
 
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
@@ -41,6 +45,7 @@
 <br>
 <app-pharmacist-sidebar></app-pharmacist-sidebar>
 <br>
+
 
 
 
@@ -116,7 +121,7 @@
               </div> -->
       
       
-              <!-- Experience -->
+              <!-- Experience
               <div class="shadow-sm card">
                 <div class="card-body">
                   <div class="d-flex justify-content-between card-title">
@@ -156,10 +161,10 @@
                   </div>
       
                 </div>
-              </div>
+              </div> -->
       
               <!-- Education -->
-              <div class="shadow-sm card">
+              <div class="shadow-sm card" style="margin-left: 25px;">
                 <div class="card-body">
                   <div class="d-flex justify-content-between card-title">
                     <h4 class="d-flex align-items-center">
@@ -204,7 +209,7 @@
                 </div>
               </div>
       
-              <!-- Other Details -->
+              Other Details
       
               <div class="shadow-sm card">
                 <div class="card-body">
@@ -257,7 +262,30 @@
                 <img *ngIf="resume.profilePic" [src]="resume.profilePic" class="img-thumbnail">
               </div>
             </div>
+
+            
+
           </div>
         </form>
+      </div>
+      <div class="offset-2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>a</th>
+              <th>b</th>
+              <th>c</th>
+              <th>view</th>
+            </tr>
+          </thead>
+          <tbody *ngFor = "let item of list">
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.local_id}}</td>
+              <td><button class="btn btn-primary" (click)="view(item.id)">view</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 </div>

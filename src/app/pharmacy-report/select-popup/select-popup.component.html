@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between">
+
+<p>create - bill</p>
+<button (click)= "onClose()"><i class="fa fa-close" aria-hidden="true"></i></button>
+</div>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>a</th>
+            <th>b</th>
+            <th>c</th>
+            <th>qty</th>
+            <th>view</th>
+          </tr>
+        </thead>
+        <tbody *ngFor = "let item of list">
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.local_id}}</td>
+            <td><input type="number" name="result{{i}}" 
+                placeholder="Quantity" ></td>
+            <td><button class="btn btn-primary" (click)="view(item.id)">view</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+

@@ -5,25 +5,25 @@ export class Resume {
     contactNo: number;
     email: string;
     socialProfile: string;
-    experiences: Experience[] = [];
+    //experiences: Experience[] = [];
     educations: Education[] = [];
     otherDetails: string;
     //skills: Skill[] = [];
 
     constructor() {
-        this.experiences.push(new Experience());
+        //this.experiences.push(new Experience());
         this.educations.push(new Education());
         //this.skills.push(new Skill());
     }
 }
 
-export class Experience {
-    employer: string;
-    jobTitle: string;
-    jobDescription: string;
-    startDate: string;
-    experience: number;
-}
+// export class Experience {
+//     employer: string;
+//     jobTitle: string;
+//     jobDescription: string;
+//     startDate: string;
+//     experience: number;
+// }
 
 export class Education {
     degree: string;

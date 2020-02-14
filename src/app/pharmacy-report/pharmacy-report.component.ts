@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Resume, Experience, Education } from './resume'; //skills removed
+import { Resume, Education } from './resume'; //skills,experience removed
 import { ScriptService } from './script.service';
-declare let pdfMake: any ;
+import { AngularFirestore } from "@angular/fire/firestore";
+
+import { PharmacyReportModel } from "./pharmacy-report-model.model"; // to get the inventory data
+import { UserService } from "../core/user.service";
+import * as firebase from 'firebase/app';
+import { SelectPopupComponent } from "./select-popup/select-popup.component";
+import { MatDialog, MatDialogConfig } from "@angular/material";
+
+require('pdfmake/build/pdfmake.js');
+require('pdfmake/build/vfs_fonts.js');
+
+declare let pdfMake: any;
 
 @Component({
   selector: 'app-pharmacy-report',
@@ -10,16 +21,27 @@ declare let pdfMake: any ;
 })
 export class PharmacyReportComponent {
 
+  name = "sajith";
+
   resume = new Resume();
 
   degrees = ['B.E.', 'M.E.', 'B.Com', 'M.Com'];
+  stock: number;
+  list: PharmacyReportModel[];
+  userEmail: string;
+  uidnew;
+  constructor(private scriptService: ScriptService, private dialog : MatDialog, private afs: AngularFirestore) {
+    
 
-  constructor(private scriptService: ScriptService) {
+    
+    this.uidnew = localStorage.getItem('uid');
+    console.log(localStorage.getItem('uid'))
+    console.log(this.uidnew) // userid recieved from the service "Users"
     this.resume = JSON.parse(sessionStorage.getItem('resume')) || new Resume();
-    if (!this.resume.experiences || this.resume.experiences.length === 0) {
-      this.resume.experiences = [];
-      this.resume.experiences.push(new Experience());
-    }
+    // if (!this.resume.experiences || this.resume.experiences.length === 0) {
+    //   this.resume.experiences = [];
+    //   this.resume.experiences.push(new Experience());
+    // }
     if (!this.resume.educations || this.resume.educations.length === 0) {
       this.resume.educations = [];
       this.resume.educations.push(new Education());
@@ -33,9 +55,23 @@ export class PharmacyReportComponent {
     this.scriptService.load('pdfMake', 'vfsFonts');
   }
 
-  addExperience() {
-    this.resume.experiences.push(new Experience());
+  ngOnInit() {
+    this.afs.collection('users').doc(this.uidnew).collection('Inventory').snapshotChanges().subscribe(res => {
+      console.log(res)
+      this.list = res.map( a=> {
+        return{
+          id: a.payload.doc.id,
+          ...a.payload.doc.data()
+        } as unknown as PharmacyReportModel
+      }
+      )
+    })
+    console.log("list=> " + this.list)
   }
+
+  // addExperience() {
+  //   this.resume.experiences.push(new Experience());
+  // }
 
   addEducation() {
     this.resume.educations.push(new Education());
@@ -120,35 +156,35 @@ export class PharmacyReportComponent {
         //     }
         //   ]
         // },
-        {
-          text: 'Experience',
-          style: 'header'
-        },
-        this.getExperienceObject(this.resume.experiences),
+        // {
+        //   text: 'Experience',
+        //   style: 'header'
+        // },
+        // this.getExperienceObject(this.resume.experiences),
 
         {
           text: 'Education',
           style: 'header'
         },
-        this.getEducationObject(this.resume.educations),
-        {
-          text: 'Other Details',
-          style: 'header'
-        },
-        {
-          text: this.resume.otherDetails
-        },
+         this.getEducationObject(this.resume.educations),
+         {
+           text: 'Other Details',
+           style: 'header'
+         },
+        //  {
+        //    text: this.resume.otherDetails
+        //  },
         {
           text: 'Signature',
           style: 'sign'
         },
         {
-          columns : [
-              { qr: this.resume.name + ', Contact No : ' + this.resume.contactNo, fit : 100 },
-              {
+          columns: [
+            { qr: this.resume.name + ', Contact No : ' + this.resume.contactNo, fit: 100 },
+            {
               text: `(${this.resume.name})`,
               alignment: 'right',
-              }
+            }
           ]
         }
       ],
@@ -158,70 +194,70 @@ export class PharmacyReportComponent {
         subject: 'RESUME',
         keywords: 'RESUME, ONLINE RESUME',
       },
-        styles: {
-          header: {
-            fontSize: 18,
-            bold: true,
-            margin: [0, 20, 0, 10],
-            decoration: 'underline'
-          },
-          name: {
-            fontSize: 16,
-            bold: true
-          },
-          jobTitle: {
-            fontSize: 14,
-            bold: true,
-            italics: true
-          },
-          sign: {
-            margin: [0, 50, 0, 10],
-            alignment: 'right',
-            italics: true
-          },
-          tableHeader: {
-            bold: true,
-          }
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 20, 0, 10],
+          decoration: 'underline'
+        },
+        name: {
+          fontSize: 16,
+          bold: true
+        },
+        jobTitle: {
+          fontSize: 14,
+          bold: true,
+          italics: true
+        },
+        sign: {
+          margin: [0, 50, 0, 10],
+          alignment: 'right',
+          italics: true
+        },
+        tableHeader: {
+          bold: true,
         }
-    };
-  }
-
-  getExperienceObject(experiences: Experience[]) {
-
-    const exs = [];
-
-    experiences.forEach(experience => {
-      exs.push(
-        [{
-          columns: [
-            [{
-              text: experience.jobTitle,
-              style: 'jobTitle'
-            },
-            {
-              text: experience.employer,
-            },
-            {
-              text: experience.jobDescription,
-            }],
-            {
-              text: 'Experience : ' + experience.experience + ' Months',
-              alignment: 'right'
-            }
-          ]
-        }]
-      );
-    });
-
-    return {
-      table: {
-        widths: ['*'],
-        body: [
-          ...exs
-        ]
       }
     };
   }
+
+  // getExperienceObject(experiences: Experience[]) {
+
+  //   const exs = [];
+
+  //   experiences.forEach(experience => {
+  //     exs.push(
+  //       [{
+  //         columns: [
+  //           [{
+  //             text: experience.jobTitle,
+  //             style: 'jobTitle'
+  //           },
+  //           {
+  //             text: experience.employer,
+  //           },
+  //           {
+  //             text: experience.jobDescription,
+  //           }],
+  //           {
+  //             text: 'Experience : ' + experience.experience + ' Months',
+  //             alignment: 'right'
+  //           }
+  //         ]
+  //       }]
+  //     );
+  //   });
+
+  //   return {
+  //     table: {
+  //       widths: ['*'],
+  //       body: [
+  //         ...exs
+  //       ]
+  //     }
+  //   };
+  // }
 
   getEducationObject(educations: Education[]) {
     return {
@@ -256,9 +292,9 @@ export class PharmacyReportComponent {
   getProfilePicObject() {
     if (this.resume.profilePic) {
       return {
-        image: this.resume.profilePic ,
+        image: this.resume.profilePic,
         width: 75,
-        alignment : 'right'
+        alignment: 'right'
       };
     }
     return null;
@@ -281,8 +317,22 @@ export class PharmacyReportComponent {
     };
   }
 
-  // addSkill() {
-  //   this.resume.skills.push(new Skill());
-  // }
+view(id: string){
+  const dialogconfig = new MatDialogConfig;
+  dialogconfig.disableClose = true;
+  dialogconfig.autoFocus = true;
+  dialogconfig.width = "75%";
+  dialogconfig.height = "25%";
+  dialogconfig.data = {
+    id: id,
+    abc: this.name,
+  }
+  this.dialog.open(SelectPopupComponent, dialogconfig);
+}
+
+
+
+
+  
 
 }

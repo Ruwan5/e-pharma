@@ -22,6 +22,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import { MatDialogModule } from "@angular/material";
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -50,6 +51,8 @@ import { ForgetPasswordComponent } from './login/forget-password/forget-password
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
 import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
+import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
+
 
 
 
@@ -78,6 +81,7 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
     VerifyComponent,
     DrugDetailsComponent,
     PharmacyReportComponent,
+    SelectPopupComponent,
     
   ],
   imports: [
@@ -97,9 +101,11 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SelectPopupComponent]
 })
 export class AppModule { }
