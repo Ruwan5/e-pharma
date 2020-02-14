@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase} from '@angular/fire/database'
+import { AngularFireDatabase} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -22,6 +22,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import { MatDialogModule } from "@angular/material";
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -52,7 +53,16 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
-import { ChartsModule } from 'ng2-charts';
+import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
+import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
+
+import { ChatFormComponent } from './chat-form/chat-form.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { FeedComponent } from './feed/feed.component';
+import { MassageComponent } from './massage/massage.component';
+
+import { ChatService } from './core/chat.service';
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 
 
 
@@ -80,6 +90,14 @@ import { ChartsModule } from 'ng2-charts';
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
+    PharmacyReportComponent,
+    SelectPopupComponent,
+    ChatFormComponent,
+    ChatroomComponent,
+    FeedComponent,
+    MassageComponent,
+    ExpiredDrugsComponent,
+    
     
     
   ],
@@ -101,9 +119,10 @@ import { ChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule,
-    ChartsModule
+    MatDialogModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver ],
-  bootstrap: [AppComponent]
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
+  bootstrap: [AppComponent],
+  entryComponents: [SelectPopupComponent]
 })
 export class AppModule { }
