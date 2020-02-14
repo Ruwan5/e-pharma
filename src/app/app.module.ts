@@ -53,18 +53,15 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
-<<<<<<< HEAD
 import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
-=======
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { FeedComponent } from './feed/feed.component';
 import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
->>>>>>> 2df5148233573eeef323817033808240699ae39a
 
 
 
@@ -92,16 +89,13 @@ import { ChatService } from './core/chat.service';
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
-<<<<<<< HEAD
     PharmacyReportComponent,
     SelectPopupComponent,
-=======
     ChatFormComponent,
     ChatroomComponent,
     FeedComponent,
     MassageComponent,
     
->>>>>>> 2df5148233573eeef323817033808240699ae39a
     
   ],
   imports: [
@@ -124,13 +118,8 @@ import { ChatService } from './core/chat.service';
     HttpClientModule,
     MatDialogModule
   ],
-<<<<<<< HEAD
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
   bootstrap: [AppComponent],
   entryComponents: [SelectPopupComponent]
-=======
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
-  bootstrap: [AppComponent]
->>>>>>> 2df5148233573eeef323817033808240699ae39a
 })
 export class AppModule { }

@@ -23,9 +23,7 @@ import { from } from 'rxjs';
 import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
-<<<<<<< HEAD
 import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
-=======
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 import {ChatroomComponent} from './chatroom/chatroom.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
@@ -33,7 +31,6 @@ import{MassageComponent} from './massage/massage.component';
 import{FeedComponent} from './feed/feed.component';
 
 
->>>>>>> 2df5148233573eeef323817033808240699ae39a
 
 
 export const rootRouterConfig: Routes = [
@@ -47,7 +44,7 @@ export const rootRouterConfig: Routes = [
   { path: 'show_user/:id', component: ShowUserComponent, resolve:{data : ShowUserResolver}},
   { path: 'add-inventory', component: AddInventoryComponent },
   { path: 'view-inventory', component: InventoryListComponent },
-  { path: 'edit-inventory/:id', component: EditInventoryComponent , resolve:{data : EditDrugResolver}},
+  { path: 'edit-inventory/:id', component: EditInventoryComponent , resolve:{data : EditDrugResolver},},
   { path: 'edit-user', component: EditUserComponent},
   { path: 'edit-user-dealer', component: EditUserDealerComponent},
   { path: 'edit-user-pharmacist', component: EditUserPharmacistComponent},
@@ -55,10 +52,7 @@ export const rootRouterConfig: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
-<<<<<<< HEAD
-  { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver}},
-  { path: 'pharmacy-report', component:PharmacyReportComponent,}
-=======
+  { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
   { path: 'chatroom', component: ChatroomComponent },
   { path: 'chat-form', component: ChatFormComponent },
@@ -67,6 +61,5 @@ export const rootRouterConfig: Routes = [
 
 
 
->>>>>>> 2df5148233573eeef323817033808240699ae39a
 
 ];
