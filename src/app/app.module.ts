@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase} from '@angular/fire/database'
+import { AngularFireDatabase} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -61,6 +61,7 @@ import { ChatService } from './core/chat.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +89,7 @@ import { ChatService } from './core/chat.service';
     ChatroomComponent,
     FeedComponent,
     MassageComponent,
+    
     
   ],
   imports: [
