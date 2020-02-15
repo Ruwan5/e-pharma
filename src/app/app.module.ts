@@ -63,6 +63,8 @@ import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { OrderComponent } from './order/order.component';
+import { ViewComponent } from './order/view/view.component';
 
 
 
@@ -97,6 +99,8 @@ import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
     FeedComponent,
     MassageComponent,
     ExpiredDrugsComponent,
+    OrderComponent,
+    ViewComponent,
     
     
     
@@ -123,6 +127,6 @@ import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent]
+  entryComponents: [SelectPopupComponent, ViewComponent]
 })
 export class AppModule { }

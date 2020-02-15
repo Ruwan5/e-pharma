@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between">
+    <h4>Add Drug to Cart</h4>
+    <button (click)="onClose()"><i class="fa fa-close" aria-hidden="true"></i>
+    </button>
+</div>
+<div class="container abc">
+
+    <div>
+        <div class="row">
+            <!-- <div class="colmn">
+                <img src="./../../../assets/1.jpg" alt="Smiley face" height="200" width="200">
+            </div> -->
+            <div class="colmn" >
+                <h3>Details</h3>
+                <p>NAME: {{actIngreName}} </p>
+                <p>BRAND: {{brandName}} </p>
+                <p>QTY: {{qty1}} </p>
+                <p>Price: {{price}} </p>
+                <p>Dealer: </p>
+                <p>QUANTITY </p>
+                <p>
+                    <button class="btn btn-primary" (click)="reduce()">-</button>
+                    <input type="text" value="" disabled>
+                    <button class="btn btn-primary" (click)="increce()">+</button>
+                </p>
+                <button class="btn btn-primary" (click)="onAdd()">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
