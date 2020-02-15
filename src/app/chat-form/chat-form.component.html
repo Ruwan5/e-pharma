@@ -1,37 +1,4 @@
-   <div>
-       <h1>MESSAGES</h1>
-       <div class='container'>
-           <!-- display msgs  -->
-           <div *ngFor="let item of temp;">
-               <!-- *ngIf="expression" -->
-               <p>{{item}}</p>
-           </div>
-
-       <div>
-           <!-- send msgs -->
-           <input
-           class="chatInput"
-           [(ngModel)]="message"
-           (keydown)="handleSubmit($event)"
-           />
-        
-           <button class="chatButton " (click)="send()">Send</button>
-       </div>
-   </div>
-   </div>
-   
-   
-   
-   
-   
-  
-
-
-
-   
-         
-
-     <!-- <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
+ <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
         <img src="assets/logo.png" width="50" height="50" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -72,17 +39,97 @@
     <br>
     <app-dealer-sidebar></app-dealer-sidebar>
     <br>
-    <br> -->
+    <br>
 
-    
-    <div class="row">
+
+
+
+<div class="mag list">
+    <div class="container">
+          <div class='card' style="background-color: darkslateblue;">
+        <h1 class="card-header text-center">MESSAGES</h1>
+
+    <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+
+      <div class="row col-md-5">
         
-        <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6" >
-            
-    </div>
-      <div class="chat-container col-md-12 col-lg-6 col-xxxl-6" style="margin-top: -3.7%;">
-        
+            <div class="card-body" style="background: steelblue; width: 5rem;" >
+              <h5 class="card-title">{{item.payload.doc.data().from}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{item.payload.doc.data().time.seconds * 1000 | date:'MM-dd-yyyy h:mm:ss a' }}</h6>
+              <p class="card-text">{{item.payload.doc.data().data}}</p>
+              <!-- <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a> -->
+            </div>
         </div>
     </div>
+    
+  
+        
+      
+        
+        <!-- <div class="col-md-1 image-col">
+          <img class="image" src="./../../../assets/img/building.jpg">
+        </div>
+        <div class="col-md-5 text-col">
+          <h5 class="mb-1">{{item.payload.doc.data().data}}</h5>
+          <small>{{item.payload.doc.data().from}}</small>
+          <small>{{item.payload.doc.data().time}}</small>
+        </div>
+        <div class="col col-md-6 actions-col">
+          <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">Profile</button> -->
+          <!-- <button class="btn btn-outline-primary action" (click)="" type="button">Event
+            Calendar</button>
+          <button class="btn btn-outline-primary action" (click)="" type="button">Delete</button> -->
+        <!-- </div> -->
+      <!-- </div>
+    </div>
+  </div>
+   <div> -->
+      
+       <!-- <div class='container '>
+           <div class="card">
+        <h1 class="card-header text-center">MESSAGES</h1> -->
+           <!-- display msgs  -->
+           <!-- <div *ngFor="let item of temp;" class="card-body"> -->
+               <!-- *ngIf="expression" -->
+               <!-- <div class='card'  style="background-color: cornflowerblue;width: 350px;">
+                <p class='card-header' style="color: blue;">name</p>
+                <p>{{item}}</p>
+                <p>time</p>
+               </div>
+            
+           </div>
 
+       <div class="card-footer"> -->
+           <!-- send msgs -->
+           <div>
+           <input
+           class="chatInput"
+           [(ngModel)]="message"
+           (keydown)="handleSubmit($event)"
+           />
+        
+           <button class="chatButton " (click)="send()">Send</button>
+       </div>
+    </div>
+    </div>
+</div>
+      
+   
+   
+   
+   
+  
+
+
+
+   
+         
+
+     
+    
+    
+            
+        
+    
     

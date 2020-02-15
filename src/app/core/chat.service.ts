@@ -15,7 +15,7 @@ import { ChatMessage } from '../models/chat-message.model';
   providedIn: 'root'
 })
 export class ChatService {
-  
+   uid:string
 
   constructor(
     private db:AngularFirestore,
@@ -27,7 +27,8 @@ export class ChatService {
      }
   sendMessage(msg:string){
     var user = firebase.auth().currentUser;
-    const email='test@example.com';
+    var userEmail = user.email;
+    
     console.log(msg);
     // console.log(user)
     this.afs.collection('messages').add({
@@ -49,6 +50,33 @@ export class ChatService {
 
   getAllUsers(){
     return this.db.collection('users').valueChanges();
+  }
+
+  
+  
+  getUserName() {
+    return new Promise<void>((resolve, reject) => {
+    var db = firebase.firestore();
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    db.collection("users").where("email", "==", userEmail)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc){
+        console.log(doc.id, " => ", doc.data());
+        var data = doc.data();
+        if(data.UserType){
+          resolve(data.FirstName);
+        } else {
+          reject("Error!!!");
+        }
+       
+      });
+    }).catch(function(error) {
+      console.log("Error getting documents: ", error);
+    });
+    })
+      
   }
  
 }
