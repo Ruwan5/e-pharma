@@ -24,10 +24,7 @@ import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
-import {ChatroomComponent} from './chatroom/chatroom.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import{MassageComponent} from './massage/massage.component';
-import{FeedComponent} from './feed/feed.component';
 
 
 
@@ -52,11 +49,9 @@ export const rootRouterConfig: Routes = [
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
-  { path: 'chatroom', component: ChatroomComponent },
+ 
   { path: 'chat-form', component: ChatFormComponent },
-  {path:'message',component:MassageComponent},
-  {path:'feed', component:FeedComponent}
-
+  
 
 
 

@@ -53,9 +53,6 @@ import { ForgetPasswordComponent } from './login/forget-password/forget-password
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { FeedComponent } from './feed/feed.component';
-import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 
@@ -86,9 +83,6 @@ import { ChatService } from './core/chat.service';
     VerifyComponent,
     DrugDetailsComponent,
     ChatFormComponent,
-    ChatroomComponent,
-    FeedComponent,
-    MassageComponent,
     
     
   ],

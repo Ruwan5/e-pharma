@@ -9,29 +9,40 @@ import { ChatService } from '../core/chat.service';
 export class ChatFormComponent implements OnInit {
   message:string;
   temp:any=[];
+  contacts: any=[];
 
   constructor(private chat:ChatService) {
-    chat.getMessages().subscribe(data=>{
-      this.temp=[]=[]
-      data.forEach(element => {
+    // chat.getAllUsers().subscribe(contact=>this.contacts=>{
+    //   this.contacts=contact;
+    // });
+     chat.getMessages().subscribe(data=>{
+       this.temp=[]=[]
+       data.forEach(element => {
         
-        this.temp.push(element['msg']);
-      });
-      console.log(this.temp)
-    })
+         this.temp.push(element['msg']);
+       });
+       console.log(this.temp)
+     })
    }
 
   ngOnInit() {
     console.log("working chat")
   }
-  send(){
-    this.chat.sendMessage(this.message);
+   send(){
+   this.chat.sendMessage(this.message);
   }
 
   handleSubmit(event){
-    if(event.keyCode==13){
+   if(event.keyCode==13){
       this.send();
-    }
-  }
+   }
+ }
 
-}
+
+ 
+
+ 
+  
+
+ }
+

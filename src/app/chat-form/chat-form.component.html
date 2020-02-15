@@ -1,15 +1,91 @@
-<input
-   class="chatInput"
-   [(ngModel)]="message"
-   (keydown)="handleSubmit($event)"
-   />
+   <div>
+       <h1>MESSAGES</h1>
+       <div class='container'>
+           <!-- display msgs  -->
+           <div *ngFor="let item of temp;">
+            <p>{{item}}</p>
+           </div>
 
-   <button class="chatButton" (click)="send()">Send</button>
+       <div>
+           <!-- send msgs -->
+           <input
+           class="chatInput"
+           [(ngModel)]="message"
+           (keydown)="handleSubmit($event)"
+           />
+        
+           <button class="chatButton" (click)="send()">Send</button>
+       </div>
+   </div>
+   </div>
+   
+   
+   
+   
+   
+  
 
 
-
-    <div *ngFor="let item of temp;">
-        <p>{{item}}</p>
-    </div>
 
    
+         <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+
+        <button type="button" class="btn btn-success" (click)="edit()">Edit</button> 
+    
+    
+
+     <!-- <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
+        <img src="assets/logo.png" width="50" height="50" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Chat<span class="sr-only">(current)</span></a>
+                </li>
+    
+            </ul>
+    
+    
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-md-down-none">
+                    <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+                </li>
+                <li class="nav-item d-md-down-none">
+                    <a class="nav-link" href="#"><i class="icon ion-md-notifications"></i></a>
+                </li>
+                <li class="nav-item dropdown" dropdown placement="bottom right">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+                        <img src="../../assets/b.jpg" class="avatar" />
+                    </a>
+    
+                    <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
+                        <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
+                        <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+    
+    
+     <br>
+    <br>
+    <br>
+    <app-dealer-sidebar></app-dealer-sidebar>
+    <br>
+    <br> -->
+
+    
+    <div class="row">
+        
+        <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6" >
+            
+    </div>
+      <div class="chat-container col-md-12 col-lg-6 col-xxxl-6" style="margin-top: -3.7%;">
+        
+        </div>
+    </div>
+
+    
