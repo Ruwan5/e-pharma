@@ -1,32 +1,37 @@
-<div class="d-flex justify-content-between">
-    <h4>Add Drug to Cart</h4>
-    <button (click)="onClose()"><i class="fa fa-close" aria-hidden="true"></i>
-    </button>
-</div>
-<div class="container abc">
-
-    <div>
-        <div class="row">
-            <!-- <div class="colmn">
-                <img src="./../../../assets/1.jpg" alt="Smiley face" height="200" width="200">
-            </div> -->
-            <div class="colmn" >
+<div class="view">
+    <div class="d-flex justify-content-between">
+        <h4>Add Drug to Cart</h4>
+        <button (click)="onClose()"><i class="fa fa-close" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="container abc">
+        <div class="a">
+            <div>
                 <h3>Details</h3>
-                <p>NAME: {{actIngreName}} </p>
-                <p>BRAND: {{brandName}} </p>
-                <p>QTY: {{qty1}} </p>
-                <p>Price: {{price}} </p>
-                <p>Dealer: </p>
-                <p>QUANTITY </p>
-                <p>
-                    <button class="btn btn-primary" (click)="reduce()">-</button>
-                    <input type="text" value="" disabled>
-                    <button class="btn btn-primary" (click)="increce()">+</button>
+                <p>Brand Name => {{brandName}} </p>
+                <p>ActIngre Name => {{actIngreName}} </p>
+                <p>Excipient Name => {{excipientName}} </p>
+                <p>ActIngre Other Name => {{actIngreOtherName}} </p>
+                <p>ActIngre Short Name => {{actIngreShortName}} </p>
+                <p>Number => {{number}} </p>
+                <p>Unit => {{unit}} </p>
+                <p>Formula => {{formula}} </p>
+                <p>Drug Part => {{drugPart}} </p>
+                <p>Color => {{color}} </p>
+                <p>Form => {{form}} </p>
+                <p>Smell => {{smell}} </p>
+                <p>Taste => {{taste}} </p>
+                <p>Usage => {{usage}} </p>
+                <p>Price => {{price}} </p>
+                <p>Dealer => {{dealer}} </p>
+                <p>Quantity =>
+
+                    <button class=" min" (click)="decrement()"><i class="fa fa-caret-down fa-1x" aria-hidden="true"></i></button>
+                    <input type="text" [(ngModel)]="counter">
+                    <button class=" plus" (click)="increment()"><i class="fa fa-caret-up fa-1x" aria-hidden="true"></i></button>
                 </p>
                 <button class="btn btn-primary" (click)="onAdd()">ADD TO CART</button>
             </div>
         </div>
     </div>
-
-
 </div>

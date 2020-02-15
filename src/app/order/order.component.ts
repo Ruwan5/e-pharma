@@ -12,7 +12,9 @@ export class OrderComponent implements OnInit {
 
   list: any;
 
-  constructor(private service: OrderService, private dialog: MatDialog) { }
+  constructor(private service: OrderService, private dialog: MatDialog) {
+    
+   }
 
   ngOnInit() {
     this.service.getdruglist().subscribe(res => {

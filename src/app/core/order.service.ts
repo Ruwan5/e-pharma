@@ -17,7 +17,14 @@ export class OrderService {
   test(){
     return this.afs.collection('drugs');
   }
-  addtocart(id: string) {
+  addtocart(id1: string, id2:string) {
+    return this.afs.collection('cart').doc(id1).collection('subcart').doc(id2);
+  }
+  viewcart(id: string){
     return this.afs.collection('cart').doc(id).collection('subcart');
+  }
+
+  getusername(id: string){
+    return this.afs.doc<any>('users/' + id).valueChanges();
   }
 }
