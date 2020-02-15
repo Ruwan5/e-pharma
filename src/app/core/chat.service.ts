@@ -19,17 +19,22 @@ export class ChatService {
 
   constructor(
     private db:AngularFirestore,
+    private afs: AngularFirestore,
     private afAuth:AngularFireAuthModule
    )
     {
       
      }
   sendMessage(msg:string){
-    
+    var user = firebase.auth().currentUser;
     const email='test@example.com';
     console.log(msg);
-    this.db.collection('messages').add({
-      msg
+    // console.log(user)
+    this.afs.collection('messages').add({
+      data:msg,
+       from:user.email,
+       time:new Date()
+
     });
 
     
@@ -45,11 +50,6 @@ export class ChatService {
   getAllUsers(){
     return this.db.collection('users').valueChanges();
   }
-  
-
-
-
-
  
 }
 ;

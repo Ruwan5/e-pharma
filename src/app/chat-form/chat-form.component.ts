@@ -19,7 +19,7 @@ export class ChatFormComponent implements OnInit {
        this.temp=[]=[]
        data.forEach(element => {
         
-         this.temp.push(element['msg']);
+         this.temp.push(element['data']);
        });
        console.log(this.temp)
      })

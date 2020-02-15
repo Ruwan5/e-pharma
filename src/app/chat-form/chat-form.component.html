@@ -3,7 +3,8 @@
        <div class='container'>
            <!-- display msgs  -->
            <div *ngFor="let item of temp;">
-            <p>{{item}}</p>
+               <!-- *ngIf="expression" -->
+               <p>{{item}}</p>
            </div>
 
        <div>
@@ -14,7 +15,7 @@
            (keydown)="handleSubmit($event)"
            />
         
-           <button class="chatButton" (click)="send()">Send</button>
+           <button class="chatButton " (click)="send()">Send</button>
        </div>
    </div>
    </div>
@@ -28,11 +29,7 @@
 
 
    
-         <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
-
-        <button type="button" class="btn btn-success" (click)="edit()">Edit</button> 
-    
-    
+         
 
      <!-- <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
         <img src="assets/logo.png" width="50" height="50" alt="">
