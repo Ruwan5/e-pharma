@@ -65,6 +65,7 @@ import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
+import { CartComponent } from './order/cart/cart.component';
 
 
 
@@ -101,6 +102,7 @@ import { ViewComponent } from './order/view/view.component';
     ExpiredDrugsComponent,
     OrderComponent,
     ViewComponent,
+    CartComponent,
     
     
     
