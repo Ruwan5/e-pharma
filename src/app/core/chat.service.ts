@@ -21,6 +21,8 @@ export class ChatService {
     private db:AngularFirestore,
     private afs: AngularFirestore,
     private afAuth:AngularFireAuthModule
+
+    
    )
     {
       

@@ -3,6 +3,11 @@ import { ChatService } from '../core/chat.service';
 import * as firstore from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+
+
+
 
 
 
@@ -21,10 +26,16 @@ export class ChatFormComponent implements OnInit {
   cuurusrname: string;
   temp1;
  temp2  : Array<string>;
+ 
+
+ alignRight:boolean = false;
 
   constructor(private chat:ChatService,
-    private afs: AngularFirestore, private authfire: AngularFireAuth
+    private afs: AngularFirestore,
+     private authfire: AngularFireAuth,
+     private toaster: ToastrService
     ) {
+      
       // var name = this.chat.getUserName();
       // this.currusremail = this.authfire.auth.currentUser.email;
       // console.log(this.currusremail)
@@ -62,7 +73,7 @@ export class ChatFormComponent implements OnInit {
        data.forEach(element => {
 
          this.temp.push(element['data']);
-       });
+       }); 
        
        console.log("temp ")
        console.log(this.temp)
@@ -83,9 +94,37 @@ export class ChatFormComponent implements OnInit {
     })
   }
    send(){
+    this.alignRight = true;
    this.chat.sendMessage(this.message);
   }
 
+  getCurrentuser(){
+    var user = firebase.auth().currentUser;
+    console.log('user');
+    var currusremail = user.email;
+    
+    //sender=true;
+  }
+
+  delete(id:string)
+  {
+    console.log(id)
+    this.toaster.success('Your massage has been removed successfully', null,{
+      timeOut:5000,
+        positionClass: 'toast-top-center',
+    });
+    this.afs.collection("messages").doc(id).delete().then(function () 
+    {
+      
+      
+      console.log("message removed successfully");
+      
+      
+    }).catch(function (error) {
+      console.error("error",error);
+    });
+    
+  }
   handleSubmit(event){
    if(event.keyCode==13){
       this.send();
