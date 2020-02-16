@@ -43,7 +43,7 @@
 
     <app-pharmacist-sidebar></app-pharmacist-sidebar>
     <div>
-        <h3>view cart</h3>
+        <h3>view Order</h3>
     </div>
     <div >
         <table class="table">
@@ -54,19 +54,15 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Total</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let a of list">
+            <tbody *ngFor="let a of list1">
                 <tr>
                     <td> #</td>
                     <td> {{a.brandName}} </td>
                     <td> {{a.quantity}} </td>
                     <td> {{a.price}} </td>
                     <td> {{a.unit_total}} </td>
-                    <td> <button (click)="edit_(a.id)"><i class="fa fa-edit" aria-hidden="true"></i></button> </td>
-                    <td> <button (click)="delete_(a.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
 
                 </tr>
 
@@ -78,7 +74,7 @@
             </tfoot>
         </table>
         <div class="buy">
-            <button class="btn btn-primary" (click) = "buy1()">Buy</button>
+            <!-- <button class="btn btn-primary">view</button> -->
         </div>
 
     </div>

@@ -32,6 +32,8 @@ import{FeedComponent} from './feed/feed.component';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
+import { ViewOrderComponent } from "./order/view-order/view-order.component";
+import { DealerOrderComponent } from "./order/dealer-order/dealer-order.component";
 
 
 
@@ -62,7 +64,9 @@ export const rootRouterConfig: Routes = [
   {path:'feed', component:FeedComponent},
   {path: 'expired-drugs', component:ExpiredDrugsComponent},
   {path: 'order', component:OrderComponent},
-  {path: 'cart', component:CartComponent}
+  {path: 'cart', component:CartComponent},
+  {path: 'view-order', component:ViewOrderComponent},
+  {path: 'dealer-order', component: DealerOrderComponent}
 
 
 

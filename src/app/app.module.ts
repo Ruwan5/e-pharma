@@ -66,6 +66,9 @@ import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
+import { ViewOrderComponent } from './order/view-order/view-order.component';
+import { FormComponent } from './order/cart/form/form.component';
+import { DealerOrderComponent } from './order/dealer-order/dealer-order.component';
 
 
 
@@ -103,6 +106,9 @@ import { CartComponent } from './order/cart/cart.component';
     OrderComponent,
     ViewComponent,
     CartComponent,
+    ViewOrderComponent,
+    FormComponent,
+    DealerOrderComponent,
     
     
     
@@ -129,6 +135,6 @@ import { CartComponent } from './order/cart/cart.component';
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent, ViewComponent]
+  entryComponents: [SelectPopupComponent, ViewComponent, FormComponent]
 })
 export class AppModule { }
