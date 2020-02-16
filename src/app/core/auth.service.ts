@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 
 
 
+
 @Injectable()
 export class AuthService {
 
@@ -22,7 +23,7 @@ export class AuthService {
    public router: Router,
    public userService: UserService,
    public firestore: AngularFirestore,
-   private toastr: ToastrService
+   private toastr: ToastrService,
  ){}
 
 
@@ -87,6 +88,8 @@ export class AuthService {
       }
     });
   }
+
+  
 
 
 }

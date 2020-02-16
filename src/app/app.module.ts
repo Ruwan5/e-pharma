@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
-
+import {DetailsResolver} from './show-drugs/details/detalis.resolver'
  
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -57,9 +57,6 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { FeedComponent } from './feed/feed.component';
-import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
@@ -70,6 +67,10 @@ import {MatInputModule} from '@angular/material/input';
 import { SupplierExpiredDrugsComponent } from './supplier-expired-drugs/supplier-expired-drugs.component';
 import { UpdateDamagedPopupComponent } from './update-damaged-popup/update-damaged-popup.component';
 import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve-popup/supplier-pending-resolve-popup.component';
+import { OrderComponent } from './order/order.component';
+import { ViewComponent } from './order/view/view.component';
+import { CartComponent } from './order/cart/cart.component';
+
 
 
 
@@ -99,14 +100,17 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
     PharmacyReportComponent,
     SelectPopupComponent,
     ChatFormComponent,
-    ChatroomComponent,
-    FeedComponent,
-    MassageComponent,
     ExpiredDrugsComponent,
     AddDamagedPopupComponent,
     SupplierExpiredDrugsComponent,
     UpdateDamagedPopupComponent,
     SupplierPendingResolvePopupComponent,
+    ExpiredDrugsComponent,
+    OrderComponent,
+    ViewComponent,
+    CartComponent,
+    
+
     
     
   ],
@@ -117,7 +121,7 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
     ToastrModule.forRoot({
@@ -137,8 +141,8 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
     
 
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent]
+  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,ViewComponent]
 })
 export class AppModule { }

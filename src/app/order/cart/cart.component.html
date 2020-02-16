@@ -1,0 +1,85 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light fixed">
+    <img src="assets/logo.png" width="50" height="50" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Pharmacist Dashboard<span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+
+
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link" href="#"><i class="icon-bell"></i><span
+                        class="badge badge-pill badge-danger">5</span></a>
+            </li>
+            <li class="nav-item d-md-down-none">
+                <a class="nav-link" href="#"><i class="icon ion-md-notifications"></i></a>
+            </li>
+            <li class="nav-item dropdown" dropdown placement="bottom right">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"
+                    aria-expanded="false" dropdownToggle (click)="false">
+                    <img src="../../assets/b.jpg" class="avatar" />
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right"
+                    id="navbarSupportedContent">
+
+                    <a class="dropdown-item" (click)="editUser()"><i class="fa fa-user"></i> Edit Profile</a>
+                    <a class="dropdown-item" (click)="loggedOut()" (click)="logout()"><i class="fa fa-lock"></i>
+                        Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="abc">
+
+    <app-pharmacist-sidebar></app-pharmacist-sidebar>
+    <div>
+        <h3>view cart</h3>
+    </div>
+    <div >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No of item</th>
+                    <th>Brand</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let a of list">
+                <tr>
+                    <td> #</td>
+                    <td> {{a.brandName}} </td>
+                    <td> {{a.quantity}} </td>
+                    <td> {{a.price}} </td>
+                    <td> {{a.unit_total}} </td>
+                    <td> <button (click)="edit_(a.id)"><i class="fa fa-edit" aria-hidden="true"></i></button> </td>
+                    <td> <button (click)="delete_(a.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
+
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <!-- <td>TOTAL AMOUNT</td> -->
+                </tr>
+            </tfoot>
+        </table>
+        <div class="buy">
+            <button class="btn btn-primary" (click) = "buy()">Buy</button>
+        </div>
+
+    </div>
+</div>

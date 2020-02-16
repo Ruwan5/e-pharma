@@ -25,12 +25,14 @@ import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-d
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
-import {ChatroomComponent} from './chatroom/chatroom.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import{MassageComponent} from './massage/massage.component';
-import{FeedComponent} from './feed/feed.component';
-import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import{SupplierExpiredDrugsComponent} from './supplier-expired-drugs/supplier-expired-drugs.component';
+
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { OrderComponent } from "./order/order.component";
+import { CartComponent } from './order/cart/cart.component';
+
+
 
 
 export const rootRouterConfig: Routes = [
@@ -54,12 +56,14 @@ export const rootRouterConfig: Routes = [
   { path: 'verify', component: VerifyComponent },
   { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
-  { path: 'chatroom', component: ChatroomComponent },
   { path: 'chat-form', component: ChatFormComponent },
-  {path:'message',component:MassageComponent},
-  {path:'feed', component:FeedComponent},
   {path: 'expired-drugs', component:ExpiredDrugsComponent},
-  {path: 'supplier-expired-drugs', component:SupplierExpiredDrugsComponent}
+  {path: 'supplier-expired-drugs', component:SupplierExpiredDrugsComponent},
+  {path: 'expired-drugs', component:ExpiredDrugsComponent},
+  {path: 'order', component:OrderComponent},
+  {path: 'cart', component:CartComponent}
+
+
 
 
 ];
