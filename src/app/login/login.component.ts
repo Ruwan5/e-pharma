@@ -45,11 +45,11 @@ export class LoginComponent{
     console.log(value.email)
     this.authService.doLogin(value)
     .then(res => {
-      // var emailChecked = this.userService.checkVerifyEmail();
-      // if (emailChecked == true) {
-          //  this.userService.isRegistered(value.email).then(registered =>{
-          //   console.log(registered)
-          //   if (registered == true) {
+      var emailChecked = this.userService.checkVerifyEmail();
+      if (emailChecked == true) {
+           this.userService.isRegistered(value.email).then(registered =>{
+            console.log(registered)
+            if (registered == true) {
               this.userService.getUserType().then(res => {
         
                 switch(res) {                                          //redirect to relevant dash baord
@@ -66,24 +66,24 @@ export class LoginComponent{
         
               });
               
+            }
+            // else{
+            //   this.toastr.warning('Your account is not verified yet. Account will be verified by the admin soon', 'Account verification failed!',{
+            //         timeOut:5000,
+            //           positionClass: 'toast-bottom-center',
+            //       });
             // }
-          //   // else{
-          //   //   this.toastr.warning('Your account is not verified yet. Account will be verified by the admin soon', 'Account verification failed!',{
-          //   //         timeOut:5000,
-          //   //           positionClass: 'toast-bottom-center',
-          //   //       });
-          //   // }
-          //  })
+           })
             
             
         
-      // }
-      // else {
-      //   this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
-      //     timeOut:3000,
-      //       positionClass: 'toast-bottom-center',
-      //   });
-      // } 
+      }
+      else {
+        this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
+          timeOut:3000,
+            positionClass: 'toast-bottom-center',
+        });
+      } 
       
     }, err => {
       this.errorMessage = err.message;
