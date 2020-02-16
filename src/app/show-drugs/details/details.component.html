@@ -194,17 +194,22 @@
                                     <p>{{this.price}}</p>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label><b><h5>Posted By:</h5></b></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{this.dealerName}}</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <button type="button" class="btn btn-primary" routerLink="/list-inventory">Back</button>
+                            <button type="button" class="btn btn-primary xyz" routerLink="/show-drugs">Back</button>
 
                             <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
 
-                            <button type="button" class="btn btn-success" (click)="editDrug()">Edit</button>
-                            <div>
-
-                            </div>
                         </div>
                     </div>
                 </div>

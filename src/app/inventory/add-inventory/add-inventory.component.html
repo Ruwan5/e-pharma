@@ -42,10 +42,10 @@
 
 <app-dealer-sidebar></app-dealer-sidebar>
 
-<div class="container-fluid" style="background-color:#CDCDCD;">
+<div class="container-fluid " style="background-color:#CDCDCD;">
 
     <br>
-    <div class="container ">
+    <div class="container abcd">
         <form [formGroup]="inventoryForm" (ngSubmit)="submitInventoryData()" novalidate>
 
             <div class="col-lg-5 col-md-12 col-sm-12">
@@ -128,6 +128,11 @@
                     <div class="col-md-12 mb-3">
                         <label>Expire Date</label>
                         <input type="date" formControlName="expire" class="form-control">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Drug id</label>
+                        <input type="text" formControlName="drugid" class="form-control">
                     </div>
 
                     <div class="col-md-12 mb-3">

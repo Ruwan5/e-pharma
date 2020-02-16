@@ -59,25 +59,6 @@ export class CrudService {
     })
   }
 
-  // getReleventDrugs(id){   
-
-  //   return new Promise<any>((resolve, reject) => {   // get the drugs that each user has been posted separatly
-  //     var afs = firebase.firestore();
-  //     afs.collection('drugs').where("userid", "==", id).get().then(function(querySnapshot){
-  //       querySnapshot.forEach(function(doc){
-  //         var data = doc.data();
-  //         // console.log(data)
-  //         var array:any = [];
-  //         console.log(data)
-  //         array.push(data)
-  //         console.log(array)
-        
-  //         resolve(array);
-  //       })
-  //     })
-  //   })
-   
-  // }
 
   getReleventDrugs(id){   
       return this.firestore.collection('drugs', ref=> ref.where("userid", "==", id)).snapshotChanges();
@@ -133,6 +114,13 @@ export class CrudService {
   updateDrug(value,userkey){
     this.firestore.collection('drugs').doc(userkey).update(value);
 
+  }
+
+  getDealerName(id){
+    console.log(id)
+    return this.firestore.collection('users').doc(id).valueChanges();
+
+    
   }
 
   

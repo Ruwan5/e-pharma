@@ -1,11 +1,12 @@
 export class expired_drugs_model {
     id: String;
-    global_id: String;
-    last_added: Date;
-    local_id: String;
-    name: String;
-    stock: number;
-    threshold : number;
-    unit_price : number;
+    drug_id: String;
+    pharmacy_id: Date;
+    qty: number;
+    remarks : String;
+    supplier_id: String;
+    supplier_name: String;
+    supplier_notify: String;
+    supplier_resolve : String;
     
 }

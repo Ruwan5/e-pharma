@@ -31,8 +31,9 @@ export class EditInventoryComponent implements OnInit {
     taste:  new FormControl(),
     usage:  new FormControl(),
     expire: new FormControl(),
+    drugid:  new FormControl(),
     price:  new FormControl(),
-    drugid: new FormControl()
+    userid: new FormControl()
     
 
   })
@@ -87,8 +88,9 @@ export class EditInventoryComponent implements OnInit {
       taste: [this.item.payload.data().taste, [Validators.required]],
       usage: [this.item.payload.data().usage, [Validators.required]],
       expire: [this.item.payload.data().expire, [Validators.required]],
+      drugid: [this.item.payload.data().drugid, [Validators.required]],
       price: [this.item.payload.data().price, [Validators.required]],
-      drugid: [this.item.id, [Validators.required]]
+      userid: [this.item.id, [Validators.required]]
     })
   }
 

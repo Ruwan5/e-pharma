@@ -35,6 +35,7 @@ export class AddInventoryComponent implements OnInit {
     taste: new FormControl(),
     usage: new FormControl(),
     expire: new FormControl(),
+    drugid: new FormControl(),
     price: new FormControl(),
     userid: new FormControl(),
   });
@@ -86,6 +87,7 @@ export class AddInventoryComponent implements OnInit {
     taste: [''],
     usage: [''],
     expire:[''],
+    drugid:[''],
     price: [''],
     userid: [this.item, Validators.required]
    
@@ -153,6 +155,10 @@ get usage() {
 
 get expire() {
   return this.inventoryForm.get('expire');
+}
+
+get drugid() {
+  return this.inventoryForm.get('drugid');
 }
 
 get price() {

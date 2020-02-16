@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChatroomComponent } from './chatroom.component';
+import { AddDamagedPopupComponent } from './add-damaged-popup.component';
 
-describe('ChatroomComponent', () => {
-  let component: ChatroomComponent;
-  let fixture: ComponentFixture<ChatroomComponent>;
+describe('AddDamagedPopupComponent', () => {
+  let component: AddDamagedPopupComponent;
+  let fixture: ComponentFixture<AddDamagedPopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatroomComponent ]
+      declarations: [ AddDamagedPopupComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatroomComponent);
+    fixture = TestBed.createComponent(AddDamagedPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

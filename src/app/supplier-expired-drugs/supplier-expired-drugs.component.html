@@ -1,4 +1,4 @@
-<!-- <nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-dark  bg-dark navbar-expand-lg navbar-light bg-light">
     <img src="assets/logo.png" width="50" height="50" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">My Chat<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Manage Expired/Damaged Drugs<span class="sr-only">(current)</span></a>
             </li>
 
         </ul>
@@ -25,8 +25,8 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
-                    <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div> -->
-                    <!-- <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
+                    <!-- <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div> -->
+                    <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
                     <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
@@ -42,18 +42,43 @@
 
 <app-dealer-sidebar></app-dealer-sidebar>
 
-<div class="container-fluid" style="background-color:#CDCDCD;"> -->
-<div class="mainContent">
+<br>
 
-     <!-- <div class="userListWrapper">
-    <app-user-list></app-user-list>
-</div>  -->
-     
-     <div #scroller class="feedWrapper">
-    <app-feed></app-feed>
-</div>
+<style>
+    .container_middle{
+  height: 200px;
+  width: 50%;
+  /* background-color: powderblue; */
+}
+</style>
 
-<div class="ChatFormWrapper">
-    <app-chat-form></app-chat-form>
-</div>
-</div>
+
+
+<div class="container_middle" style="margin-left: 230px; width: auto;">
+  
+<button class="btn btn-warning" (click)="view()" style="margin:5px;">View Pending Resolves</button> 
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>a</th>
+        <th>Drug Id</th>
+        <th>Quantity</th>
+        <th>Supplier</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor = "let item of list">
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.drug_id}}</td>
+        <td>{{item.qty}}</td>
+        <td>{{item.supplier_name}}</td>
+        <td> 
+            <button class="btn btn-primary"(click)="mark(item.id)"style="margin:5px;">Resolve</button >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>  

@@ -95,6 +95,10 @@
     position: static;
 }
 
+.abcd {
+    margin-left: 240px;
+}
+
 
 /* .navbar {
     position: fixed !important;

@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
-
+import {DetailsResolver} from './show-drugs/details/detalis.resolver'
  
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -57,18 +57,23 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { FeedComponent } from './feed/feed.component';
-import { MassageComponent } from './massage/massage.component';
-
+import {DetailsComponent} from './show-drugs/details/details.component'
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { AddDamagedPopupComponent } from './add-damaged-popup/add-damaged-popup.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { SupplierExpiredDrugsComponent } from './supplier-expired-drugs/supplier-expired-drugs.component';
+import { UpdateDamagedPopupComponent } from './update-damaged-popup/update-damaged-popup.component';
+import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve-popup/supplier-pending-resolve-popup.component';
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
 import { ViewOrderComponent } from './order/view-order/view-order.component';
 import { FormComponent } from './order/cart/form/form.component';
 import { DealerOrderComponent } from './order/dealer-order/dealer-order.component';
+import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
 
 
 
@@ -99,9 +104,11 @@ import { DealerOrderComponent } from './order/dealer-order/dealer-order.componen
     PharmacyReportComponent,
     SelectPopupComponent,
     ChatFormComponent,
-    ChatroomComponent,
-    FeedComponent,
-    MassageComponent,
+    ExpiredDrugsComponent,
+    AddDamagedPopupComponent,
+    SupplierExpiredDrugsComponent,
+    UpdateDamagedPopupComponent,
+    SupplierPendingResolvePopupComponent,
     ExpiredDrugsComponent,
     OrderComponent,
     ViewComponent,
@@ -109,12 +116,17 @@ import { DealerOrderComponent } from './order/dealer-order/dealer-order.componen
     ViewOrderComponent,
     FormComponent,
     DealerOrderComponent,
+    DetailsComponent,
+    PendingResolvePharmacyDetailsPopupComponent
     
+
     
     
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
@@ -127,14 +139,19 @@ import { DealerOrderComponent } from './order/dealer-order/dealer-order.componen
       preventDuplicates: true,
     }), // ToastrModule added
     AngularFireDatabaseModule,
-    FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
+  
+    
+
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent, ViewComponent, FormComponent]
+  entryComponents: [SelectPopupComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
 })
 export class AppModule { }

@@ -268,7 +268,7 @@ export class AdminComponent implements OnInit {
 
       if (this.TotUnregisteredUsers > 0 ) {       // unregistered users notification
         this.toastr.warning(  'Please verify the unregistered users.', this.TotUnregisteredUsers + ' Unregistered Users Available!',{   
-          disableTimeOut:true	, 
+          timeOut: 10000, 
           closeButton: true,
           positionClass: 'toast-bottom-right',
         });
@@ -318,8 +318,8 @@ export class AdminComponent implements OnInit {
   logout(){
     this.authService.doLogout()
     .then((res) => {
-      // this.router.navigate(['/login']);
-      this.location.back();
+      this.router.navigate(['/login']);
+      // this.location.back();
     }, (error) => {
       console.log("Logout error", error);
     });
