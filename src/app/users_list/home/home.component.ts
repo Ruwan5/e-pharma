@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../firebase.service'
 import { Router, Params } from '@angular/router';
-import { from } from 'rxjs';
 import { Users } from '../../core/user.model';
 import {ShowUserComponent} from '../show-user/show-user.component'
 import { resolve } from 'url';
@@ -11,6 +10,11 @@ import { Location } from '@angular/common';
 import { FirebaseUserModel } from '../../core/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable, Subject, combineLatest  } from 'rxjs';
+
+
+
+
 
 
 @Component({
@@ -21,9 +25,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class HomeComponent implements OnInit {
 
    items: Array<any>;
-   searchValue: string = "";
+   searchitem;
+   searchterm: string;
    results: any;
    user: FirebaseUserModel = new FirebaseUserModel();
+
+   startAt = new Subject();
+   endAt = new Subject();
+
+   startobs = this.startAt.asObservable();
+   endobs = this.endAt.asObservable();
 
   constructor(
     public firebaseService: FirebaseService,
@@ -33,12 +44,11 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private afs: AngularFirestore
 
-  ) { }
+  ) {  }
 
   ngOnInit() {
     this.getData();
-
-    this.route.data.subscribe(routeData => {
+        this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
         this.user = data;
@@ -46,6 +56,7 @@ export class HomeComponent implements OnInit {
         
       }
     })
+    
   }
 
   viewDetails(item){
@@ -58,28 +69,32 @@ export class HomeComponent implements OnInit {
       this.items = result;
       console.log(result);
     })
+    
+      combineLatest(this.startobs, this.endobs).subscribe((value) =>{
+      this.firequery(value[0], value[1]).subscribe((results) =>{
+        this.searchitem = results;
+        console.log(this.searchitem)
+      })
+    })
+    
   }
 
+  search($event){
+    let q = $event.target.value;
+    console.log(q)
+    if(q != ''){
+      this.startAt.next(q);
+      this.endAt.next(q + "\uf8ff");
+    }
+    else {
+      this.searchitem = this.items;
+    }
+  }
+
+  firequery(start, end) {
+    return this.afs.collection('users', ref => ref.limit(4).orderBy('FirstName').startAt(start).endAt(end)).valueChanges();
+  }
   
-
-  // searchByName(){
-  //   let value = this.searchValue.toLowerCase();
-  //   this.firebaseService.searchUsers(value)
-  //   .subscribe(result => {
-  //     this.name_filtered_items = result;
-  //   })
-  // }
-
-  search(){    //search users 
-    let self = this;
-    self.results = self.afs.collection('users', ref => ref
-    .orderBy("FirstName")
-    .startAt(self.searchValue.toLowerCase())
-    .endAt(self.searchValue.toLowerCase()+"\uf8ff")
-    .limit(10))
-    .valueChanges();
-    console.log(self.results)
-  }
 
 
   logout(){

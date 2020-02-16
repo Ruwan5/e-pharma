@@ -34,6 +34,7 @@ export class AddInventoryComponent implements OnInit {
     smell: new FormControl(),
     taste: new FormControl(),
     usage: new FormControl(),
+    expire: new FormControl(),
     price: new FormControl(),
     userid: new FormControl(),
   });
@@ -84,13 +85,14 @@ export class AddInventoryComponent implements OnInit {
     smell: [''],
     taste: [''],
     usage: [''],
+    expire:[''],
     price: [''],
     userid: [this.item, Validators.required]
    
   })  
 }
 
-// Accessing form control using getters
+//Accessing form control using getters
 get brandName() {
   return this.inventoryForm.get('brandName');
 }
@@ -147,6 +149,14 @@ get taste() {
 
 get usage() {
   return this.inventoryForm.get('usage');
+}
+
+get expire() {
+  return this.inventoryForm.get('expire');
+}
+
+get price() {
+  return this.inventoryForm.get('price');
 }
 
 get userId() {

@@ -12,6 +12,7 @@ import { reject } from 'q';
 export class UserService{
   uid: any
   userdata: Array<any>;
+  LoggedInID:any; //sajith-to pass the id to other components
 
   
 
@@ -86,9 +87,16 @@ isLoggedIn() {   // if user logged in... loggedIn = true
   
     this.getCurrentUserId().then(id => {
       console.log(id)
+      this.LoggedInID = id;
+      localStorage.setItem('uid',id);
       this.firestore.collection('users').doc(id).update({loggedIn: "True"});
     })
+
+    
 }
+
+
+
 
 
 isLoggedOut(userEmail) {   // if user logged out... loggedIn = false
@@ -157,7 +165,6 @@ updateCurrentUser(value){
     console.log(value.password);
     return new Promise<any>((resolve, reject) => {
       var user = firebase.auth().currentUser;
-      user.updateEmail(value.email).then(function(){});
       user.updatePassword(value.password).then(function(){});
 
       user.updateProfile({

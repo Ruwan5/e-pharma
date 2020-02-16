@@ -22,6 +22,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './users_list/home/home.component';
 import { ShowUserComponent } from './users_list/show-user/show-user.component';
+import { MatDialogModule } from "@angular/material";
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -52,9 +53,16 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
+import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
+import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
+
 import { ChatFormComponent } from './chat-form/chat-form.component';
 
 import { ChatService } from './core/chat.service';
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { OrderComponent } from './order/order.component';
+import { ViewComponent } from './order/view/view.component';
+import { CartComponent } from './order/cart/cart.component';
 
 
 
@@ -82,7 +90,18 @@ import { ChatService } from './core/chat.service';
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
+    PharmacyReportComponent,
+    SelectPopupComponent,
     ChatFormComponent,
+    ChatroomComponent,
+    FeedComponent,
+    MassageComponent,
+    ExpiredDrugsComponent,
+    OrderComponent,
+    ViewComponent,
+    CartComponent,
+    
+
     
     
   ],
@@ -91,7 +110,7 @@ import { ChatService } from './core/chat.service';
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     // AngularFireDatabase
     ToastrModule.forRoot({
@@ -103,9 +122,11 @@ import { ChatService } from './core/chat.service';
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SelectPopupComponent, ViewComponent]
 })
 export class AppModule { }
