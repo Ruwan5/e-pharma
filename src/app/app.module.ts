@@ -70,6 +70,7 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -137,8 +138,9 @@ import { CartComponent } from './order/cart/cart.component';
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
-  
+    MatInputModule,
+    ChartsModule
+    
     
 
   ],
