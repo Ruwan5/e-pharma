@@ -12,12 +12,7 @@
         </ul>
 
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-            </li>
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#"><i class="icon ion-md-notifications"></i></a>
-            </li>
+
             <li class="nav-item dropdown" dropdown placement="bottom right">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
                     <img src="../../assets/b.jpg" class="avatar" />
@@ -39,42 +34,41 @@
 <br>
 
 <style>
-    .container_middle{
-  height: 200px;
-  width: 50%;
-  /* background-color: powderblue; */
-}
+    .container_middle {
+        height: 200px;
+        width: 50%;
+        /* background-color: powderblue; */
+    }
 </style>
 
 
 
 <div class="container_middle" style="margin-left: 230px; width: auto;">
-  <button class="btn btn-primary" (click)="view()" style="margin-bottom: 20px; margin-top: 20px;">Add New</button>
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>a</th>
-        <th>Drug Id</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Supplier</th>
-        <th>Remarks</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngFor = "let item of list">
-      <tr>
-        <td>{{item.id}}</td>
-        <td>{{item.drug_id}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.qty}}</td>
-        <td>{{item.supplier_name}}</td>
-        <td>{{item.remarks}}</td>
-        <td><button class="btn btn-danger" (click)="update(item.id)" style="margin:5px;">Edit</button> 
-            <button class="btn btn-primary" (click)="delete(item.id)" style="margin:5px;">Resolve</button >
+    <button class="btn btn-primary" (click)="view()" style="margin-bottom: 20px; margin-top: 20px;">Add New</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>a</th>
+                <th>Drug Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Supplier</th>
+                <th>Remarks</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of list">
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.drug_id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.supplier_name}}</td>
+                <td>{{item.remarks}}</td>
+                <td><button class="btn btn-danger" (click)="update(item.id)" style="margin:5px;">Edit</button>
+                    <button class="btn btn-primary" (click)="delete(item.id)" style="margin:5px;">Resolve</button >
         </td>
       </tr>
     </tbody>
   </table>
-</div>  
-
+</div>

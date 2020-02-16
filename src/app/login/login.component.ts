@@ -67,12 +67,12 @@ export class LoginComponent{
               });
               
             }
-            // else{
-            //   this.toastr.warning('Your account is not verified yet. Account will be verified by the admin soon', 'Account verification failed!',{
-            //         timeOut:5000,
-            //           positionClass: 'toast-bottom-center',
-            //       });
-            // }
+            else{
+              this.toastr.warning('Your account is not verified yet. Account will be verified by the admin soon', 'Account verification failed!',{
+                    timeOut:5000,
+                      positionClass: 'toast-bottom-center',
+                  });
+            }
            })
             
             
