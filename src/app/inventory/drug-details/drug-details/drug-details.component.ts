@@ -28,6 +28,7 @@ export class DrugDetailsComponent implements OnInit {
     taste: any
     usage: any
     expire: any
+    drugid: any
     price: any
     id:any
     
@@ -60,6 +61,7 @@ export class DrugDetailsComponent implements OnInit {
         this.taste = data.payload.data().taste;
         this.usage = data.payload.data().usage;
         this.expire = data.payload.data().expire;
+        this.drugid = data.payload.data().drugid;
         this.price = data.payload.data().price;
         this.id = data.payload.id;
         

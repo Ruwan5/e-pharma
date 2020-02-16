@@ -63,6 +63,8 @@ import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { ChartsModule } from 'ng2-charts';
+import {SearchService} from './users_list/search.service'
 
 
 
@@ -119,9 +121,10 @@ import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    ChartsModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,SearchService ],
   bootstrap: [AppComponent],
   entryComponents: [SelectPopupComponent]
 })

@@ -72,25 +72,25 @@
                     }
                 </style>
                 <br>
-                <form>
-                    <input type="text" [(ngModel)]="searchterm" (keydown)="search($event)" name="search" placeholder="Search..">
-                </form>
+
+                <input type="text" #searchInput (keyup)="search(searchInput.value)" name="search" placeholder="Search.." class="input" />
+
 
 
                 <br>
                 <div class="list-group users-list">
-                    <div *ngFor="let item of searchitem" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div *ngFor="let item of movies$ | async" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="row">
                             <div class="col col-md-2 image-col">
-                                <img class="image" [src]="item.payload.doc.data().Photo">
+                                <!-- <img class="image" [src]="item.payload.doc.data().Photo"> -->
                             </div>
                             <div class="col col-md-8 text-col">
-                                <h5 class="mb-1">{{item.payload.doc.data().FirstName}} {{item.payload.doc.data().LastName}}</h5>
-                                <small>User type: {{item.payload.doc.data().UserType}}</small>
+                                <h5 class="mb-1">{{item?.FirstName}} {{item?.LastName}}</h5>
+                                <small>User type: {{item?.UserType}}</small>
                             </div>
 
                             <div class="col col-md-2 actions-col">
-                                <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+                                <button class="btn btn-outline-primary action" (click)="viewDetails(item?.id)" type="button">
                                                                 <i class="icon ion-md-person"></i>
                                                         </button>
 
@@ -99,8 +99,8 @@
                         </div>
 
                     </div>
-                    <div *ngIf="searchterm?.length < 1">
-                        Sorry, no name found..
+                    <div *ngIf="(movies$ | async)?.length < 1">
+                        Sorry, results found..
                     </div>
                 </div>
             </div>

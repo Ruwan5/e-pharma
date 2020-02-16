@@ -49,56 +49,47 @@
 
 
 
-<div class ="container">
-    
-      <div class="container-fluid">
+<div class="container">
+
+    <div class="container-fluid">
         <form #resumeForm="ngForm">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="shadow-sm card">
-                <div class="card-body">
-                  <h4 class="card-title d-flex align-items-center">
-                    <i class="material-icons">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="shadow-sm card">
+                        <div class="card-body">
+                            <h4 class="card-title d-flex align-items-center">
+                                <i class="material-icons">
                       account_circle
-                    </i>
-                    Recipt</h4>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="resume.name" name="name" placeholder="Name"
-                          #Name="ngModel" required
-                          [ngClass]="{'is-invalid': Name.invalid && (Name.touched || resumeForm.submitted) }">
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group">
-                          <textarea class="form-control" [(ngModel)]="resume.address" name="address" rows="3"
-                            placeholder="Address" #Address="ngModel" required
-                            [ngClass]="{'is-invalid': Address.invalid && (Address.touched || resumeForm.submitted) }"></textarea>
+                    </i> Recipt
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="resume.name" name="name" placeholder="Name" #Name="ngModel" required [ngClass]="{'is-invalid': Name.invalid && (Name.touched || resumeForm.submitted) }">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <textarea class="form-control" [(ngModel)]="resume.address" name="address" rows="3" placeholder="Address" #Address="ngModel" required [ngClass]="{'is-invalid': Address.invalid && (Address.touched || resumeForm.submitted) }"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo" placeholder="Contact No." #ContactNo="ngModel" required [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || resumeForm.submitted) }">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId" placeholder="Email ID" #Email="ngModel" required [ngClass]="{'is-invalid': Email.invalid && (Email.touched || resumeForm.submitted) }">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="resume.socialProfile" name="socialProfile" placeholder="Social Profile ">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
-                          placeholder="Contact No." #ContactNo="ngModel" required
-                          [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || resumeForm.submitted) }">
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId"
-                          placeholder="Email ID" #Email="ngModel" required
-                          [ngClass]="{'is-invalid': Email.invalid && (Email.touched || resumeForm.submitted) }">
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="resume.socialProfile" name="socialProfile"
-                          placeholder="Social Profile ">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-      
-              <!-- Skills -->
-              <!-- <div class="shadow-sm card">
+
+                    <!-- Skills -->
+                    <!-- <div class="shadow-sm card">
                 <div class="card-body">
                   <div class="d-flex justify-content-between card-title">
                     <h4 class="d-flex align-items-center">
@@ -119,9 +110,9 @@
                   </div>
                 </div>
               </div> -->
-      
-      
-              <!-- Experience
+
+
+                    <!-- Experience
               <div class="shadow-sm card">
                 <div class="card-body">
                   <div class="d-flex justify-content-between card-title">
@@ -162,8 +153,8 @@
       
                 </div>
               </div> -->
-      
-              <!-- Education
+
+                    <!-- Education
               <div class="shadow-sm card" style="margin-left: 25px;">
                 <div class="card-body">
                   <div class="d-flex justify-content-between card-title">
@@ -268,30 +259,30 @@
           </div>
         </form>
       </div> -->
-      <div style="overflow-x:auto;"> 
-        <div class="card-body">
-      <div class="offset-1">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>a</th>
-              <th>b</th>
-              <th>c</th>
-              <th>view</th>
-            </tr>
-          </thead>
-          <tbody *ngFor = "let item of list">
-            <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.local_id}}</td>
-              <td><button class="btn btn-primary" (click)="view(item.id)">view</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
-      </div>
+                    <div style="overflow-x:auto;">
+                        <div class="card-body">
+                            <div class="offset-1">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>a</th>
+                                            <th>b</th>
+                                            <th>c</th>
+                                            <th>view</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let item of list">
+                                        <tr>
+                                            <td>{{item.id}}</td>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.local_id}}</td>
+                                            <td><button class="btn btn-primary" (click)="view(item.id)">view</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
 
-</div>
+                </div>

@@ -268,7 +268,7 @@ export class AdminComponent implements OnInit {
 
       if (this.TotUnregisteredUsers > 0 ) {       // unregistered users notification
         this.toastr.warning(  'Please verify the unregistered users.', this.TotUnregisteredUsers + ' Unregistered Users Available!',{   
-          disableTimeOut:true	, 
+          timeOut: 10000, 
           closeButton: true,
           positionClass: 'toast-bottom-right',
         });

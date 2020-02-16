@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 import { FirebaseUserModel } from '../../core/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, Subject, combineLatest  } from 'rxjs';
-
+import { Observable, Subject, combineLatest, BehaviorSubject  } from 'rxjs';
+import {SearchService} from '../../users_list/search.service'
 
 
 
@@ -24,17 +24,21 @@ import { Observable, Subject, combineLatest  } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
+  
    items: Array<any>;
    searchitem;
    searchterm: string;
    results: any;
    user: FirebaseUserModel = new FirebaseUserModel();
 
-   startAt = new Subject();
-   endAt = new Subject();
+   movies$: Observable<any[]>;
+    startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
 
-   startobs = this.startAt.asObservable();
-   endobs = this.endAt.asObservable();
+  //  startAt = new Subject();
+  //  endAt = new Subject();
+
+  //  startobs = this.startAt.asObservable();
+  //  endobs = this.endAt.asObservable();
 
   constructor(
     public firebaseService: FirebaseService,
@@ -42,12 +46,17 @@ export class HomeComponent implements OnInit {
     public authService: AuthService,
     private location : Location,
     private route: ActivatedRoute,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private search: SearchService
 
   ) {  }
 
   ngOnInit() {
-    this.getData();
+    // this.movies$ = this.firebaseService.getUsers()
+    this.movies$ = this.search.getData(this.startAt)
+    console.log(this.movies$)
+
+
         this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
@@ -59,8 +68,13 @@ export class HomeComponent implements OnInit {
     
   }
 
-  viewDetails(item){
-    this.router.navigate(['/show_user/'+ item.payload.doc.id]);
+  Search(searchText) {
+    this.startAt.next(searchText);
+  }
+
+  viewDetails(id){
+    console.log(id)
+    this.router.navigate(['/show_user/'+ id]);
   }
 
   getData(){
@@ -70,30 +84,30 @@ export class HomeComponent implements OnInit {
       console.log(result);
     })
     
-      combineLatest(this.startobs, this.endobs).subscribe((value) =>{
-      this.firequery(value[0], value[1]).subscribe((results) =>{
-        this.searchitem = results;
-        console.log(this.searchitem)
-      })
-    })
+    //   combineLatest(this.startobs, this.endobs).subscribe((value) =>{
+    //   this.firequery(value[0], value[1]).subscribe((results) =>{
+    //     this.searchitem = results;
+    //     console.log(this.searchitem)
+    //   })
+    // })
     
   }
 
-  search($event){
-    let q = $event.target.value;
-    console.log(q)
-    if(q != ''){
-      this.startAt.next(q);
-      this.endAt.next(q + "\uf8ff");
-    }
-    else {
-      this.searchitem = this.items;
-    }
-  }
+  // search($event){
+  //   let q = $event.target.value;
+  //   console.log(q)
+  //   if(q != ''){
+  //     this.startAt.next(q);
+  //     this.endAt.next(q + "\uf8ff");
+  //   }
+  //   else {
+  //     this.searchitem = this.items;
+  //   }
+  // }
 
-  firequery(start, end) {
-    return this.afs.collection('users', ref => ref.limit(4).orderBy('FirstName').startAt(start).endAt(end)).valueChanges();
-  }
+  // firequery(start, end) {
+  //   return this.afs.collection('users', ref => ref.limit(4).orderBy('FirstName').startAt(start).endAt(end)).valueChanges();
+  // }
   
 
 
