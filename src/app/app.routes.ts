@@ -26,10 +26,11 @@ import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-d
 import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 import { ChatFormComponent } from './chat-form/chat-form.component';
-
+import {DetailsComponent} from '../app/show-drugs/details/details.component'
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
+import {DetailsResolver} from './show-drugs/details/detalis.resolver'
 
 
 
@@ -55,7 +56,7 @@ export const rootRouterConfig: Routes = [
   { path: 'verify', component: VerifyComponent },
   { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
- 
+  { path: 'details/:id', component:DetailsComponent, resolve:{data : DetailsResolver},},
   { path: 'chat-form', component: ChatFormComponent },
   {path: 'expired-drugs', component:ExpiredDrugsComponent},
   {path: 'order', component:OrderComponent},
