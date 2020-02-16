@@ -15,59 +15,71 @@ import { ChatMessage } from '../models/chat-message.model';
   providedIn: 'root'
 })
 export class ChatService {
-  //  user:any;
-  //  chatMessages:FirebaseListObservable<ChatMessage[]>;
-  //  chatMessage:ChatMessage;
-  //  userName:Observable<string>;
-
+   uid:string
 
   constructor(
     private db:AngularFirestore,
+    private afs: AngularFirestore,
     private afAuth:AngularFireAuthModule
+
+    
    )
     {
-      // this.afAuth.authState.subcribe(auth=>{
-      //   if(auth!==undefined && auth !==null){
-      //     this.user=auth;
-      //   }
-      // });
+      
      }
   sendMessage(msg:string){
-    // const timestamp=this.getTimeStamp();
-    //const email=this.user.email;
-    const email='test@example.com';
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    
     console.log(msg);
-    this.db.collection('chat').add({msg});
+    // console.log(user)
+    this.afs.collection('messages').add({
+      data:msg,
+       from:user.email,
+       time:new Date()
 
-    // this.chatMessages=this.getMessages();
-    // this.chatMessages.push({
-    //   message:msg,
-    //   timeSent:timestamp,
-    //   //userName: this.userName,
-    //   userName: 'test-user',
-    //   email: email});
+    });
+
+    
 
     console.log('Called sendMessage()!');
 
   }
    
   getMessages(){
-    return this.db.collection('chat').valueChanges();
+    return this.db.collection('messages').valueChanges();
   }
+
+  getAllUsers(){
+    return this.db.collection('users').valueChanges();
+  }
+
   
-
-
-
-
-  // getTimeStamp(){
-  //   const now=new Date();
-  //   const date= now.getUTCFullYear() + '/' +
-  //               (now.getUTCMonth() + 1)+ '/' +
-  //               now.getUTCDate();
-  //   const time= now.getUTCHours() + ':' +
-  //               now.getUTCMinutes() + '/' +
-  //               now.getUTCSeconds();  
-    
-  //   return (date + ' '+time);
-  // }
+  
+  getUserName() {
+    return new Promise<void>((resolve, reject) => {
+    var db = firebase.firestore();
+    var user = firebase.auth().currentUser;
+    var userEmail = user.email;
+    db.collection("users").where("email", "==", userEmail)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc){
+        console.log(doc.id, " => ", doc.data());
+        var data = doc.data();
+        if(data.UserType){
+          resolve(data.FirstName);
+        } else {
+          reject("Error!!!");
+        }
+       
+      });
+    }).catch(function(error) {
+      console.log("Error getting documents: ", error);
+    });
+    })
+      
+  }
+ 
 }
+;

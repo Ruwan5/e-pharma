@@ -57,9 +57,6 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { FeedComponent } from './feed/feed.component';
-import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
@@ -104,6 +101,7 @@ import { CartComponent } from './order/cart/cart.component';
     ViewComponent,
     CartComponent,
     
+
     
     
   ],
