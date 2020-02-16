@@ -57,15 +57,12 @@ import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.compo
 import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
 
 import { ChatFormComponent } from './chat-form/chat-form.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { FeedComponent } from './feed/feed.component';
-import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
-import { ChartsModule } from 'ng2-charts';
-import {SearchService} from './users_list/search.service';
-import { DetailsComponent } from './show-drugs/details/details.component'
+import { OrderComponent } from './order/order.component';
+import { ViewComponent } from './order/view/view.component';
+import { CartComponent } from './order/cart/cart.component';
 
 
 
@@ -96,12 +93,12 @@ import { DetailsComponent } from './show-drugs/details/details.component'
     PharmacyReportComponent,
     SelectPopupComponent,
     ChatFormComponent,
-    ChatroomComponent,
-    FeedComponent,
-    MassageComponent,
     ExpiredDrugsComponent,
-    DetailsComponent,
+    OrderComponent,
+    ViewComponent,
+    CartComponent,
     
+
     
     
   ],
@@ -124,10 +121,10 @@ import { DetailsComponent } from './show-drugs/details/details.component'
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule,
     MatDialogModule,
-    ChartsModule
+    // ChartsModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,SearchService,DetailsResolver ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent]
+  entryComponents: [SelectPopupComponent, ViewComponent]
 })
 export class AppModule { }
