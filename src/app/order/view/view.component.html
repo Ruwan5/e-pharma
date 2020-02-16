@@ -24,13 +24,18 @@
                 <p>Usage => {{usage}} </p>
                 <p>Price => {{price}} </p>
                 <p>Dealer => {{dealer}} </p>
-                <p>Quantity =>
+                Quantity =>
 
-                    <button class=" min" (click)="decrement()"><i class="fa fa-caret-down fa-1x" aria-hidden="true"></i></button>
-                    <input type="text" [(ngModel)]="counter">
-                    <button class=" plus" (click)="increment()"><i class="fa fa-caret-up fa-1x" aria-hidden="true"></i></button>
+                    <button class=" min" (click)="decrement()"><i class="fa fa-caret-down fa-1x"
+                            aria-hidden="true"></i></button>
+                    <input maxlength="4" size="4" type="text" [(ngModel)]="counter">
+                    <button class=" plus" (click)="increment()"><i class="fa fa-caret-up fa-1x"
+                            aria-hidden="true"></i></button>
+                    <br>
+                
+                <p>
+                    <button class="btn btn-primary ab" (click)="onAdd()">ADD TO CART</button>
                 </p>
-                <button class="btn btn-primary" (click)="onAdd()">ADD TO CART</button>
             </div>
         </div>
     </div>

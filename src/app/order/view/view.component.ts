@@ -78,30 +78,37 @@ export class ViewComponent implements OnInit {
 
 
   onAdd() {
-    this.service.addtocart(this.uid, this.id).set({
-      'brandName': this.brandName,
-      'actIngreName': this.actIngreName,
-      'excipientName': this.excipientName,
-      'actIngreOtherName': this.actIngreOtherName,
-      'actIngreShortName': this.actIngreShortName,
-      'number': this.number,
-      'unit': this.unit,
-      'formula': this.formula,
-      'drugPart': this.drugPart,
-      'color': this.color,
-      'form': this.form,
-      'smell': this.smell,
-      'taste': this.taste,
-      'usage': this.usage,
-      'price': this.price,
-      'userid': this.userid,
-      'quantity': this.counterValue,
-      'unit_total': this.unitTot(),
-    }).then(_ => {
-      alert("inserted");
-    });
-    console.log(this.counterValue)
-    this.onClose();
+    if (this.counterValue>0) {
+      this.service.addtocart(this.uid, this.id).set({
+        'brandName': this.brandName,
+        'actIngreName': this.actIngreName,
+        'excipientName': this.excipientName,
+        'actIngreOtherName': this.actIngreOtherName,
+        'actIngreShortName': this.actIngreShortName,
+        'number': this.number,
+        'unit': this.unit,
+        'formula': this.formula,
+        'drugPart': this.drugPart,
+        'color': this.color,
+        'form': this.form,
+        'smell': this.smell,
+        'taste': this.taste,
+        'usage': this.usage,
+        'price': this.price,
+        'userid': this.userid,
+        'quantity': this.counterValue,
+        'unit_total': this.unitTot(),
+      }).then(_ => {
+        alert("inserted");
+      });
+      console.log(this.counterValue)
+      this.onClose();
+    } else {
+      console.error();
+      alert("Enter Quantity");
+      
+    }
+    
   }
   counterValue = 0;
 

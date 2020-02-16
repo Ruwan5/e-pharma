@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
   view(id: string) {
     const dialogconfig = new MatDialogConfig;
     dialogconfig.height = "80%";
-    dialogconfig.width = "60%";
+    dialogconfig.width = "40%";
     dialogconfig.data = {
       id: id
     }
