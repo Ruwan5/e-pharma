@@ -1,0 +1,38 @@
+<div>
+  <div class="d-flex justify-content-between">
+    <p>Submit a damage item</p>
+    <button class="btn btn-danger" (click)="onClose()"><i class="fa fa-close" aria-hidden="true"></i></button>
+  </div>
+</div>
+<form [formGroup]="form">
+  <div class="parent" style="text-align: center;">
+    <mat-form-field appearance="fill">
+      <mat-label>Drug ID</mat-label>
+      <input matInput placeholder="Drug ID" formControlName="drugId">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Quantity</mat-label>
+      <input type="number" matInput placeholder="Quantity" formControlName="quantity">
+    </mat-form-field>
+    <br>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+        <mat-select>
+            <mat-option value="option">Option</mat-option>
+        </mat-select>
+    </mat-form-field>  -->
+    
+        <mat-form-field appearance="fill">
+        <mat-label>Remarks</mat-label>
+        <textarea matInput placeholder="Add some notes here" formControlName="remarks"></textarea>
+        </mat-form-field>
+        
+        <div class="row">
+
+        <button class="btn btn-primary" style="margin-right: 10px;"(click) = "submit()">Submit</button>
+        <button class="btn btn-danger">Cancel</button>
+
+      </div>
+  </div>
+</form>

@@ -62,7 +62,14 @@ import { FeedComponent } from './feed/feed.component';
 import { MassageComponent } from './massage/massage.component';
 
 import { ChatService } from './core/chat.service';
-
+import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import { AddDamagedPopupComponent } from './add-damaged-popup/add-damaged-popup.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { SupplierExpiredDrugsComponent } from './supplier-expired-drugs/supplier-expired-drugs.component';
+import { UpdateDamagedPopupComponent } from './update-damaged-popup/update-damaged-popup.component';
+import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve-popup/supplier-pending-resolve-popup.component';
 
 
 
@@ -95,11 +102,18 @@ import { ChatService } from './core/chat.service';
     ChatroomComponent,
     FeedComponent,
     MassageComponent,
+    ExpiredDrugsComponent,
+    AddDamagedPopupComponent,
+    SupplierExpiredDrugsComponent,
+    UpdateDamagedPopupComponent,
+    SupplierPendingResolvePopupComponent,
     
     
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
@@ -112,14 +126,19 @@ import { ChatService } from './core/chat.service';
       preventDuplicates: true,
     }), // ToastrModule added
     AngularFireDatabaseModule,
-    FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,  // Include it in imports array
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
+  
+    
+
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent]
+  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent]
 })
 export class AppModule { }
