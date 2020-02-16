@@ -70,6 +70,7 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
+import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
 
 
 
@@ -109,7 +110,8 @@ import { CartComponent } from './order/cart/cart.component';
     OrderComponent,
     ViewComponent,
     CartComponent,
-    DetailsComponent
+    DetailsComponent,
+    PendingResolvePharmacyDetailsPopupComponent
     
 
     
@@ -144,6 +146,6 @@ import { CartComponent } from './order/cart/cart.component';
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,ViewComponent]
+  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
 })
 export class AppModule { }

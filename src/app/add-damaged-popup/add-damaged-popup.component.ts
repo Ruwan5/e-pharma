@@ -78,11 +78,7 @@ export class AddDamagedPopupComponent implements OnInit {
       
     })
 
-    // this.afs.collection("users").doc(this.uidnew).valueChanges().subscribe(val=>{
-    //   console.log(val);
       
-      
-    // })
     
  
 
