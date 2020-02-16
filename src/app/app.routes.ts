@@ -30,6 +30,8 @@ import { ChatFormComponent } from './chat-form/chat-form.component';
 import{MassageComponent} from './massage/massage.component';
 import{FeedComponent} from './feed/feed.component';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
+import {DetailsComponent} from './show-drugs/details/details.component'
+import {DetailsResolver} from './show-drugs/details/detalis.resolver'
 
 
 
@@ -58,7 +60,9 @@ export const rootRouterConfig: Routes = [
   { path: 'chat-form', component: ChatFormComponent },
   {path:'message',component:MassageComponent},
   {path:'feed', component:FeedComponent},
-  {path: 'expired-drugs', component:ExpiredDrugsComponent}
+  {path: 'expired-drugs', component:ExpiredDrugsComponent},
+  { path: 'details/:id', component:DetailsComponent, resolve:{data : DetailsResolver},},
+
 
 
 

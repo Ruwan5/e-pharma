@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserResolver } from './users_list/show-user/show-user.resolver';
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
-
+import {DetailsResolver} from './show-drugs/details/detalis.resolver'
  
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -64,7 +64,8 @@ import { MassageComponent } from './massage/massage.component';
 import { ChatService } from './core/chat.service';
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { ChartsModule } from 'ng2-charts';
-import {SearchService} from './users_list/search.service'
+import {SearchService} from './users_list/search.service';
+import { DetailsComponent } from './show-drugs/details/details.component'
 
 
 
@@ -99,6 +100,7 @@ import {SearchService} from './users_list/search.service'
     FeedComponent,
     MassageComponent,
     ExpiredDrugsComponent,
+    DetailsComponent,
     
     
     
@@ -124,7 +126,7 @@ import {SearchService} from './users_list/search.service'
     MatDialogModule,
     ChartsModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,SearchService ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,SearchService,DetailsResolver ],
   bootstrap: [AppComponent],
   entryComponents: [SelectPopupComponent]
 })

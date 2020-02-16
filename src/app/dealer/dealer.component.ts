@@ -23,6 +23,7 @@ export class DealerComponent implements OnInit {
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
+  drugPosts;
 
   constructor(
     public userService: UserService,
@@ -31,7 +32,8 @@ export class DealerComponent implements OnInit {
     private location : Location,
     private fb: FormBuilder,
     public router: Router,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+
 
   ) {
   
@@ -228,6 +230,7 @@ export class DealerComponent implements OnInit {
         this.userService.isLoggedIn();
       }
     })
+
   }
 
   editUser() {
@@ -258,7 +261,9 @@ export class DealerComponent implements OnInit {
 
     this.authService.doLogout()
     .then((res) => {  
-      this.location.back();
+      this.router.navigate(['/login']);
+
+      // this.location.back();
     }, (error) => {
       console.log("Logout error", error);
     });

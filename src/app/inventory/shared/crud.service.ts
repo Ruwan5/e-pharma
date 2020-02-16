@@ -116,6 +116,13 @@ export class CrudService {
 
   }
 
+  getDealerName(id){
+    console.log(id)
+    return this.firestore.collection('users').doc(id).valueChanges();
+
+    
+  }
+
   
   deleteDrug(drugKey){
     
