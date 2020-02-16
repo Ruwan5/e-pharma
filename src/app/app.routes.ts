@@ -26,16 +26,13 @@ import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-d
 import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 import { ChatFormComponent } from './chat-form/chat-form.component';
-<<<<<<< HEAD
 import{SupplierExpiredDrugsComponent} from './supplier-expired-drugs/supplier-expired-drugs.component';
-
-=======
 import {DetailsComponent} from '../app/show-drugs/details/details.component'
->>>>>>> 52516b85573fba200eddbd4d3b4c30abebba01b1
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
 import {DetailsResolver} from './show-drugs/details/detalis.resolver'
+
 
 
 
@@ -61,10 +58,7 @@ export const rootRouterConfig: Routes = [
   { path: 'verify', component: VerifyComponent },
   { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
-<<<<<<< HEAD
-=======
   { path: 'details/:id', component:DetailsComponent, resolve:{data : DetailsResolver},},
->>>>>>> 52516b85573fba200eddbd4d3b4c30abebba01b1
   { path: 'chat-form', component: ChatFormComponent },
   {path: 'expired-drugs', component:ExpiredDrugsComponent},
   {path: 'supplier-expired-drugs', component:SupplierExpiredDrugsComponent},
