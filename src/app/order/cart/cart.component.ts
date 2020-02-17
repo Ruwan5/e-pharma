@@ -78,6 +78,10 @@ export class CartComponent implements OnInit {
     this.list.forEach(element => {
       this.afs.collection('orders').doc(element["id"]).update({isOrder:true})
     });
+    this.toastr.success('Order Successfull',null,{
+      timeOut:3000,
+        positionClass: 'toast-top-center',
+    });
   }
 
   // buy(){

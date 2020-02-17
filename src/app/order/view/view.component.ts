@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { OrderService } from "../../core/order.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -36,7 +37,7 @@ export class ViewComponent implements OnInit {
   isOrder: boolean = false;
 
 
-  constructor(private service: OrderService, private authfire: AngularFireAuth, public dialogbox: MatDialogRef<ViewComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private service: OrderService, private toastr: ToastrService, private authfire: AngularFireAuth, public dialogbox: MatDialogRef<ViewComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.uid = this.authfire.auth.currentUser.uid;
     
 
@@ -119,9 +120,12 @@ export class ViewComponent implements OnInit {
         'pharmacy_id': this.pharmacyid,
         'isOrder': this.isOrder,
         'unit_total': this.unitTot(),
-      }).then(_ => {
-        alert("inserted");
+      })
+      this.toastr.success('Successfully Inserted to the Cart!',null,{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
       });
+
       console.log(this.counterValue)
       this.onClose();
     } else {
