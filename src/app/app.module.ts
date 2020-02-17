@@ -115,12 +115,14 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     OrderComponent,
     ViewComponent,
     CartComponent,
+    DetailsComponent,
+    PendingResolvePharmacyDetailsPopupComponent,
     ViewOrderComponent,
     FormComponent,
     DealerOrderComponent,
     DetailsComponent,
     PendingResolvePharmacyDetailsPopupComponent,
-    ViewDetailsComponent
+    ViewDetailsComponent,
     
 
     
@@ -149,7 +151,7 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    ChartsModule
+    ChartsModule,
     
     
 

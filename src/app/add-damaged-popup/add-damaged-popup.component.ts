@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Inject } from "@angular/core";
 import { FormControl,FormGroup, FormBuilder } from '@angular/forms';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 
 
 @Component({
@@ -16,12 +17,14 @@ export class AddDamagedPopupComponent implements OnInit {
   
   form:FormGroup
   
+  
 
   
 
 
 
-  constructor(public dialogbox: MatDialogRef<AddDamagedPopupComponent> ,@Inject(MAT_DIALOG_DATA) public data: any,fb:FormBuilder ,private afs: AngularFirestore) {
+  constructor(public dialogbox: MatDialogRef<AddDamagedPopupComponent> ,@Inject(MAT_DIALOG_DATA) public data: any,fb:FormBuilder ,private afs: AngularFirestore,private toastr: ToastrService
+  ) {
     this.uidnew = localStorage.getItem('uid');
     this.form = fb.group({
       drugId: new FormControl(''),
@@ -63,6 +66,12 @@ export class AddDamagedPopupComponent implements OnInit {
     var qty = this.qty.value;
     var Remarks = this.Remarks.value;
     // console.log(dId)
+
+    this.afs.collection("users").doc(this.uidnew).valueChanges().subscribe(val=>{
+      console.log(val);
+        localStorage.setItem("pharName",val["FirstName"]);
+      
+    })
 
     this.afs.collection("users").doc(this.uidnew).collection("Inventory",ref=>ref.where('local_id','==',dId)).valueChanges().subscribe(val=>{
       console.log(val);
@@ -108,8 +117,14 @@ export class AddDamagedPopupComponent implements OnInit {
       supplier_notify: "Test",
       supplier_resolve: "False",
       name: name,
-      pharmacy_name:"jj"
+      pharmacy_name:localStorage.getItem("pharName"),
     })
+
+    this.toastr.success('Your drug complain is successfully added!', '',{
+      timeOut:2500,
+        positionClass: 'toast-top-center',
+    });
+
 
     this.dialogbox.close();
    }

@@ -5,6 +5,7 @@ import {AddDamagedPopupComponent} from "../add-damaged-popup/add-damaged-popup.c
 import {UpdateDamagedPopupComponent} from "../update-damaged-popup/update-damaged-popup.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-expired-drugs',
@@ -19,7 +20,7 @@ export class ExpiredDrugsComponent implements OnInit {
   uidnew;
   list: expired_drugs_model[];
   
-  constructor(private afs: AngularFirestore,private dialog : MatDialog) {
+  constructor(private afs: AngularFirestore,private dialog : MatDialog, private toastr: ToastrService) {
     
     this.uidnew = localStorage.getItem('uid');
     console.log(this.uidnew)
@@ -82,6 +83,11 @@ export class ExpiredDrugsComponent implements OnInit {
 
   delete(id){
     this.afs.collection("damaged").doc(id).delete();
+
+    this.toastr.success('Successfully Resolved!', '',{
+      timeOut:2500,
+        positionClass: 'toast-top-center',
+    });
   }
 
 }

@@ -3,6 +3,7 @@ import { FormControl,FormGroup, FormBuilder } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firestore";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 
 @Component({
   selector: 'app-update-damaged-popup',
@@ -26,7 +27,7 @@ export class UpdateDamagedPopupComponent implements OnInit {
   }
   ;
 
-  constructor(public dialogbox:MatDialogRef<UpdateDamagedPopupComponent>,private afs:AngularFirestore) {
+  constructor(public dialogbox:MatDialogRef<UpdateDamagedPopupComponent>,private afs:AngularFirestore,private toastr: ToastrService) {
     let id = localStorage.getItem("damageId");
     console.log(id);
     this.drugDoc = afs.doc<drug>("damaged/"+id);
@@ -53,7 +54,15 @@ export class UpdateDamagedPopupComponent implements OnInit {
 
     this.afs.collection("damaged").doc(id).update(this.finalDrugData);
     this.dialogbox.close();
+
+
+    this.toastr.success('Successfully updated!', '',{
+      timeOut:2500,
+        positionClass: 'toast-top-center',
+    });
   }
+
+
 
 }
 
