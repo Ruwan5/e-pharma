@@ -135,7 +135,7 @@ getUnregisteredUsers(){
 }
 
 setIsRegistered(id){
-  this.firestore.collection('users').doc(id).update({registered: "True"});
+  this.firestore.collection('users').doc(id).update({registered: "true"});
 }
   
 

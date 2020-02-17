@@ -13,12 +13,7 @@
 
 
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-            </li>
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#"><i class="icon ion-md-notifications"></i></a>
-            </li>
+
             <li class="nav-item dropdown" dropdown placement="bottom right">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
                     <img src="../../assets/b.jpg" class="avatar" />
@@ -53,6 +48,7 @@
                         </div>
                     </div>
                     <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <h3>3</h3>
 
                     </div>
                 </div>
@@ -69,6 +65,7 @@
                         </div>
                     </div>
                     <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <h3>0</h3>
 
                     </div>
                 </div>
@@ -85,6 +82,7 @@
                         </div>
                     </div>
                     <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <h3>2</h3>
 
                     </div>
                 </div>
@@ -102,7 +100,6 @@
 
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">Prediction</h4>
-                        <div class="small text-muted">November 2017</div>
 
                     </div>
                     <!--/.col-->
@@ -124,7 +121,7 @@
 
                 <div class="chart-wrapper" style="height:300px;margin-top:40px;">
 
-                    <!-- <canvas baseChart class="chart" [datasets]="mainChartData" [labels]="mainChartLabels" [options]="mainChartOptions" [colors]="mainChartColours" [legend]="mainChartLegend" [chartType]="mainChartType"></canvas> -->
+                    <canvas baseChart class="chart" [datasets]="mainChartData" [labels]="mainChartLabels" [options]="mainChartOptions" [colors]="mainChartColours" [legend]="mainChartLegend" [chartType]="mainChartType"></canvas>
 
                 </div>
             </div>
