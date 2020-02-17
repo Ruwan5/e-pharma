@@ -61,20 +61,18 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>a</th>
-        <th>Drug Id</th>
+        <th>Drug Name</th>
         <th>Quantity</th>
-        <th>Supplier</th>
+        <th>Pharmacist</th>
         <th></th>
       </tr>
     </thead>
     <tbody *ngFor = "let item of list">
       <tr>
-        <td>{{item.id}}</td>
-        <td>{{item.drug_id}}</td>
+        <td>{{item.name}}</td>
         <td>{{item.qty}}</td>
-        <td>{{item.supplier_name}}</td>
-        <td><button class="btn btn-danger"  style="margin:5px;">view</button> 
+        <td>{{item.pharmacy_name}}</td>
+        <td> 
             <button class="btn btn-primary"(click)="mark(item.id)"style="margin:5px;">Resolve</button >
         </td>
       </tr>

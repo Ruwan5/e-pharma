@@ -1,6 +1,6 @@
 <div>
     <div class="d-flex justify-content-between">
-      <p>Submit a damage item</p>
+      <p>Pending Resolves</p>
       <button class="btn btn-danger" (click)="onClose()"><i class="fa fa-close" aria-hidden="true"></i></button>
     </div>
 </div>
@@ -14,19 +14,18 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>a</th>
-        <th>Drug Id</th>
+        <th>Drug Name</th>
         <th>Quantity</th>
-        <th>Supplier</th>
+        <th>Pharmacist</th>
         <th></th>
       </tr>
     </thead>
     <tbody *ngFor = "let item of list">
       <tr>
-        <td>{{item.id}}</td>
-        <td>{{item.drug_id}}</td>
+        <td>{{item.name}}</td>
         <td>{{item.qty}}</td>
-        <td>{{item.supplier_name}}</td>
+        <td>{{item.pharmacy_name}}</td>
+        <td><button class="btn btn-primary" (click)="view(item.id)" style="margin-right: 10px;">View Contact Details</button></td>
       </tr>
     </tbody>
   </table>

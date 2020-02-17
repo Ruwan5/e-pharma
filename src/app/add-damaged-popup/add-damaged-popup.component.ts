@@ -64,6 +64,12 @@ export class AddDamagedPopupComponent implements OnInit {
     var Remarks = this.Remarks.value;
     // console.log(dId)
 
+    this.afs.collection("users").doc(this.uidnew).valueChanges().subscribe(val=>{
+      console.log(val);
+        localStorage.setItem("pharName",val["FirstName"]);
+      
+    })
+
     this.afs.collection("users").doc(this.uidnew).collection("Inventory",ref=>ref.where('local_id','==',dId)).valueChanges().subscribe(val=>{
       console.log(val);
         val.forEach(element=>{
@@ -78,11 +84,7 @@ export class AddDamagedPopupComponent implements OnInit {
       
     })
 
-    // this.afs.collection("users").doc(this.uidnew).valueChanges().subscribe(val=>{
-    //   console.log(val);
       
-      
-    // })
     
  
 
@@ -112,7 +114,7 @@ export class AddDamagedPopupComponent implements OnInit {
       supplier_notify: "Test",
       supplier_resolve: "False",
       name: name,
-      pharmacy_name:"jj"
+      pharmacy_name:localStorage.getItem("pharName"),
     })
 
     this.dialogbox.close();
