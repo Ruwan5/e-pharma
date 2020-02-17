@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { OrderService } from "../../../core/order.service";
 
 @Component({
   selector: 'app-view-details',
@@ -8,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 })
 export class ViewDetailsComponent implements OnInit {
 
-  constructor( public dialogbox: MatDialogRef<ViewDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data: any ) { }
+  constructor( private service: OrderService, public dialogbox: MatDialogRef<ViewDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data: any ) { }
 
   ngOnInit() {
   }
@@ -16,5 +17,10 @@ export class ViewDetailsComponent implements OnInit {
   onClose() {
     this.dialogbox.close();
   }
+  // delever(id: string){
+  //   this.service.addtoInventory(id).add({
+      
+  //   })
+  // }
 
 }

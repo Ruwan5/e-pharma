@@ -156,6 +156,6 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent,ViewDetailsComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
+  entryComponents: [SelectPopupComponent,ViewDetailsComponent,FormComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
 })
 export class AppModule { }

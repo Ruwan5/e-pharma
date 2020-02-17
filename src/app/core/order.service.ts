@@ -59,8 +59,12 @@ export class OrderService {
     })
   }
 
-  AddInventory(inventory: Inventory) {
+  AddInventory(inventory: Inventory, id: string) {
 
-    return this.afs.collection('orders1').add(inventory);
+    //return this.afs.collection('orders1').add(inventory);
+    return this.afs.collection('users').doc().collection('Inventory1').add(inventory);
+  }
+  addtoInventory(id: string){
+    return this.afs.collection('users').doc().collection('Inventory');
   }
 }
