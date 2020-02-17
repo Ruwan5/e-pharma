@@ -49,7 +49,7 @@ export class LoginComponent{
       if (emailChecked == true) {
            this.userService.isRegistered(value.email).then(registered =>{
             console.log(registered)
-            if (registered == true) {
+            if (registered = true) {
               this.userService.getUserType().then(res => {
         
                 switch(res) {                                          //redirect to relevant dash baord
