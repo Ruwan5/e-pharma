@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { OrderService } from "../../core/order.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ViewComponent implements OnInit {
   id = this.data.id;
   uid: string;
   dealer: string;
+  pharmacyid: string;
 
 
   brandName: string;
@@ -32,11 +34,15 @@ export class ViewComponent implements OnInit {
   usage: string;
   price: number;
   userid: string;
+  isOrder: boolean = false;
 
 
-  constructor(private service: OrderService, private authfire: AngularFireAuth, public dialogbox: MatDialogRef<ViewComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private service: OrderService, private toastr: ToastrService, private authfire: AngularFireAuth, public dialogbox: MatDialogRef<ViewComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.uid = this.authfire.auth.currentUser.uid;
+    
+
     this.service.getDrug(this.id).subscribe(res => {
+      console.log('hisdfuh' + res)  
       this.brandName = res.brandName;
       this.actIngreName = res.actIngreName;
       this.excipientName = res.excipientName;
@@ -55,9 +61,10 @@ export class ViewComponent implements OnInit {
       this.userid = res.userid;
       console.log(res.userid)
       this.delername(res.userid);
-
+      
 
     })
+    this.getpharmacyid();
 
   }
 
@@ -68,18 +75,30 @@ export class ViewComponent implements OnInit {
     this.dialogbox.close();
   }
   delername(id: string) {
+
     console.log(id)
     this.service.getusername(id).subscribe(res =>{
       this.dealer = res["FirstName"] +" "+ res["LastName"];
       console.log(res+"=>"+this.dealer)
+
     })
+    
+  }
+
+  getpharmacyid(){
+     this.service.getCurrentUserId().then(data=> {
+       this.pharmacyid = data;
+       console.log(this.pharmacyid)
+       localStorage.setItem("pharmacyid",this.pharmacyid);
+     })
     
   }
 
 
   onAdd() {
+    console.log(this.id)
     if (this.counterValue>0) {
-      this.service.addtocart(this.uid, this.id).set({
+      this.service.addtocart(this.id).set({  
         'brandName': this.brandName,
         'actIngreName': this.actIngreName,
         'excipientName': this.excipientName,
@@ -95,12 +114,18 @@ export class ViewComponent implements OnInit {
         'taste': this.taste,
         'usage': this.usage,
         'price': this.price,
-        'userid': this.userid,
+        'dealer_id': this.userid,
         'quantity': this.counterValue,
+        'globle_id': this.id,
+        'pharmacy_id': this.pharmacyid,
+        'isOrder': this.isOrder,
         'unit_total': this.unitTot(),
-      }).then(_ => {
-        alert("inserted");
+      })
+      this.toastr.success('Successfully Inserted to the Cart!',null,{
+        timeOut:3000,
+          positionClass: 'toast-top-center',
       });
+
       console.log(this.counterValue)
       this.onClose();
     } else {

@@ -31,6 +31,8 @@ import {DetailsComponent} from '../app/show-drugs/details/details.component'
 import { ExpiredDrugsComponent } from './expired-drugs/expired-drugs.component';
 import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
+import { ViewOrderComponent } from "./order/view-order/view-order.component";
+import { DealerOrderComponent } from "./order/dealer-order/dealer-order.component";
 import {DetailsResolver} from './show-drugs/details/detalis.resolver'
 
 
@@ -64,7 +66,9 @@ export const rootRouterConfig: Routes = [
   {path: 'supplier-expired-drugs', component:SupplierExpiredDrugsComponent},
   {path: 'expired-drugs', component:ExpiredDrugsComponent},
   {path: 'order', component:OrderComponent},
-  {path: 'cart', component:CartComponent}
+  {path: 'cart', component:CartComponent},
+  {path: 'view-order', component:ViewOrderComponent},
+  {path: 'dealer-order', component: DealerOrderComponent}
 
 
 

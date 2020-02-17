@@ -27,15 +27,16 @@ export class ChatService {
     {
       
      }
-  sendMessage(msg:string){
+  sendMessage(msg:string, name: string){
+    console.log(name)
     var user = firebase.auth().currentUser;
     var userEmail = user.email;
     
     console.log(msg);
-    // console.log(user)
+    console.log(name)
     this.afs.collection('messages').add({
       data:msg,
-       from:user.email,
+       from:name,
        time:new Date()
 
     });

@@ -70,7 +70,12 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
+import { ViewOrderComponent } from './order/view-order/view-order.component';
+import { FormComponent } from './order/cart/form/form.component';
+import { DealerOrderComponent } from './order/dealer-order/dealer-order.component';
+import { ChartsModule } from 'ng2-charts';
 import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
+import { ViewDetailsComponent } from './order/view-order/view-details/view-details.component';
 
 
 
@@ -111,7 +116,13 @@ import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-p
     ViewComponent,
     CartComponent,
     DetailsComponent,
-    PendingResolvePharmacyDetailsPopupComponent
+    PendingResolvePharmacyDetailsPopupComponent,
+    ViewOrderComponent,
+    FormComponent,
+    DealerOrderComponent,
+    DetailsComponent,
+    PendingResolvePharmacyDetailsPopupComponent,
+    ViewDetailsComponent,
     
 
     
@@ -139,13 +150,14 @@ import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-p
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
-  
+    MatInputModule,
+    ChartsModule,
+    
     
 
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
+  entryComponents: [SelectPopupComponent,ViewDetailsComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
 })
 export class AppModule { }
