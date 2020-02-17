@@ -70,13 +70,10 @@ import { SupplierPendingResolvePopupComponent } from './supplier-pending-resolve
 import { OrderComponent } from './order/order.component';
 import { ViewComponent } from './order/view/view.component';
 import { CartComponent } from './order/cart/cart.component';
-<<<<<<< HEAD
 import { ViewOrderComponent } from './order/view-order/view-order.component';
 import { FormComponent } from './order/cart/form/form.component';
 import { DealerOrderComponent } from './order/dealer-order/dealer-order.component';
-=======
 import { ChartsModule } from 'ng2-charts';
->>>>>>> 73f464b5fdae4f4411fec180ab13ce52ae5f6774
 import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
 import { ViewDetailsComponent } from './order/view-order/view-details/view-details.component';
 
