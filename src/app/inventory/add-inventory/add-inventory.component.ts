@@ -17,7 +17,8 @@ export class AddInventoryComponent implements OnInit {
   // public inventoryForm: FormGroup; 
 
   drugData = new drugInfo();
-
+  submitted = false;
+  
   // inventory: Inventory
   inventoryForm = new FormGroup({
     brandName: new FormControl(),
@@ -72,24 +73,24 @@ export class AddInventoryComponent implements OnInit {
  inventorForm() {
    console.log(this.item)
   this.inventoryForm = this.fb.group({
-    brandName:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-    actIngreName:[''],
-    excipientName: [''],
-    actIngreOtherName:[''],
-    actIngreShortName: [''],
-    number:['',[ Validators.pattern('^[0-9]+$')]],
-    unit:[''],
-    formula:[''],
-    drugPart:[''],
-    color:[''],
-    form: [''],
-    smell: [''],
-    taste: [''],
-    usage: [''],
-    expire:[''],
-    drugid:[''],
-    price: [''],
-    userid: [this.item, Validators.required]
+    brandName:['', Validators.required],
+    actIngreName:['', Validators.required],
+    excipientName: ['', Validators.required],
+    actIngreOtherName:['', Validators.required],
+    actIngreShortName: ['', Validators.required],
+    number:['',[ Validators.required, Validators.pattern('^[0-9]+$')]],
+    unit:['' , [ Validators.required, Validators.pattern('^[0-9]+$')]],
+    formula:['', Validators.required],
+    drugPart:['', Validators.required],
+    color:['', Validators.required],
+    form: ['', Validators.required],
+    smell: ['', Validators.required],
+    taste: ['', Validators.required],
+    usage: ['', Validators.required],
+    expire:['', Validators.required],
+    drugid:['', [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(4)]],
+    price: ['', [ Validators.required, Validators.pattern(/^[.\d]+$/)]],
+    userid: [this.item, ]
    
   })  
 }
@@ -169,14 +170,28 @@ get userId() {
   return this.inventoryForm.get('userid');
 }
 
+//getters for easy access to form fields
+get f() {return this.inventoryForm.controls}
+
+
+
 
 
 // Reset inventory form's values
 ResetForm() {
+  this.submitted = false;
   this.inventoryForm.reset();
 }  
 
 submitInventoryData() {
+  this.submitted = true;
+
+  // stop here if form is invalid
+
+  if(this.inventoryForm.invalid) {
+    return;
+  }
+
   this.crudApi.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
   this.toastr.success('The drug has been successfully posted!',null,{
     timeOut:3000,

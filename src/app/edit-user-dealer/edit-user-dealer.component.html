@@ -39,16 +39,9 @@
     <br>
     <label><h2>{{this.item.FirstName}} {{this.item.LastName}}</h2></label>
 
-    <div class="col-md-6 mb-4">
 
-        <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" data-holder-rendered="true">
 
-    </div>
 
-    <div class="a" class="col-md-6 mb-4">
-        <input type="file" (change)="onFileSelected($event)">
-        <button type="button" (click)="onUpload()">Upload</button>
-    </div>
 
     <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
         <br>
