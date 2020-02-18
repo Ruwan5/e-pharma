@@ -76,7 +76,7 @@ export class EditInventoryComponent implements OnInit {
     }
 
     this.crudApi.updateDrug(value, this.id);
-    console.log("done");
+    console.log("this.id");
 
     this.toastr.success('The drug has been successfully updated!', '',{
       timeOut:3000,
@@ -105,11 +105,12 @@ export class EditInventoryComponent implements OnInit {
       expire: [this.item.payload.data().expire, [Validators.required]],
       drugid: [this.item.payload.data().drugid, [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(4)]],
       price: [this.item.payload.data().price, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
-      userid: [this.item.id, [Validators.required]]
+      userid: [this.item.payload.data().userid, [Validators.required]]
     })
   }
 
   ResetForm() {
+    this.submitted = true;
     this.editForm.reset();
   } 
   
