@@ -3,12 +3,9 @@ import { AuthService } from '../core/auth.service';
 import { Location } from '@angular/common';
 import { Router, Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import {FirebaseService } from '../users_list/firebase.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
 import {UserService} from '../core/user.service';
-import { from } from 'rxjs';
-import * as firebase from 'firebase/app';
 import {HttpClient} from '@angular/common/http'
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 
@@ -31,6 +28,7 @@ export class EditUserDealerComponent implements OnInit {
   });
   
   item: any;
+  submitted = false;
 
   validation_messages = {
     'FirstName': [
@@ -67,6 +65,13 @@ export class EditUserDealerComponent implements OnInit {
   }
 
   onSubmit(value) {
+
+    this.submitted = true;
+     
+    //stop here if form is invalid
+    if(this.editForm.invalid){
+      return;
+    }
     
     this.userService.getCurrentUserId().then( data => {
       console.log(data);
@@ -89,30 +94,16 @@ export class EditUserDealerComponent implements OnInit {
       LastName: [this.item.LastName, Validators.required],
       Address: [this.item.Address, Validators.required],
       email: [this.item.email, Validators.required],
-      password: [this.item.password, Validators.required],
-      Telephone: [this.item.Telephone, Validators.required],
+      password: [this.item.password, [ Validators.required, Validators.minLength(6)]],
+      Telephone: [this.item.Telephone, [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10)]],
       UserType: [this.item.UserType, Validators.required]
     })
   }
-  selectedFile: File = null;
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0]; 
+  //gets easy from the fields
+  get f() {
+    return this.editForm.controls;
   }
-
-  onUpload() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name)
-    this.http.post('https://us-central1-epharma-3593a.cloudfunctions.net/helloWorld',fd, {
-      reportProgress: true,
-      observe: 'events'
-    } )
-    .subscribe( event => {
-      console.log(event); 
-    })
-  }
-
-
 
   save(value){
     this.userService.updateCurrentUser(value)
@@ -122,6 +113,7 @@ export class EditUserDealerComponent implements OnInit {
   }
 
   ResetForm() {
+    this.submitted = false;
     this.editForm.reset();
 
   } 
