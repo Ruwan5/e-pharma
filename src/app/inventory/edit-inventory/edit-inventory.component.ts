@@ -14,6 +14,7 @@ export class EditInventoryComponent implements OnInit {
 
   item:any
   id:any
+  submitted = false;
 
   editForm = new FormGroup({
     brandName: new FormControl(),
@@ -59,7 +60,21 @@ export class EditInventoryComponent implements OnInit {
     
   }
 
+  // getters for easy access to form fields 
+  get f() {
+    return this.editForm.controls;
+  }
+
   onSubmit(value){
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+
+    if(this.editForm.invalid){
+      return;
+    }
+
     this.crudApi.updateDrug(value, this.id);
     console.log("done");
 
@@ -78,8 +93,8 @@ export class EditInventoryComponent implements OnInit {
       excipientName: [this.item.payload.data().excipientName, [Validators.required]],
       actIngreOtherName:[this.item.payload.data().actIngreOtherName, [Validators.required]],
       actIngreShortName: [this.item.payload.data().actIngreShortName, [Validators.required]],
-      number:[this.item.payload.data().number,[ Validators.pattern('^[0-9]+$')]],
-      unit:[this.item.payload.data().unit, [Validators.required]],
+      number:[this.item.payload.data().number,[ Validators.required, Validators.pattern('^[0-9]+$')]],
+      unit:[this.item.payload.data().unit, [Validators.required, Validators.pattern('^[0-9]+$')]],
       formula:[this.item.payload.data().formula, [Validators.required]],
       drugPart:[this.item.payload.data().drugPart, [Validators.required]],
       color:[this.item.payload.data().color, [Validators.required]],
@@ -88,8 +103,8 @@ export class EditInventoryComponent implements OnInit {
       taste: [this.item.payload.data().taste, [Validators.required]],
       usage: [this.item.payload.data().usage, [Validators.required]],
       expire: [this.item.payload.data().expire, [Validators.required]],
-      drugid: [this.item.payload.data().drugid, [Validators.required]],
-      price: [this.item.payload.data().price, [Validators.required]],
+      drugid: [this.item.payload.data().drugid, [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(4)]],
+      price: [this.item.payload.data().price, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
       userid: [this.item.id, [Validators.required]]
     })
   }
