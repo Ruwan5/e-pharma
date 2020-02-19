@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore,AngularFirestoreDocument } from "@angular/fire/firestore";
-import { expired_drugs_model } from "./expired_drugs_model.model";
+import { expired_drugs_model } from "./expired_drugs_model.model"; //data model
 import {AddDamagedPopupComponent} from "../add-damaged-popup/add-damaged-popup.component";
 import {UpdateDamagedPopupComponent} from "../update-damaged-popup/update-damaged-popup.component";
+import {PharmacyExpiredDrugsPopupComponent} from "../pharmacy-expired-drugs-popup/pharmacy-expired-drugs-popup.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-expired-drugs',
@@ -31,16 +33,6 @@ export class ExpiredDrugsComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.afs.collection('users').doc(this.uidnew).collection('Inventory').snapshotChanges().subscribe(res => {
-    //   console.log(res)
-    //   this.list = res.map( a=> {
-    //     return{
-    //       id: a.payload.doc.id,
-    //       ...a.payload.doc.data()
-    //     } as unknown as expired_drugs_model
-    //   }
-    //   )
-    // })
     this.afs.collection('damaged',ref=>ref.where('pharmacy_id','==',this.uidnew)).snapshotChanges().subscribe(res=>{
       console.log(res)
       this.list = res.map( a =>{
@@ -53,7 +45,7 @@ export class ExpiredDrugsComponent implements OnInit {
 
   }
 
-  view(){
+  add(){
     const dialogconfig = new MatDialogConfig;
     dialogconfig.disableClose = true;
     dialogconfig.autoFocus = true;
@@ -63,7 +55,22 @@ export class ExpiredDrugsComponent implements OnInit {
   
     }
     this.dialog.open(AddDamagedPopupComponent, dialogconfig);
-    console.log("hiii");
+    console.log("Add damaged popup loaded");
+  }
+
+  view(id: string){
+
+    localStorage.setItem("damageId",id);
+    const dialogconfig = new MatDialogConfig;
+    dialogconfig.disableClose = true;
+    dialogconfig.autoFocus = true;
+    dialogconfig.width = "75%";
+    dialogconfig.height = "75%";
+    dialogconfig.data = {
+      id:id
+    }
+    this.dialog.open(PharmacyExpiredDrugsPopupComponent, dialogconfig);
+    console.log("view expired popup loaded");
   }
 
   update(id: string){
@@ -81,8 +88,12 @@ export class ExpiredDrugsComponent implements OnInit {
     console.log("update popup loaded");
   }
 
-  delete(id){
-    this.afs.collection("damaged").doc(id).delete();
+  delete(damaged_id,inventory_id){
+    //removing from the damaged collection
+    this.afs.collection("damaged").doc(damaged_id).delete();
+    
+    //find the id of the drug in the inventorry and update the exp_flag as 'no'
+    this.afs.collection("users").doc(this.uidnew).collection("Inventory").doc(inventory_id).update({exp_flag:"no"});
 
     this.toastr.success('Successfully Resolved!', '',{
       timeOut:2500,

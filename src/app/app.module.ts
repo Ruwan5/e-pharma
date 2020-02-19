@@ -53,9 +53,6 @@ import { EditUserDealerComponent } from './edit-user-dealer/edit-user-dealer.com
 import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { VerifyComponent } from './register/verify/verify.component';
 import { DrugDetailsComponent } from './inventory/drug-details/drug-details/drug-details.component';
-import { PharmacyReportComponent } from './pharmacy-report/pharmacy-report.component';
-import { SelectPopupComponent } from "./pharmacy-report/select-popup/select-popup.component";
-
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import {DetailsComponent} from './show-drugs/details/details.component'
 import { ChatService } from './core/chat.service';
@@ -76,7 +73,8 @@ import { DealerOrderComponent } from './order/dealer-order/dealer-order.componen
 import { ChartsModule } from 'ng2-charts';
 import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
 import { ViewDetailsComponent } from './order/view-order/view-details/view-details.component';
-
+import { PharmacyExpiredDrugsPopupComponent } from './pharmacy-expired-drugs-popup/pharmacy-expired-drugs-popup.component';
+import {Moment} from 'moment/moment';
 
 
 
@@ -103,8 +101,6 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     ForgetPasswordComponent,
     VerifyComponent,
     DrugDetailsComponent,
-    PharmacyReportComponent,
-    SelectPopupComponent,
     ChatFormComponent,
     ExpiredDrugsComponent,
     AddDamagedPopupComponent,
@@ -123,6 +119,7 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     DetailsComponent,
     PendingResolvePharmacyDetailsPopupComponent,
     ViewDetailsComponent,
+    PharmacyExpiredDrugsPopupComponent,
     
 
     
@@ -158,6 +155,6 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [SelectPopupComponent,ViewDetailsComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent]
+  entryComponents: [ViewDetailsComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
 })
 export class AppModule { }

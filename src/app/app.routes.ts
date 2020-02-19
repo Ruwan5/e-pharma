@@ -23,7 +23,6 @@ import { from } from 'rxjs';
 import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
-import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import{SupplierExpiredDrugsComponent} from './supplier-expired-drugs/supplier-expired-drugs.component';
@@ -58,7 +57,6 @@ export const rootRouterConfig: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
-  { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
   { path: 'details/:id', component:DetailsComponent, resolve:{data : DetailsResolver},},
   { path: 'chat-form', component: ChatFormComponent },
