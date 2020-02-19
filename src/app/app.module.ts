@@ -76,6 +76,8 @@ import { DealerOrderComponent } from './order/dealer-order/dealer-order.componen
 import { ChartsModule } from 'ng2-charts';
 import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-pharmacy-details-popup/pending-resolve-pharmacy-details-popup.component';
 import { ViewDetailsComponent } from './order/view-order/view-details/view-details.component';
+import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
+import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
 
 
 
@@ -123,6 +125,8 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     DetailsComponent,
     PendingResolvePharmacyDetailsPopupComponent,
     ViewDetailsComponent,
+    PharmacistChatFormComponent,
+    DealerChatFormComponent,
     
 
     

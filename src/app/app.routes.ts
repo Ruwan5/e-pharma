@@ -33,7 +33,10 @@ import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
 import { ViewOrderComponent } from "./order/view-order/view-order.component";
 import { DealerOrderComponent } from "./order/dealer-order/dealer-order.component";
-import {DetailsResolver} from './show-drugs/details/detalis.resolver'
+import {DetailsResolver} from './show-drugs/details/detalis.resolver';
+import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
+import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
+
 
 
 
@@ -68,7 +71,9 @@ export const rootRouterConfig: Routes = [
   {path: 'order', component:OrderComponent},
   {path: 'cart', component:CartComponent},
   {path: 'view-order', component:ViewOrderComponent},
-  {path: 'dealer-order', component: DealerOrderComponent}
+  {path: 'dealer-order', component: DealerOrderComponent},
+  {path: 'pharmacist-chat-form',component: PharmacistChatFormComponent},
+  {path: 'dealer-chat-form',component:DealerChatFormComponent}
 
 
 

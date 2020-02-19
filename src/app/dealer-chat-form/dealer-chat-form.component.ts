@@ -7,21 +7,13 @@ import * as firebase from 'firebase/app';
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 import { OrderService } from "../core/order.service";
 
-
-
-
-
-
-
-
-
-
 @Component({
-  selector: 'app-chat-form',
-  templateUrl: './chat-form.component.html',
-  styleUrls: ['./chat-form.component.scss']
+  selector: 'app-dealer-chat-form',
+  templateUrl: './dealer-chat-form.component.html',
+  styleUrls: ['./dealer-chat-form.component.scss']
 })
-export class ChatFormComponent implements OnInit {
+export class DealerChatFormComponent implements OnInit {
+
   message: string;
   items: Array<any>;
   temp: any = [];
@@ -31,8 +23,6 @@ export class ChatFormComponent implements OnInit {
   temp1;
   temp2: Array<string>;
   usrname;
-  isdelete:boolean= false;
-
 
   alignRight: boolean = false;
 
@@ -40,45 +30,16 @@ export class ChatFormComponent implements OnInit {
     private afs: AngularFirestore,
     private authfire: AngularFireAuth,
     private toaster: ToastrService,
-    private service: OrderService
-  ) {
+    private service: OrderService) { 
 
-    this.getCurrentuser();
+      this.getCurrentuser();
 
-    // var name = this.chat.getUserName();
-    // this.currusremail = this.authfire.auth.currentUser.email;
-    // console.log(this.currusremail)
+ 
 
-    // this.afs.collection('users', ref => ref.where('email', '==', this.currusremail)).valueChanges().subscribe(val=>{
-
-    //   this.temp1 = val;
-    //   console.log(this.temp1)
-    //   var aa = val['FirstName'];
-    //   console.log("hammo =>" + aa)
-
-    //   this.temp1.forEach(element => {
-    //     // this.temp2.push(element["FirstName"])
-    //     element.array.forEach(element2 => {
-    //       this.temp2 = element2;
-    //     });
-    //   });
-
-    //   console.log(this.temp2);
-    // });
-
-    // chat.getAllUsers().subscribe(contact=>this.contacts=>{
-    //   this.contacts=contact;
-    // });
-    chat.getMessages().subscribe(data => {
-      this.temp = [],
+      chat.getMessages().subscribe(data => {
+        this.temp = [],
 
 
-
-        //this.cuurusrname,
-
-
-
-        //  =[]
         data.forEach(element => {
 
           this.temp.push(element['data']);
@@ -88,13 +49,13 @@ export class ChatFormComponent implements OnInit {
       console.log(this.temp)
     })
   }
+    
 
   ngOnInit() {
     console.log("working chat");
     this.getData();
 
   }
-
   getData() {
     return this.afs.collection('messages', ref =>
       ref.orderBy('time')).snapshotChanges()
@@ -107,7 +68,6 @@ export class ChatFormComponent implements OnInit {
     this.alignRight = true;
     this.chat.sendMessage(this.message,this.usrname);
   }
-
   getCurrentuser() {
     // var user = firebase.auth().currentUser;
     // console.log('user');
@@ -120,36 +80,25 @@ export class ChatFormComponent implements OnInit {
 
       })
     })
-
-
-    //sender=true;
   }
 
-  delete(id: string) {
+    delete(id: string) {
+      console.log(id)
+      this.toaster.success('Your massage has been removed successfully', null, {
+        timeOut: 5000,
+        positionClass: 'toast-top-center',
+      });
+      this.afs.collection("messages").doc(id).delete().then(function () {
+  
+  
+        console.log("message removed successfully");
+  
+  
+      }).catch(function (error) {
+        console.error("error", error);
+      });
+    }
     
-    console.log(id)
-    this.toaster.success('Your massage has been removed successfully', null, {
-      timeOut: 5000,
-      positionClass: 'toast-top-center',
-    });
     
-    this.afs.collection("messages").doc(id).delete().then(function () {
-
-
-      console.log("message removed successfully");
-
-
-    }).catch(function (error) {
-      console.error("error", error);
-    });
-
-  }
- 
-
-
-
-
-
 
 }
-
