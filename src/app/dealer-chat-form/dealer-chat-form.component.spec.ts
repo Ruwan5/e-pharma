@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectPopupComponent } from './select-popup.component';
+import { DealerChatFormComponent } from './dealer-chat-form.component';
 
-describe('SelectPopupComponent', () => {
-  let component: SelectPopupComponent;
-  let fixture: ComponentFixture<SelectPopupComponent>;
+describe('DealerChatFormComponent', () => {
+  let component: DealerChatFormComponent;
+  let fixture: ComponentFixture<DealerChatFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectPopupComponent ]
+      declarations: [ DealerChatFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectPopupComponent);
+    fixture = TestBed.createComponent(DealerChatFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

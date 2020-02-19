@@ -46,7 +46,7 @@ export class InventoryListComponent implements OnInit {
     
   }
 
-  //Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in student data list in real-time.
+  //Using valueChanges() method to fetch simple list of inventory data. It updates the state of hideWhenNoInventory, noData & preLoader variables when any changes occurs in drug data list in real-time.
   dataState() {     
     this.crudApi.GetInventoryList().subscribe(data => {
       this.preLoader = false;

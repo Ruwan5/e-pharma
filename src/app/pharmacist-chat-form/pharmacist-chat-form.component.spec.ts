@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PharmacyReportComponent } from './pharmacy-report.component';
+import { PharmacistChatFormComponent } from './pharmacist-chat-form.component';
 
-describe('PharmacyReportComponent', () => {
-  let component: PharmacyReportComponent;
-  let fixture: ComponentFixture<PharmacyReportComponent>;
+describe('PharmacistChatFormComponent', () => {
+  let component: PharmacistChatFormComponent;
+  let fixture: ComponentFixture<PharmacistChatFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PharmacyReportComponent ]
+      declarations: [ PharmacistChatFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PharmacyReportComponent);
+    fixture = TestBed.createComponent(PharmacistChatFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

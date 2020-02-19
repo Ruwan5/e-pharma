@@ -11,6 +11,7 @@ import { ChatMessage } from '../models/chat-message.model';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,8 @@ export class ChatService {
   constructor(
     private db:AngularFirestore,
     private afs: AngularFirestore,
-    private afAuth:AngularFireAuthModule
+    private afAuth:AngularFireAuthModule,
+
 
     
    )
@@ -37,6 +39,7 @@ export class ChatService {
       data:msg,
        from:name,
        time:new Date()
+       
 
     });
 

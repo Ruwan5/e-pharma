@@ -8,5 +8,6 @@ export class expired_drugs_model {
     supplier_name: String;
     supplier_notify: String;
     supplier_resolve : String;
+    inventory_id:String;
     
 }

@@ -23,7 +23,6 @@ import { from } from 'rxjs';
 import { VerifyComponent} from './register/verify/verify.component'
 import {DrugDetailsComponent} from './inventory/drug-details/drug-details/drug-details.component'
 import {DrugDetailsResolver} from './inventory/drug-details/drug-details/drugs-details.resolver'
-import {PharmacyReportComponent} from './pharmacy-report/pharmacy-report.component'
 import {EditDrugResolver} from './inventory/edit-inventory/edit-inventory.resolver'
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import{SupplierExpiredDrugsComponent} from './supplier-expired-drugs/supplier-expired-drugs.component';
@@ -33,7 +32,10 @@ import { OrderComponent } from "./order/order.component";
 import { CartComponent } from './order/cart/cart.component';
 import { ViewOrderComponent } from "./order/view-order/view-order.component";
 import { DealerOrderComponent } from "./order/dealer-order/dealer-order.component";
-import {DetailsResolver} from './show-drugs/details/detalis.resolver'
+import {DetailsResolver} from './show-drugs/details/detalis.resolver';
+import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
+import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
+
 
 
 
@@ -58,7 +60,6 @@ export const rootRouterConfig: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'list-inventory', component: InventoryListComponent },
   { path: 'verify', component: VerifyComponent },
-  { path: 'pharmacy-report', component:PharmacyReportComponent,},
   { path: 'drugs-details/:id', component:DrugDetailsComponent, resolve:{data : DrugDetailsResolver},},
   { path: 'details/:id', component:DetailsComponent, resolve:{data : DetailsResolver},},
   { path: 'chat-form', component: ChatFormComponent },
@@ -68,7 +69,9 @@ export const rootRouterConfig: Routes = [
   {path: 'order', component:OrderComponent},
   {path: 'cart', component:CartComponent},
   {path: 'view-order', component:ViewOrderComponent},
-  {path: 'dealer-order', component: DealerOrderComponent}
+  {path: 'dealer-order', component: DealerOrderComponent},
+  {path: 'pharmacist-chat-form',component: PharmacistChatFormComponent},
+  {path: 'dealer-chat-form',component:DealerChatFormComponent}
 
 
 

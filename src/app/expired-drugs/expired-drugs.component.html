@@ -19,7 +19,6 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" dropdown placement="bottom right" id="navbarSupportedContent">
-                    <!-- <div class="dropdown-header text-center"><strong>{{user.email}}</strong></div> -->
                     <a class="dropdown-item" (click)="viewUserDetails(item)" href="#"><i class="fa fa-user"></i> Profile</a>
                     <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
@@ -44,7 +43,8 @@
 
 
 <div class="container_middle" style="margin-left: 230px; width: auto;">
-    <button class="btn btn-primary" (click)="view()" style="margin-bottom: 20px; margin-top: 20px;">Add New</button>
+    <button class="btn btn-success" (click)="add()" style="margin-bottom: 20px; margin-top: 20px; margin-right:10px;">Add New</button>
+    <button class="btn btn-primary" (click)="view()" style="margin-bottom: 20px; margin-top: 20px;">View Expired Items</button>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -66,7 +66,7 @@
                 <td>{{item.supplier_name}}</td>
                 <td>{{item.remarks}}</td>
                 <td><button class="btn btn-warning" (click)="update(item.id)" style="margin:5px;">Edit</button>
-                    <button class="btn btn-success" (click)="delete(item.id)" style="margin:5px;">Resolve</button >
+                    <button class="btn btn-success" (click)="delete(item.id,item.inventory_id)" style="margin:5px;">Resolve</button >
         </td>
       </tr>
     </tbody>
