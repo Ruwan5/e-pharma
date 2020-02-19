@@ -118,6 +118,7 @@ export class AddDamagedPopupComponent implements OnInit {
       supplier_resolve: "False",
       name: name,
       pharmacy_name:localStorage.getItem("pharName"),
+      inventory_id:"MANUAL",
     })
 
     this.toastr.success('Your drug complain is successfully added!', '',{
