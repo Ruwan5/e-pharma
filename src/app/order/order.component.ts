@@ -3,6 +3,7 @@ import { OrderService } from "../core/order.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ViewComponent } from "./view/view.component";
 
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
