@@ -39,7 +39,7 @@
                 <td>{{item.supplier_name}}</td>
                 <td>{{item.expiration_date}}</td>
                 <td>
-                    <button class="btn btn-warning" [ngClass]="{active: item.exp_flag =='no', disabled: item.exp_flag =='yes'}" (click)="report(item.id,item.local_id,item.name,item.stock,item.supplier,item.supplier_name)" style="margin:5px;">Report</button >
+                    <button class="btn btn-warning" [disabled]="item.exp_flag =='yes'" (click)="report(item.id,item.local_id,item.name,item.stock,item.supplier,item.supplier_name)" style="margin:5px;">Report</button >
                 </td>
             </tr>
         </tbody>
