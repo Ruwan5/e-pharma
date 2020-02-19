@@ -43,26 +43,30 @@
 
     <app-pharmacist-sidebar></app-pharmacist-sidebar>
     <div>
-        <h3>view Order</h3>
+        <h3>view Pending Order</h3>
     </div>
-    <div >
+    <div>
         <table class="table">
             <thead>
                 <tr>
-                    <th>No of item</th>
+
                     <th>Brand</th>
+                    <th>Dealer Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Total</th>
+                    
                 </tr>
             </thead>
             <tbody *ngFor="let a of list1">
                 <tr>
-                    <td> #</td>
+
                     <td> {{a.brandName}} </td>
+                    <td> {{a.dealer}} </td>
                     <td> {{a.quantity}} </td>
                     <td> {{a.price}} </td>
                     <td> {{a.unit_total}} </td>
+                    
 
                 </tr>
 

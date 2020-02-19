@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
   buy1(){
     console.log(this.list)
     this.list.forEach(element => {
-      this.afs.collection('orders').doc(element["id"]).update({isOrder:true})
+      this.afs.collection('orders').doc(element["id"]).update({isOrder:1})
     });
     this.toastr.success('Order Successfull',null,{
       timeOut:3000,
