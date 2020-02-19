@@ -13,13 +13,15 @@ import { OrderService } from "../../../core/order.service";
 export class FormComponent implements OnInit {
 
   inventoryForm = new FormGroup({
-    expdate: new FormControl(),
-    batchno: new FormControl(),
-    orderdate: new FormControl(),
+    batch_number: new FormControl(),
+    local_id: new FormControl(),
+    
+    
 
   });
-
+  pharmacyid :string;
   item: any
+  
 
   constructor(public dialogbox: MatDialogRef<FormComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
     public fb: FormBuilder,       // Form Builder service for Reactive forms
@@ -33,9 +35,8 @@ export class FormComponent implements OnInit {
   inventorForm() {
     console.log(this.item)
     this.inventoryForm = this.fb.group({
-      expdate: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      batchno: [''],
-      orderdate: [''],
+      batch_number: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      local_id: [''],
 
       userid: [this.item, Validators.required]
 
@@ -46,27 +47,36 @@ export class FormComponent implements OnInit {
     this.inventoryForm.reset();
   }
 
-  get expdate() {
-    return this.inventoryForm.get('expdate');
+  get batch_number() {
+    return this.inventoryForm.get('batch_number');
   }
-  get batchno() {
-    return this.inventoryForm.get('batchno');
+  get local_id() {
+    return this.inventoryForm.get('local_id');
   }
-  get orderdate() {
-    return this.inventoryForm.get('orderdate');
-  } 
 
-  submitInventoryData() {
-    this.service.AddInventory(this.inventoryForm.value); // Submit Inventory data using CRUD API
-    this.toastr.success('The drug has been successfully posted!',null,{
-      timeOut:3000,
-        positionClass: 'toast-top-center',
-    });
+
   
-    this.ResetForm();  // Reset form when clicked on reset button
+
+  // submitInventoryData() {
+  //   this.service.AddInventory(this.inventoryForm.value, this.pharmacyid); // Submit Inventory data using CRUD API
+  //   this.toastr.success('The drug has been successfully posted!',null,{
+  //     timeOut:3000,
+  //       positionClass: 'toast-top-center',
+  //   });
+  
+  //   this.ResetForm();  // Reset form when clicked on reset button
   
     
     
-   };
+  //  };
+
+  click1(){
+    this.toastr.success('The Order has been successfully deliverd!',null,{
+          timeOut:3000,
+            positionClass: 'toast-top-center',
+        });
+        this.ResetForm();
+        this.dialogbox.close();
+  }
 
 }

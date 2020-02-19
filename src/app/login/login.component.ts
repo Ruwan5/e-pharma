@@ -79,7 +79,7 @@ export class LoginComponent{
         
       }
       else {
-        this.toastr.warning('You should verify your email address before sign in!', 'Check your email!',{
+        this.toastr.warning('You should verify your email address before sign in!', 'Check your email. Verification mail has been sent!',{
           timeOut:3000,
             positionClass: 'toast-bottom-center',
         });

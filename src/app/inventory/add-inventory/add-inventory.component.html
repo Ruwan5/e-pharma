@@ -41,98 +41,169 @@
 
     <br>
     <div class="container abcd">
-        <form [formGroup]="inventoryForm" (ngSubmit)="submitInventoryData()" novalidate>
+        <form [formGroup]="inventoryForm" (ngSubmit)="submitInventoryData()">
 
             <div class="col-lg-5 col-md-12 col-sm-12">
                 <div class="row">
 
                     <div class="col-md-12 mb-3">
                         <label>Brand Name</label>
-                        <input type="text" formControlName="brandName" class="form-control" required>
+                        <input type="text" formControlName="brandName" class="form-control" [ngClass]="{'is-invalid': submitted && f.brandName.errors}">
+                        <div *ngIf="submitted && f.brandName.errors" class="invalid-feedback">
+                            <div *ngIf="f.brandName.errors.required">Brand Name is required</div>
 
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Active Ingredient Name</label>
-                        <input type="text" formControlName="actIngreName" class="form-control">
+                        <input type="text" formControlName="actIngreName" class="form-control" class="form-control" [ngClass]="{'is-invalid': submitted && f.actIngreName.errors}">
+                        <div *ngIf="submitted && f.actIngreName.errors" class="invalid-feedback">
+                            <div *ngIf="f.actIngreName.errors.required">Active Ingredient Name is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Excipient Name</label>
-                        <input type="text" formControlName="excipientName" class="form-control">
+                        <input type="text" formControlName="excipientName" class="form-control" [ngClass]="{'is-invalid': submitted && f.excipientName.errors}">
+                        <div *ngIf="submitted && f.excipientName.errors" class="invalid-feedback">
+                            <div *ngIf="f.excipientName.errors.required">Excipient Name is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Other Name Of Active Ingredient</label>
-                        <input type="text" formControlName="actIngreOtherName" class="form-control">
+                        <input type="text" formControlName="actIngreOtherName" class="form-control" [ngClass]="{'is-invalid': submitted && f.actIngreOtherName.errors}">
+                        <div *ngIf="submitted && f.actIngreOtherName.errors" class="invalid-feedback">
+                            <div *ngIf="f.actIngreOtherName.errors.required">Other Name Of Active Ingredient is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Abbreviated name of active ingredient</label>
-                        <input type="text" class="form-control" formControlName="actIngreShortName">
+                        <input type="text" class="form-control" formControlName="actIngreShortName" [ngClass]="{'is-invalid': submitted && f.actIngreShortName.errors}">
+                        <div *ngIf="submitted && f.actIngreShortName.errors" class="invalid-feedback">
+                            <div *ngIf="f.actIngreShortName.errors.required">Abbreviated name of active ingredient is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label for="">Size</label>
-                        <input type="text" class="form-control" formControlName="number">
+                        <input type="text" class="form-control" formControlName="number" [ngClass]="{'is-invalid': submitted && f.number.errors}">
+                        <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                            <div *ngIf="f.number.errors.required">Size is required</div>
+                            <div *ngIf="f.number.errors.pattern">Size must be numeric</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Unit</label>
-                        <input type="text" formControlName="unit" class="form-control">
+                        <input type="text" formControlName="unit" class="form-control" [ngClass]="{'is-invalid': submitted && f.unit.errors}">
+                        <div *ngIf="submitted && f.unit.errors" class="invalid-feedback">
+                            <div *ngIf="f.unit.errors.required">Unit is required</div>
+                            <div *ngIf="f.unit.errors.pattern">Unit must be numeric</div>
+
+                        </div>
                     </div>
 
 
                     <div class="col-md-12 mb-3">
                         <label>Chemical Formula</label>
-                        <input type="text" formControlName="formula" class="form-control">
+                        <input type="text" formControlName="formula" class="form-control" [ngClass]="{'is-invalid': submitted && f.formula.errors}">
+                        <div *ngIf="submitted && f.formula.errors" class="invalid-feedback">
+                            <div *ngIf="f.formula.errors.required">Chemical Formula is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Peculiar Part Of Drug</label>
-                        <input type="text" formControlName="drugPart" class="form-control">
+                        <input type="text" formControlName="drugPart" class="form-control" [ngClass]="{'is-invalid': submitted && f.drugPart.errors}">
+                        <div *ngIf="submitted && f.formula.errors" class="invalid-feedback">
+                            <div *ngIf="f.drugPart.errors.required">Peculiar Part Of Drug is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Color</label>
-                        <input type="text" formControlName="color" class="form-control">
+                        <input type="text" formControlName="color" class="form-control" [ngClass]="{'is-invalid': submitted && f.color.errors}">
+                        <div *ngIf="submitted && f.color.errors" class="invalid-feedback">
+                            <div *ngIf="f.color.errors.required">Color is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Dosage Form</label>
-                        <input type="text" formControlName="form" class="form-control">
+                        <input type="text" formControlName="form" class="form-control" [ngClass]="{'is-invalid': submitted && f.form.errors}">
+                        <div *ngIf="submitted && f.form.errors" class="invalid-feedback">
+                            <div *ngIf="f.form.errors.required">Dosage Form is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Smell</label>
-                        <input type="text" formControlName="smell" class="form-control">
+                        <input type="text" formControlName="smell" class="form-control" [ngClass]="{'is-invalid': submitted && f.smell.errors}">
+                        <div *ngIf="submitted && f.smell.errors" class="invalid-feedback">
+                            <div *ngIf="f.smell.errors.required">Smell is required</div>
+
+                        </div>
                     </div>
 
 
                     <div class="col-md-12 mb-3">
                         <label>Taste</label>
-                        <input type="text" formControlName="taste" class="form-control">
+                        <input type="text" formControlName="taste" class="form-control" [ngClass]="{'is-invalid': submitted && f.taste.errors}">
+                        <div *ngIf="submitted && f.smell.errors" class="invalid-feedback">
+                            <div *ngIf="f.taste.errors.required">Taste is required</div>
 
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Usage Of Excipient</label>
-                        <input type="text" formControlName="usage" class="form-control">
+                        <input type="text" formControlName="usage" class="form-control" [ngClass]="{'is-invalid': submitted && f.usage.errors}">
+                        <div *ngIf="submitted && f.smell.errors" class="invalid-feedback">
+                            <div *ngIf="f.usage.errors.required">Usage Of Excipient is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Expire Date</label>
-                        <input type="date" formControlName="expire" class="form-control">
+                        <input type="date" formControlName="expire" class="form-control" [ngClass]="{'is-invalid': submitted && f.expire.errors}">
+                        <div *ngIf="submitted && f.expire.errors" class="invalid-feedback">
+                            <div *ngIf="f.expire.errors.required">Expire Date is required</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Drug id</label>
-                        <input type="text" formControlName="drugid" class="form-control">
+                        <input type="text" formControlName="drugid" class="form-control" [ngClass]="{'is-invalid': submitted && f.drugid.errors}">
+                        <div *ngIf="submitted && f.drugid.errors" class="invalid-feedback">
+                            <div *ngIf="f.drugid.errors.required">Drug id is required</div>
+                            <div *ngIf="f.drugid.errors.pattern">Drug id must be numeric</div>
+                            <div *ngIf="f.drugid.errors.minlength">Drug id must be at least 4 numbers</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
                         <label>Unit Price(Rs)</label>
-                        <input type="text" formControlName="price" class="form-control">
+                        <input type="text" formControlName="price" class="form-control" [ngClass]="{'is-invalid': submitted && f.price.errors}">
+                        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                            <div *ngIf="f.price.errors.required">Price is required</div>
+                            <div *ngIf="f.price.errors.pattern">Price must be numeric</div>
+
+                        </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
@@ -145,7 +216,7 @@
 
                     <div class="form-group text-right">
                         <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-                        <button type="submit" class="btn btn-success" (click)="submitInventoryData()">Post</button>
+                        <button type="submit" class="btn btn-success">Post</button>
                     </div>
 
                 </div>

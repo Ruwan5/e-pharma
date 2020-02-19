@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from "../../core/order.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ViewDetailsComponent } from "../view-order/view-details/view-details.component";
+import { FormComponent } from "../cart/form/form.component";
 
 @Component({
   selector: 'app-dealer-order',
@@ -45,12 +46,12 @@ export class DealerOrderComponent implements OnInit {
 
   viewDetails(id:string){
     const dialogconfig = new MatDialogConfig;
-    dialogconfig.height = "80%";
+    dialogconfig.height = "40%";
     dialogconfig.width = "40%";
     dialogconfig.data = {
       id: id
     }
-    this.dialog.open(ViewDetailsComponent, dialogconfig);
+    this.dialog.open(FormComponent, dialogconfig);
   }
 
 }

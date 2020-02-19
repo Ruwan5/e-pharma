@@ -75,6 +75,9 @@ import { PendingResolvePharmacyDetailsPopupComponent } from './pending-resolve-p
 import { ViewDetailsComponent } from './order/view-order/view-details/view-details.component';
 import { PharmacyExpiredDrugsPopupComponent } from './pharmacy-expired-drugs-popup/pharmacy-expired-drugs-popup.component';
 import {Moment} from 'moment/moment';
+import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
+import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
+
 
 
 
@@ -120,6 +123,8 @@ import {Moment} from 'moment/moment';
     PendingResolvePharmacyDetailsPopupComponent,
     ViewDetailsComponent,
     PharmacyExpiredDrugsPopupComponent,
+    PharmacistChatFormComponent,
+    DealerChatFormComponent,
     
 
     
@@ -155,6 +160,6 @@ import {Moment} from 'moment/moment';
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
-  entryComponents: [ViewDetailsComponent,ViewComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
+  entryComponents: [ViewDetailsComponent,FormComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
 })
 export class AppModule { }

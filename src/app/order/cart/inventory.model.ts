@@ -1,22 +1,19 @@
 export interface Inventory {
    
         $key: string;
-        brandName: string;
-        actIngreName: string;
-        excipientName: string;
-        actIngreOtherName: string;
-        actIngreShortName: string;
+        batch_number: string;
+        global_id: string;
+        last_added: Date;
+        local_id: string;
+        name: string;
         number: Number;
         unit: string;
-        formula: string;
-        drugPart: string;
-        color: string;
-        form: string;
-        smell: string;
-        taste: string;
-        usage: string;
-        price: string;
-        userid: string;
+        stock: string;
+        supplier: string;
+        supplier_name: string;
+        threshold: string;
+        unit_price: string;
+        
        
     
 }

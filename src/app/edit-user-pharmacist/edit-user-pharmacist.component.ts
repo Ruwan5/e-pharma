@@ -28,6 +28,7 @@ export class EditUserPharmacistComponent implements OnInit {
   });
   
   item: any;
+  submitted = false;
 
   validation_messages = {
     'FirstName': [
@@ -62,6 +63,13 @@ export class EditUserPharmacistComponent implements OnInit {
   }
 
   onSubmit(value) {
+    this.submitted = true;
+     
+    //stop here if form is invalid
+    if(this.editForm.invalid){
+      return;
+    }
+
     this.userService.getCurrentUserId().then( data => {
       console.log(data);
       this.userService.updateUser(data, value);
@@ -81,10 +89,15 @@ export class EditUserPharmacistComponent implements OnInit {
       LastName: [this.item.LastName, Validators.required],
       Address: [this.item.Address, Validators.required],
       email: [this.item.email, Validators.required],
-      password: [this.item.password, Validators.required],
-      Telephone: [this.item.Telephone, Validators.required],
+      password: [this.item.password, [ Validators.required, Validators.minLength(6)]],
+      Telephone: [this.item.Telephone, [ Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10)]],
       UserType: [this.item.UserType, Validators.required]
     })
+  }
+
+  //gets easy fields from the form
+  get f() {
+    return this.editForm.controls;
   }
 
   editUser() {
@@ -92,6 +105,7 @@ export class EditUserPharmacistComponent implements OnInit {
 }
 
   ResetForm() {
+    this.submitted = false;
     this.editForm.reset();
 
   } 
