@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Inject } from "@angular/core";
 import { FormControl,FormGroup, FormBuilder } from '@angular/forms';
 import { AngularFirestore } from "@angular/fire/firestore";
-import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,19 +15,13 @@ export class AddDamagedPopupComponent implements OnInit {
   uidnew;
   pharmacy_name;
   
-  form:FormGroup
+  form:FormGroup                                  // Define a form group named 'form'
   
-  
-
-  
-
-
-
   constructor(public dialogbox: MatDialogRef<AddDamagedPopupComponent> ,@Inject(MAT_DIALOG_DATA) public data: any,fb:FormBuilder ,private afs: AngularFirestore,private toastr: ToastrService
   ) {
-    this.uidnew = localStorage.getItem('uid');
-    this.form = fb.group({
-      drugId: new FormControl(''),
+    this.uidnew = localStorage.getItem('uid');   // Get the current user id from the local storage memory
+    this.form = fb.group({                       // Make the content of the form group from the form builder object
+      drugId: new FormControl(''),               
       quantity: new FormControl(''),
       remarks: new FormControl(''),
     });
@@ -35,7 +29,7 @@ export class AddDamagedPopupComponent implements OnInit {
 
    get dId()
    {
-     return  this.form.get("drugId"); // local id from the form input
+     return  this.form.get("drugId");            // local id from the form input
    }
 
    get qty()
@@ -65,7 +59,6 @@ export class AddDamagedPopupComponent implements OnInit {
     var dId = this.dId.value;
     var qty = this.qty.value;
     var Remarks = this.Remarks.value;
-    // console.log(dId)
 
     this.afs.collection("users").doc(this.uidnew).valueChanges().subscribe(val=>{
       console.log(val);
@@ -74,23 +67,18 @@ export class AddDamagedPopupComponent implements OnInit {
     })
 
     this.afs.collection("users").doc(this.uidnew).collection("Inventory",ref=>ref.where('local_id','==',dId)).valueChanges().subscribe(val=>{
-      console.log(val);
+        console.log(val);
         val.forEach(element=>{
         supp_id=element["supplier"];
         supp_name=element["supplier_name"];
         name = element["name"];
         console.log("TEST")
         this.writeToDB(supp_id,supp_name,name);
-        // console.log(supp_id)
-       
        })
       
     })
 
       
-    
- 
-
    }
 
   ngOnInit() {
@@ -102,7 +90,7 @@ export class AddDamagedPopupComponent implements OnInit {
   }
 
   writeToDB(supp_id,supp_name,name){
-        console.log(supp_id)
+    console.log(supp_id)
     var dId = this.dId.value;
     var qty = this.qty.value;
     var Remarks = this.Remarks.value;
