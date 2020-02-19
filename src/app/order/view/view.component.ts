@@ -18,6 +18,8 @@ export class ViewComponent implements OnInit {
   pharmacyid: string;
 
 
+
+
   brandName: string;
   actIngreName: string;
   excipientName: string;
@@ -33,8 +35,9 @@ export class ViewComponent implements OnInit {
   taste: string;
   usage: string;
   price: number;
-  userid: string;
-  isOrder: boolean = false;
+  dealerId: string;
+  isOrder: number = 0;
+  pending: boolean = true;
 
 
   constructor(private service: OrderService, private toastr: ToastrService, private authfire: AngularFireAuth, public dialogbox: MatDialogRef<ViewComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -42,7 +45,7 @@ export class ViewComponent implements OnInit {
     
 
     this.service.getDrug(this.id).subscribe(res => {
-      console.log('hisdfuh' + res)  
+      console.log('hisdfuh' + res)
       this.brandName = res.brandName;
       this.actIngreName = res.actIngreName;
       this.excipientName = res.excipientName;
@@ -58,8 +61,8 @@ export class ViewComponent implements OnInit {
       this.taste = res.taste;
       this.usage = res.usage;
       this.price = res.price;
-      this.userid = res.userid;
-      console.log(res.userid)
+      this.dealerId = res.userid;
+      console.log(this.dealerId)
       this.delername(res.userid);
       
 
@@ -114,12 +117,14 @@ export class ViewComponent implements OnInit {
         'taste': this.taste,
         'usage': this.usage,
         'price': this.price,
-        'dealer_id': this.userid,
+        'dealer_id': this.dealerId,
         'quantity': this.counterValue,
         'globle_id': this.id,
         'pharmacy_id': this.pharmacyid,
         'isOrder': this.isOrder,
         'unit_total': this.unitTot(),
+        'pending': this.pending,
+        'dealer': this.dealer,
       })
       this.toastr.success('Successfully Inserted to the Cart!',null,{
         timeOut:3000,

@@ -2,7 +2,7 @@ export interface Inventory {
    
         $key: string;
         batch_number: string;
-        global_id: string;
+        globle_id: string;
         last_added: Date;
         local_id: string;
         name: string;

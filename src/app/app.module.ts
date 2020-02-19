@@ -80,6 +80,7 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,6 +124,7 @@ import { ViewDetailsComponent } from './order/view-order/view-details/view-detai
     DetailsComponent,
     PendingResolvePharmacyDetailsPopupComponent,
     ViewDetailsComponent,
+  
     
 
     
