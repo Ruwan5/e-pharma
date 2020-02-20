@@ -12,7 +12,7 @@ export interface Inventory {
         supplier: string;
         supplier_name: string;
         threshold: string;
-        unit_price: string;
+        unit_price: number;
         expiredate: string;
         
        
