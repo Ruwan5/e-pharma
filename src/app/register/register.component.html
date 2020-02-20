@@ -53,7 +53,7 @@
                 <label for="">Confirm Password</label>
                 <input type="password" class="form-control" formControlName="ConfrmPassword" [ngClass]="{'is-invalid': submitted && f.ConfrmPassword.errors}">
                 <div *ngIf="submitted && f.ConfrmPassword.errors" class="invalid-feedback">
-                    <div *ngIf="f.ConfrmPassword.errors.required">Password is required</div>
+                    <div *ngIf="f.ConfrmPassword.errors.required">Confirm password is required</div>
                     <div *ngIf="f.ConfrmPassword.errors.MustMatch">Passwords must match</div>
                 </div>
             </div>
@@ -83,6 +83,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-wrapper">
+                <input type="text" formControlName="registered" class="form-control" hidden>
+
+            </div>
+
 
 
 

@@ -29,7 +29,7 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Total</th>
-                    <th>View</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody *ngFor="let a of list">
@@ -39,7 +39,8 @@
                     <td> {{a.quantity}} </td>
                     <td> {{a.price}} </td>
                     <td> {{a.unit_total}} </td>
-                    <td> <button class="btn btn-primary" (click) = viewDetails(a.id)>Deliver</button> </td>
+                    <td><div *ngIf = "pending; else elseBlock"> <button class="btn btn-primary" (click) = viewDetails(a.id)>Deliver</button></div>
+                    <ng-template #elseBlock>order was deliverd</ng-template> </td>
 
                 </tr>
 

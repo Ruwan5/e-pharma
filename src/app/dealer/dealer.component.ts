@@ -29,7 +29,6 @@ export class DealerComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private location : Location,
     private fb: FormBuilder,
     public router: Router,
     public firestore: AngularFirestore,
