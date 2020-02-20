@@ -13,7 +13,8 @@ export class DealerOrderComponent implements OnInit {
 
   dealerId: string;
   list: any;
-  list1;
+  
+  pending: boolean;
 
   constructor(private service: OrderService, private dialog: MatDialog) { 
     
@@ -27,7 +28,7 @@ export class DealerOrderComponent implements OnInit {
     localStorage.clear();
     console.log(this.dealerId);
     this.service.vieworderdealer(this.dealerId).snapshotChanges().subscribe(result => {
-
+      
       console.log("mmm" + result)
       this.list = result.map(a => {
         return {
@@ -35,7 +36,13 @@ export class DealerOrderComponent implements OnInit {
           ...a.payload.doc.data()
         }
       })
+      this.list.forEach(element => {
+        console.log(element["pending"])
+        this.pending = element["pending"];
+
+      });
     })
+    
   }
   getdealerId() {
     this.service.getCurrentUserId().then(data => {
@@ -47,8 +54,8 @@ export class DealerOrderComponent implements OnInit {
 
   viewDetails(id:string){
     const dialogconfig = new MatDialogConfig;
-    dialogconfig.height = "40%";
-    dialogconfig.width = "40%";
+    dialogconfig.height = "60%";
+    dialogconfig.width = "30%";
     dialogconfig.data = {
       id: id
     }
