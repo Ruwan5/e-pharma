@@ -16,7 +16,7 @@ export class UpdateDamagedPopupComponent implements OnInit {
   private drugDoc : AngularFirestoreDocument<drug>;            // Create an AngularFirestoreDocument object
   drugData : Observable<drug>;                                 // Create an observable from the drug document with 'drug' interface
   
-  finalDrugData : drug = {                                     // Create a model from the 'drug' interface
+  finalDrugData : drug = {                                     // Initialize the model from the 'drug' interface
     drug_id : null,
     pharmacy_id :null,
     qty: null,
@@ -36,9 +36,9 @@ export class UpdateDamagedPopupComponent implements OnInit {
 
   ngOnInit() {
     
-    this.drugData.subscribe(res=>{
+    this.drugData.subscribe(res=>{                                                   // Execute the query when loading the component
       
-      this.finalDrugData = res;
+      this.finalDrugData = res;                                                      // Set the returned query result to finalDrugData model
       console.log(this.finalDrugData);
     });
 
@@ -50,9 +50,9 @@ export class UpdateDamagedPopupComponent implements OnInit {
   }
 
   onSubmit(){
-    let id = localStorage.getItem("damageId");
+    let id = localStorage.getItem("damageId");                                       // Get the selected collection id from the local storage
 
-    this.afs.collection("damaged").doc(id).update(this.finalDrugData);
+    this.afs.collection("damaged").doc(id).update(this.finalDrugData);               // Update the document with the data of finalDrugData model 
     this.dialogbox.close();
 
 
@@ -66,7 +66,7 @@ export class UpdateDamagedPopupComponent implements OnInit {
 
 }
 
-export interface drug {
+export interface drug {                                                               // Create a model interface 'drug'
   drug_id : string;
   pharmacy_id :string;
   qty: number;

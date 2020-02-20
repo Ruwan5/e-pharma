@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import {inventory_drugs_model } from '../pharmacy-expired-drugs-popup/inventory_drugs_model.model';
 import { AngularFirestore} from "@angular/fire/firestore";
-import * as moment from "moment"; // to get current date
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pharmacy-expired-drugs-popup',
@@ -13,15 +13,21 @@ export class PharmacyExpiredDrugsPopupComponent implements OnInit {
   list: inventory_drugs_model[];
   uidnew;
   myDate = new Date();
+  finalDate;
+  public now
 
-  constructor(private afs: AngularFirestore,public dialogbox:MatDialogRef<PharmacyExpiredDrugsPopupComponent>) {
+  constructor(private afs: AngularFirestore,public dialogbox:MatDialogRef<PharmacyExpiredDrugsPopupComponent>,private datePipe : DatePipe) {
     this.uidnew = localStorage.getItem('uid');
-    
+    //Get the current date and transform 
+    this.finalDate = datePipe.transform(Date.now(),'yyyy-MM-dd');
+    console.log(this.finalDate);
     
    }
 
   ngOnInit() {
-    this.afs.collection("users").doc(this.uidnew).collection("Inventory",ref=>ref.where('expiration_date','<=',"2020-02-19")).snapshotChanges().subscribe(res=>{
+
+    //select query for firebase; getting drugs which are expired to the current date
+    this.afs.collection("users").doc(this.uidnew).collection("Inventory",ref=>ref.where('expiration_date','<=',this.finalDate)).snapshotChanges().subscribe(res=>{
       console.log(res)
       this.list = res.map( a =>{
         return{
