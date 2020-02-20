@@ -4,6 +4,7 @@ import { expired_drugs_model } from "./expired_drugs_model.model"; //data model
 import {AddDamagedPopupComponent} from "../add-damaged-popup/add-damaged-popup.component";
 import {UpdateDamagedPopupComponent} from "../update-damaged-popup/update-damaged-popup.component";
 import {PharmacyExpiredDrugsPopupComponent} from "../pharmacy-expired-drugs-popup/pharmacy-expired-drugs-popup.component";
+import {ResolveDamagedPopupComponent} from "../resolve-damaged-popup/resolve-damaged-popup.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -77,8 +78,8 @@ export class ExpiredDrugsComponent implements OnInit {
 
   update(id: string){
 
-    localStorage.setItem("damageId",id);                            // Save the id of the post in damaged collection on browser memory
-    const dialogconfig = new MatDialogConfig;                       // It will be re used in the update popup component
+    localStorage.setItem("damageId",id);                // Save the id of the post in damaged collection on browser memory
+    const dialogconfig = new MatDialogConfig;           // It will be re used in the update popup component
     dialogconfig.disableClose = true;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "45%";
@@ -90,17 +91,24 @@ export class ExpiredDrugsComponent implements OnInit {
     console.log("update popup loaded");
   }
 
-  delete(damaged_id,inventory_id){
-    //removing from the damaged collection
-    this.afs.collection("damaged").doc(damaged_id).delete();
-    
-    //find the id of the drug in the inventorry and update the exp_flag as 'no'
-    this.afs.collection("users").doc(this.uidnew).collection("Inventory").doc(inventory_id).update({exp_flag:"no"});
+  resolve(damaged_id,inventory_id){
+    localStorage.setItem("damageId",damaged_id);
+    localStorage.setItem("inventoryId",inventory_id);
 
-    this.toastr.success('Successfully Resolved!', '',{
-      timeOut:2500,
-        positionClass: 'toast-top-center',
-    });
+    const dialogconfig = new MatDialogConfig;
+    dialogconfig.disableClose = true;
+    dialogconfig.autoFocus = true;
+    dialogconfig.width = "45%";
+    dialogconfig.height = "75%";
+    dialogconfig.data = {
+  
+    }
+    this.dialog.open(ResolveDamagedPopupComponent, dialogconfig);
+    console.log("Resolve damaged popup loaded");
+
+
+
+    
   }
 
 }

@@ -4,8 +4,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import {Users} from '../core/user.model'
-import { resolve } from 'url';
-import { reject } from 'q';
 
 
 @Injectable()

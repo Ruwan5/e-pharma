@@ -10,7 +10,7 @@
     <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
             <mat-label>Drug ID</mat-label>
-            <input matInput [(ngModel)]="finalDrugData.drug_id" placeholder="Drug ID" [ngModelOptions]="{standalone: true}">
+            <input matInput [(ngModel)]="finalDrugData.drug_id" placeholder="Drug ID" [ngModelOptions]="{standalone: true}" readonly>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">

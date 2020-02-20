@@ -57,11 +57,6 @@
         </li>
         <li class="header">Another Menu</li>
         <li>
-            <a href="#">
-                <i class="fa fa-bell-o" aria-hidden="true"></i> Notification
-            </a>
-        </li>
-        <li>
             <a routerLink="/chat-form">
                 <i class="fa fa-comments" aria-hidden="true"></i> Chat box
             </a>
@@ -87,7 +82,7 @@
 
                         <h5 class="card-title">{{item.payload.doc.data().from}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{item.payload.doc.data().time.seconds * 1000 | date:'MM-dd-yyyy h:mm:ss a' }}</h6>
-                        <p class="card-text">{{item.payload.doc.data().data}}</p>
+                        <p class="card-text"><b>{{item.payload.doc.data().data}}</b></p>
                         <!-- <a href="#" class="card-link">Card link</a>
               <a href="#" class="card-link">Another link</a> -->
                         <button type="button" class="btn btn-primary" (click)="delete(item.payload.doc.id)">Delete</button>
@@ -157,9 +152,9 @@
        <div class="card-footer"> -->
             <!-- send msgs -->
             <div>
-                <input type="text" style="width: 500px;" id="myInput" class="chatInput" [(ngModel)]="message"  />
+                <input type="text" style="width: 500px;" id="myInput" class="chatInput" [(ngModel)]="message" />
 
-                <button class="chatButton "  onclick="document.getElementById('myInput').value = ''" (click)="send()">Send</button>
+                <button class="chatButton " onclick="document.getElementById('myInput').value = ''" (click)="send()">Send</button>
             </div>
         </div>
     </div>

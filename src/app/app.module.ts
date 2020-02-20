@@ -77,7 +77,8 @@ import { PharmacyExpiredDrugsPopupComponent } from './pharmacy-expired-drugs-pop
 import {Moment} from 'moment/moment';
 import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
 import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
-//import {DatePipe} from '@angular/common';
+import { ResolveDamagedPopupComponent } from './resolve-damaged-popup/resolve-damaged-popup.component';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -126,6 +127,7 @@ import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.com
     PharmacyExpiredDrugsPopupComponent,
     PharmacistChatFormComponent,
     DealerChatFormComponent,
+    ResolveDamagedPopupComponent,
    // 
     
     
@@ -157,9 +159,9 @@ import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.com
     //DatePipe,
 
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver,DatePipe ],
   bootstrap: [AppComponent],
-  entryComponents: [ViewDetailsComponent,FormComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
+  entryComponents: [ResolveDamagedPopupComponent,ViewDetailsComponent,FormComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
 
 
 })

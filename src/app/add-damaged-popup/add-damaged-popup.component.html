@@ -16,12 +16,6 @@
       <input type="number" matInput placeholder="Quantity" formControlName="quantity">
     </mat-form-field>
     <br>
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Select</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-    </mat-form-field>  -->
     
         <mat-form-field appearance="fill">
         <mat-label>Remarks</mat-label>
@@ -31,7 +25,7 @@
         <div class="row">
 
         <button class="btn btn-primary" style="margin-right: 10px;"(click) = "submit()">Submit</button>
-        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-danger" (click) = "onClose()">Cancel</button>
 
       </div>
   </div>
