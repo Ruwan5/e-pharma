@@ -77,7 +77,7 @@ import { PharmacyExpiredDrugsPopupComponent } from './pharmacy-expired-drugs-pop
 import {Moment} from 'moment/moment';
 import { PharmacistChatFormComponent } from './pharmacist-chat-form/pharmacist-chat-form.component';
 import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.component';
-
+//import {DatePipe} from '@angular/common';
 
 
 
@@ -126,8 +126,7 @@ import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.com
     PharmacyExpiredDrugsPopupComponent,
     PharmacistChatFormComponent,
     DealerChatFormComponent,
-    
-
+   // 
     
     
   ],
@@ -155,12 +154,13 @@ import { DealerChatFormComponent } from './dealer-chat-form/dealer-chat-form.com
     MatSelectModule,
     MatInputModule,
     ChartsModule,
-    
-    
+    //DatePipe,
 
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, ShowUserResolver, DrugDetailsResolver, EditDrugResolver,ChatService,DetailsResolver ],
   bootstrap: [AppComponent],
   entryComponents: [ViewDetailsComponent,FormComponent,AddDamagedPopupComponent,UpdateDamagedPopupComponent,SupplierPendingResolvePopupComponent,PendingResolvePharmacyDetailsPopupComponent,ViewComponent,PharmacyExpiredDrugsPopupComponent]
+
+
 })
 export class AppModule { }

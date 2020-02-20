@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Inject } from "@angular/core";
-import { FormControl,FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl,FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,9 +21,9 @@ export class AddDamagedPopupComponent implements OnInit {
   ) {
     this.uidnew = localStorage.getItem('uid');   // Get the current user id from the local storage memory
     this.form = fb.group({                       // Make the content of the form group from the form builder object
-      drugId: new FormControl(''),               
-      quantity: new FormControl(''),
-      remarks: new FormControl(''),
+      drugId: new FormControl('',Validators.required),               
+      quantity: new FormControl('',Validators.required),
+      remarks: new FormControl('',Validators.required),
     });
    }
 

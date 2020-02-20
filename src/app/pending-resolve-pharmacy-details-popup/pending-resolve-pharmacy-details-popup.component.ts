@@ -14,7 +14,7 @@ export class PendingResolvePharmacyDetailsPopupComponent implements OnInit {
   private userDoc : AngularFirestoreDocument<user>;
   userData : Observable<user>;
   finalUserData : user = {
-    Address : null,
+  Address : null,
   FirstName :null,
   LastName :null,
   Telephone: null,
