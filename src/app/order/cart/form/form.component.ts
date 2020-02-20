@@ -28,6 +28,7 @@ export class FormComponent implements OnInit {
     supplier_name: new FormControl(),
     threshold: new FormControl(),
     unit_price: new FormControl(),
+    expire_date: new FormControl(),
   });
 
   pharmacy_id: string;
@@ -35,7 +36,6 @@ export class FormComponent implements OnInit {
 
 
   globleid: string;
-  last_added: Date;
   name: string;
   number: number;
   unit: string;
@@ -44,6 +44,7 @@ export class FormComponent implements OnInit {
   supplier_name: string;
   threshold: string;
   unit_price: number;
+  expiredate: string;
 
 
   constructor(public dialogbox: MatDialogRef<FormComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
@@ -52,8 +53,7 @@ export class FormComponent implements OnInit {
     public service: OrderService,
     private db: AngularFirestore
   ) {
-    this.last_added = this.service.time();
-    console.log(this.last_added)
+    
     this.db.doc<any>('orders/' + this.data.id).valueChanges().subscribe(res => {
       console.log(res)
       this.pharmacy_id = res.pharmacy_id;
@@ -67,6 +67,7 @@ export class FormComponent implements OnInit {
       this.supplier_name = res.dealer;
       this.threshold = res.threshold;
       this.unit_price = res.price;
+      this.expiredate = res.expire_date;
       console.log(this.supplier)
       this.inventorForm();
 
@@ -85,10 +86,10 @@ export class FormComponent implements OnInit {
   inventorForm() {
     console.log(this.data.id)
     this.inventoryForm = this.fb.group({
-      batch_number: ['', [Validators.required]],
-      local_id: ['', [Validators.required]],
+      batch_number: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(4),Validators.minLength(4)]],
+      local_id: ['', [Validators.required,  Validators.pattern('^[0-9]+$'), Validators.maxLength(4),Validators.minLength(4)]],
+      last_added: ['',[Validators.required, Validators.pattern('^[12]+[0-9]+[0-9]+[0-9]+[-]+[01]+[0-9]+[-]+[0123]+[0-9]+$'), Validators.maxLength(10)]],
       globle_id: [this.globleid, Validators.required],
-      last_added: [this.last_added],
       name: [this.name],
       number: [this.number],
       unit: [this.unit],
@@ -97,7 +98,7 @@ export class FormComponent implements OnInit {
       supplier_name: [this.supplier_name],
       threshold: [this.threshold],
       unit_price: [this.unit_price],
-
+      expire_date:[this.expiredate],
 
 
     })
@@ -119,6 +120,9 @@ export class FormComponent implements OnInit {
   get globle_id() {
     return this.inventoryForm.get('globle_id');
   }
+  get last_added() {
+    return this.inventoryForm.get('last_added');
+  }
   
 
 
@@ -136,7 +140,9 @@ export class FormComponent implements OnInit {
     console.log("2")
 
 
-    this.service.AddInventory(this.inventoryForm.value, this.pharmacy_id); // Submit Inventory data using CRUD API
+    this.service.AddInventory(this.inventoryForm.value, this.pharmacy_id); // Submit Inventory data
+    this.db.collection('orders').doc(this.data.id).update({pending:false});
+
     this.toastr.success('The drug has been successfully posted!', null, {
       timeOut: 3000,
       positionClass: 'toast-top-center',

@@ -36,6 +36,7 @@ export class ViewComponent implements OnInit {
   usage: string;
   price: number;
   dealerId: string;
+  expire: string;
   isOrder: number = 0;
   pending: boolean = true;
 
@@ -62,6 +63,7 @@ export class ViewComponent implements OnInit {
       this.usage = res.usage;
       this.price = res.price;
       this.dealerId = res.userid;
+      this.expire = res.expire;
       console.log(this.dealerId)
       this.delername(res.userid);
       
@@ -125,6 +127,7 @@ export class ViewComponent implements OnInit {
         'unit_total': this.unitTot(),
         'pending': this.pending,
         'dealer': this.dealer,
+        'expire_date': this.expire,
       })
       this.toastr.success('Successfully Inserted to the Cart!',null,{
         timeOut:3000,
