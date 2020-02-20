@@ -24,7 +24,7 @@ export class ExpiredDrugsComponent implements OnInit {
   
   constructor(private afs: AngularFirestore,private dialog : MatDialog, private toastr: ToastrService) {
     
-    this.uidnew = localStorage.getItem('uid');
+    this.uidnew = localStorage.getItem('uid');   //Get the current user id of users collection from the user service
     console.log(this.uidnew)
 
    }
@@ -33,13 +33,15 @@ export class ExpiredDrugsComponent implements OnInit {
 
   ngOnInit() {
 
+    //Initially corresponding drugs are shown in the table.
+    //Firebase query for selecting damaged items of the current user
     this.afs.collection('damaged',ref=>ref.where('pharmacy_id','==',this.uidnew)).snapshotChanges().subscribe(res=>{
       console.log(res)
       this.list = res.map( a =>{
         return{
           id: a.payload.doc.id,
           ...a.payload.doc.data()
-        } as unknown as expired_drugs_model
+        } as unknown as expired_drugs_model  // Return the query result with mapping through expired_drug_model
       })
     })
 
@@ -75,8 +77,8 @@ export class ExpiredDrugsComponent implements OnInit {
 
   update(id: string){
 
-    localStorage.setItem("damageId",id);
-    const dialogconfig = new MatDialogConfig;
+    localStorage.setItem("damageId",id);                            // Save the id of the post in damaged collection on browser memory
+    const dialogconfig = new MatDialogConfig;                       // It will be re used in the update popup component
     dialogconfig.disableClose = true;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "45%";

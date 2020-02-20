@@ -3,7 +3,7 @@ import { FormControl,FormGroup, FormBuilder } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firestore";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Observable } from 'rxjs';
-import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-damaged-popup',
@@ -13,31 +13,31 @@ import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 export class UpdateDamagedPopupComponent implements OnInit {
 
   
-  private drugDoc : AngularFirestoreDocument<drug>;
-  drugData : Observable<drug>;
-  finalDrugData : drug = {
+  private drugDoc : AngularFirestoreDocument<drug>;            // Create an AngularFirestoreDocument object
+  drugData : Observable<drug>;                                 // Create an observable from the drug document with 'drug' interface
+  
+  finalDrugData : drug = {                                     // Create a model from the 'drug' interface
     drug_id : null,
-  pharmacy_id :null,
-  qty: null,
-  remarks : null,
-  supplier_id :null,
-  supplier_name:null,
-  supplier_notify:null,
-  supplier_resolve:null,
-  }
-  ;
+    pharmacy_id :null,
+    qty: null,
+    remarks : null,
+    supplier_id :null,
+    supplier_name:null,
+    supplier_notify:null,
+    supplier_resolve:null,
+  };
 
   constructor(public dialogbox:MatDialogRef<UpdateDamagedPopupComponent>,private afs:AngularFirestore,private toastr: ToastrService) {
-    let id = localStorage.getItem("damageId");
+    let id = localStorage.getItem("damageId");                                       // Get the id of the selected post from the browser history
     console.log(id);
-    this.drugDoc = afs.doc<drug>("damaged/"+id);
-    this.drugData = this.afs.collection("damaged").doc<drug>(id).valueChanges();
+    this.drugDoc = afs.doc<drug>("damaged/"+id);                                     // Set the values of the object with the relevent document of the damaged collection
+    this.drugData = this.afs.collection("damaged").doc<drug>(id).valueChanges();     
    }
 
   ngOnInit() {
-    //console.log(localStorage.getItem("damageId"));
+    
     this.drugData.subscribe(res=>{
-      // console.log(res);
+      
       this.finalDrugData = res;
       console.log(this.finalDrugData);
     });
