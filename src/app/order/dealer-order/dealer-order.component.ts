@@ -55,7 +55,7 @@ export class DealerOrderComponent implements OnInit {
   viewDetails(id:string){
     const dialogconfig = new MatDialogConfig;
     dialogconfig.height = "60%";
-    dialogconfig.width = "30%";
+    dialogconfig.width = "40%";
     dialogconfig.data = {
       id: id
     }
